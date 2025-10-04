@@ -1,538 +1,343 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Les Mecs Chills — Hub Complet</title>
-
-  <!-- Eviter cache navigateur après publication -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <style>
-    :root{
-      --bg:#071126;
-      --card:#0f1620;
-      --muted:#9fb0c8;
-      --accent1:#8e61ff;
-      --accent2:#4fb3ff;
-      --success:#43b581;
-      --danger:#ff6b6b;
-      --text:#eaf2ff;
-      --glass: rgba(255,255,255,0.03);
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, Poppins, system-ui, Arial, sans-serif;
-      background: linear-gradient(120deg,#071126 0%, #08121a 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      padding-top:72px;
-    }
-    /* NAV */
-    .nav{
-      position:fixed;top:0;left:0;right:0;height:72px;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 20px;background:rgba(6,8,12,0.75);
-      backdrop-filter: blur(6px);z-index:1000;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
-    .brand-title{font-weight:800}
-    .menu{display:flex;gap:8px;align-items:center}
-    .menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-    .menu a:hover{color:#fff;background:rgba(255,255,255,0.03)}
-    /* Container & cards */
-    .container{max-width:1150px;margin:22px auto;padding:0 18px}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:18px}
-    .hero{display:flex;gap:18px;align-items:center}
-    .hero-left{flex:1}
-    h1{font-size:28px;margin:0}
-    h2{margin:0 0 8px}
-    .lead{color:var(--muted);margin:8px 0 12px}
-    .actions{display:flex;gap:8px}
-    .btn{padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
-    .btn.small{padding:6px 10px;border-radius:8px}
-    .small{font-size:13px}
-    .muted{color:var(--muted)}
-    input,select,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px;outline:none;width:100%;box-sizing:border-box}
-    textarea{resize:vertical}
-    .form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .form-col{display:flex;flex-direction:column;gap:8px}
-    .subcard{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-    .game-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-    .list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-    .item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-    @media(max-width:900px){ .hero{flex-direction:column} .menu{display:none} .form-row{flex-direction:column} }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Les Mecs Chills — Hub Officiel (admin pwd hard-coded)</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<style>
+:root{--bg:#071126;--card:#0f1620;--muted:#9fb0c8;--accent1:#8e61ff;--accent2:#4fb3ff;--accent3:#43b581;--danger:#ff6b6b;--text:#eaf2ff;--glass:rgba(255,255,255,0.03);--radius:12px;--maxw:1150px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(120deg,#071126,#08121a);color:var(--text);padding-top:72px;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(6,8,12,0.75);backdrop-filter:blur(6px);z-index:1000}
+.brand{display:flex;gap:12px;align-items:center}
+.badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
+.menu{display:flex;gap:8px;align-items:center}
+.menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+.menu a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+.container{max-width:var(--maxw);margin:22px auto;padding:0 18px}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:18px}
+.hero{display:flex;gap:18px;align-items:center}
+.lead{color:var(--muted);margin:8px 0 12px}
+.actions{display:flex;gap:8px}
+.btn{padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+.btn.small{padding:6px 10px;border-radius:8px;font-size:0.9rem}
+.small{font-size:13px}
+.muted{color:var(--muted)}
+input,select,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px;outline:none;width:100%;box-sizing:border-box}
+textarea{resize:vertical}
+.form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.form-col{display:flex;flex-direction:column;gap:8px}
+.subcard{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
+.game-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
+.list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+.admin-grid{display:grid;grid-template-columns:1fr 340px;gap:12px}
+.panel{background:#071324;padding:12px;border-radius:10px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;font-size:13px}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.export-btn{background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#071126;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
+@media(max-width:900px){.hero{flex-direction:column}.menu{display:none}.form-row{flex-direction:column}.admin-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <header class="nav" role="banner">
-    <div class="brand" aria-label="Brand">
-      <div class="badge" aria-hidden="true">LMC</div>
-      <div>
-        <div class="brand-title">Les Mecs Chills</div>
-        <div class="small muted">Serveur Discord — Hub communautaire</div>
+<header class="nav" role="banner">
+  <div class="brand">
+    <div class="badge" aria-hidden="true">LMC</div>
+    <div><div style="font-weight:800">Les Mecs Chills</div><div class="small muted">Serveur Discord • Hub Communautaire</div></div>
+  </div>
+  <nav class="menu" role="navigation" aria-label="Main menu">
+    <a href="#accueil">Accueil</a><a href="#about">À propos</a><a href="#roles">Rôles</a><a href="#games">Jeux</a><a href="#contact">Suggestions</a><a href="#recruitment">Recrutement</a><a href="#help">Aide</a><a href="#adminPanel">Admin</a>
+  </nav>
+</header>
+
+<main class="container" role="main">
+  <!-- ACCUEIL -->
+  <section id="accueil" class="card hero" aria-labelledby="home-title">
+    <div style="flex:1">
+      <h1 id="home-title">JUSTE DES MECS CHILLS EN FAIT !</h1>
+      <p class="lead">Rejoins notre Discord pour des tournois, events, rôles exclusifs, et une communauté chill.</p>
+      <div class="actions">
+        <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le Discord</a>
+        <button id="openGames" class="btn ghost">Voir les jeux</button>
+      </div>
+      <div class="small muted" style="margin-top:10px">Données locales (localStorage). Clés utilisées : <code>lmc_*</code>.</div>
+    </div>
+    <div style="width:340px;display:flex;flex-direction:column;gap:12px">
+      <div class="card"><strong>Prochains events</strong><div class="small muted" style="margin-top:8px">Tournoi Brawl — Dimanche 20h</div></div>
+      <div class="card"><strong>Rôles VIP</strong><div class="small muted" style="margin-top:8px">Accès salon VIP & avantages</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="card"><h2>À propos</h2><p>Notre serveur est un espace où règnent la bonne humeur et le respect. Viens partager, aider ou juste chill.</p></section>
+
+  <!-- ROLES -->
+  <section id="roles" class="card">
+    <h2>Rôles & Postulations</h2>
+    <div class="subcard">
+      <h3>Postulation rapide</h3>
+      <div class="form-row" style="margin-top:8px">
+        <input id="quick_pseudo" type="text" aria-label="pseudo rapide" placeholder="Ex: ChillUser#1234">
+        <select id="quick_role" aria-label="role rapide"><option value="">Choisir un rôle</option><option value="Modérateur">Modérateur</option><option value="Journaliste">Journaliste</option><option value="Beta Testeur">Beta Testeur</option></select>
+        <button id="quick_submit" class="btn small">Postuler</button>
+      </div>
+      <div id="quick_msg" class="small muted" style="margin-top:8px"></div>
+    </div>
+
+    <div class="subcard" style="margin-top:12px">
+      <h3>Candidature détaillée</h3>
+      <form id="advancedApply" class="form-col" aria-label="candidature">
+        <label for="app_pseudo">Pseudo</label><input id="app_pseudo" type="text" required>
+        <label for="app_age">Âge</label><input id="app_age" type="number" min="13">
+        <label for="app_experience">Expérience</label><input id="app_experience" type="text">
+        <label for="app_hours">Heures / semaine</label><input id="app_hours" type="number" min="0">
+        <label for="app_motivation">Lettre de motivation</label><textarea id="app_motivation" rows="5" maxlength="2000"></textarea>
+        <div style="margin-top:8px"><button type="submit" class="btn small">Envoyer</button></div>
+        <div id="app_msg" class="small muted" style="margin-top:8px"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="card">
+    <h2>Jeux & Quiz</h2>
+    <div class="game-card" id="quiz_card"><h3>Quiz Culture Générale</h3><div id="quizArea" class="form-col"></div></div>
+
+    <div class="game-card" id="guess_card"><h3>Devine le nombre (1-50)</h3>
+      <div class="form-row"><input id="guess_pseudo" type="text" placeholder="Ton pseudo"><input id="guess_val" type="number" min="1" max="50" placeholder="Nombre"><button id="guess_play" class="btn small">Jouer</button></div>
+      <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
+    </div>
+
+    <div class="game-card" id="rps_card"><h3>Pierre / Feuille / Ciseaux</h3>
+      <div class="form-row"><input id="rps_pseudo" type="text" placeholder="Ton pseudo"><button data-rps="rock" class="btn small rps">Pierre</button><button data-rps="paper" class="btn small rps">Feuille</button><button data-rps="scissors" class="btn small rps">Ciseaux</button></div>
+      <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
+    </div>
+
+    <div class="game-card" id="dice_card"><h3>Dice Roll</h3>
+      <div class="form-row"><input id="dice_pseudo" type="text" placeholder="Ton pseudo"><button id="dice_roll" class="btn small">Lancer le dé</button></div>
+      <div id="dice_out" class="small muted" style="margin-top:8px"></div>
+    </div>
+
+    <div style="margin-top:12px"><button id="load3DButton" class="btn small ghost">Charger démo 3D (three.js lazy-load)</button><div id="threeDContainer" style="margin-top:8px"></div></div>
+  </section>
+
+  <!-- CONTACT / SUGGESTIONS -->
+  <section id="contact" class="card">
+    <h2>Contact & Suggestions</h2>
+    <form id="suggestForm" class="form-col" aria-label="suggestions">
+      <label for="suggest_pseudo">Pseudo (optionnel)</label><input id="suggest_pseudo" type="text" placeholder="Pseudo (optionnel)">
+      <label for="suggest_text">Suggestion / Message</label><textarea id="suggest_text" rows="4" required></textarea>
+      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
+      <div id="suggest_msg" class="small muted" style="margin-top:8px"></div>
+    </form>
+    <h3 style="margin-top:12px">Suggestions récentes</h3>
+    <div id="suggest_list" class="list muted small">Aucune suggestion</div>
+  </section>
+
+  <!-- RECRUITMENT -->
+  <section id="recruitment" class="card">
+    <h2>Questionnaire de recrutement</h2>
+    <form id="recruitForm" class="form-col" aria-label="recrutement">
+      <label for="r_pseudo">Pseudo Discord</label><input id="r_pseudo" type="text" required>
+      <label for="r_age">Âge</label><input id="r_age" type="number" min="13" required>
+      <label for="r_experience">Expérience Discord</label><input id="r_experience" type="text" required>
+      <label for="r_hours">Disponibilité (h / semaine)</label><input id="r_hours" type="number" min="0" required>
+      <label for="r_motivation">Lettre de motivation</label><textarea id="r_motivation" rows="6" maxlength="2000" required></textarea>
+      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer ma candidature</button></div>
+      <div id="recruit_msg" class="small muted" style="margin-top:8px"></div>
+    </form>
+  </section>
+
+  <!-- HELP -->
+  <section id="help" class="card">
+    <h2>Demande d'aide</h2>
+    <form id="helpForm" class="form-col" aria-label="aide">
+      <label for="help_pseudo">Pseudo (optionnel)</label><input id="help_pseudo" type="text" placeholder="Pseudo (optionnel)">
+      <label for="help_question">Question / Problème</label><textarea id="help_question" rows="4" required></textarea>
+      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
+      <div id="help_msg" class="small muted" style="margin-top:8px"></div>
+    </form>
+    <h3 style="margin-top:12px">Informations / Aide (réponses publiques)</h3>
+    <div id="help_answers" class="list muted small">Aucune information</div>
+  </section>
+
+  <!-- ADMIN PANEL -->
+  <section id="adminPanel" class="card">
+    <h2>Panneau Admin</h2>
+
+    <div style="margin-bottom:12px" class="controls">
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="admin_pass_input" type="password" placeholder="Mot de passe admin">
+        <button id="admin_login_btn" class="btn small">Se connecter</button>
+        <button id="admin_logout_btn" class="btn small ghost" style="display:none">Se déconnecter</button>
+      </div>
+      <div style="margin-left:auto" class="controls">
+        <button id="export_all" class="export-btn">Exporter données (JSON)</button>
+        <input id="import_file" type="file" accept="application/json" style="display:none">
+        <button id="import_btn" class="btn small ghost">Importer JSON</button>
       </div>
     </div>
-    <nav class="menu" role="navigation" aria-label="Main menu">
-      <a href="#accueil">Accueil</a>
-      <a href="#about">À propos</a>
-      <a href="#brawl">Brawl</a>
-      <a href="#roles">Rôles</a>
-      <a href="#games">Jeux</a>
-      <a href="#contact">Suggestions</a>
-      <a href="#recruitment">Recrutement</a>
-      <a href="#help">Aide</a>
-    </nav>
-  </header>
 
-  <main class="container" role="main">
-    <!-- ACCUEIL -->
-    <section id="accueil" class="card hero" aria-labelledby="home-title">
-      <div class="hero-left">
-        <h1 id="home-title">JUSTE DES MECS CHILLS EN FAIT !</h1>
-        <p class="lead">Rejoins notre serveur Discord pour des tournois, soirées chill, mini-jeux, rôles exclusifs et une communauté sympa.</p>
-        <div class="actions">
-          <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le Discord</a>
-          <button id="openGames" class="btn ghost">Voir jeux</button>
+    <div id="admin_area" style="display:none">
+      <div class="admin-grid">
+        <div>
+          <div class="panel"><h3>Suggestions</h3><div id="adminSuggestions" class="list"></div><div style="margin-top:8px"><button id="clear_suggestions" class="btn small ghost">Supprimer toutes les suggestions</button></div></div>
+
+          <div class="panel" style="margin-top:12px"><h3>Candidatures (Applications)</h3><div id="adminApplications" class="list"></div><div style="margin-top:8px"><button id="clear_applications" class="btn small ghost">Supprimer toutes les candidatures</button></div></div>
+
+          <div class="panel" style="margin-top:12px"><h3>Quick Apps</h3><div id="adminQuickApps" class="list"></div></div>
         </div>
-        <div class="small muted" style="margin-top:10px">Site 100% client — données stockées localement en localStorage (clé lmc_*).</div>
-      </div>
-      <div style="width:340px;display:flex;flex-direction:column;gap:12px">
-        <div class="card">
-          <strong>Prochains events</strong>
-          <div class="small muted" style="margin-top:8px">Tournoi Brawl — Dimanche 20h</div>
-        </div>
-        <div class="card">
-          <strong>Rôles VIP</strong>
-          <div class="small muted" style="margin-top:8px">Accès salon VIP & avantages</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="card" aria-labelledby="about-title">
-      <h2 id="about-title">À propos</h2>
-      <p>Notre serveur est un espace de partage, entraide et fun. Que tu sois compétitif ou chill, tu trouveras ta place.</p>
-    </section>
+        <aside>
+          <div class="panel"><h3>Rôles</h3><div id="adminRoles" class="list"></div><div style="margin-top:8px"><input id="role_name" placeholder="Nom du rôle"><input id="role_desc" placeholder="Description"><button id="role_create" class="btn small">Créer rôle</button></div></div>
 
-    <!-- BRAWL -->
-    <section id="brawl" class="card">
-      <h2>Brawl Stars</h2>
-      <p>Salons dédiés, stratégies, clips et organisation d'équipes pour jouer ensemble.</p>
-    </section>
+          <div class="panel" style="margin-top:12px"><h3>Aide publique</h3><div id="adminHelps" class="list"></div></div>
 
-    <!-- ROLES -->
-    <section id="roles" class="card" aria-labelledby="roles-title">
-      <h2 id="roles-title">Rôles & Postulations</h2>
-
-      <div class="subcard" aria-labelledby="quick-title">
-        <h3 id="quick-title">Postulation rapide</h3>
-        <p class="small muted">Pseudo + rôle → postulation instantanée.</p>
-        <div class="form-row" style="margin-top:8px">
-          <input id="quick_pseudo" type="text" aria-label="pseudo rapide" placeholder="Ex: ChillUser#1234">
-          <select id="quick_role" aria-label="role rapide">
-            <option value="">Choisir un rôle</option>
-            <option value="Modérateur">Modérateur</option>
-            <option value="Journaliste">Journaliste</option>
-            <option value="Beta Testeur">Beta Testeur</option>
-          </select>
-          <button id="quick_submit" class="btn small">Postuler</button>
-        </div>
-        <div id="quick_msg" class="small muted" style="margin-top:8px"></div>
+          <div class="panel" style="margin-top:12px"><h3>Audit (logs)</h3><div id="adminAudit" class="list small muted" style="max-height:200px;overflow:auto"></div></div>
+        </aside>
       </div>
 
-      <div class="subcard" aria-labelledby="full-title">
-        <h3 id="full-title">Candidature détaillée</h3>
-        <form id="advancedApply" class="form-col" aria-label="candidature détaillée">
-          <label for="app_pseudo">Pseudo</label><input id="app_pseudo" type="text" required>
-          <label for="app_age">Âge</label><input id="app_age" type="number" min="13">
-          <label for="app_experience">Expérience</label><input id="app_experience" type="text">
-          <label for="app_hours">Heures / semaine</label><input id="app_hours" type="number" min="0">
-          <label for="app_motivation">Lettre de motivation</label>
-          <textarea id="app_motivation" rows="5" maxlength="2000"></textarea>
-          <div style="margin-top:8px"><button type="submit" class="btn small">Envoyer candidature</button></div>
-          <div id="app_msg" class="small muted" style="margin-top:8px"></div>
-        </form>
+      <div class="panel" style="margin-top:12px">
+        <h3>Salle de réunion</h3>
+        <textarea id="meeting_notes" rows="6" placeholder="Notes de réunion..."></textarea>
+        <div style="margin-top:8px"><button id="save_meeting" class="btn small">Sauvegarder notes</button> <span id="meeting_msg" class="small muted"></span></div>
       </div>
-    </section>
+    </div>
 
-    <!-- EVENTS -->
-    <section id="events" class="card">
-      <h2>Événements</h2>
-      <p>Tournois, soirées, concours et streamings communautaires.</p>
-    </section>
+    <div id="admin_unlocked_msg" class="small muted" style="display:none;margin-top:8px">Admin connecté — actions journalisées.</div>
+  </section>
 
-    <!-- GAMES -->
-    <section id="games" class="card" aria-labelledby="games-title">
-      <h2 id="games-title">Jeux & Quiz</h2>
+  <footer class="footer">© Les Mecs Chills — Données locales (localStorage, clés lmc_*). Pour sécurité réelle, utiliser backend.</footer>
+</main>
 
-      <div class="game-card" id="quiz_card">
-        <h3>Quiz — Culture générale</h3>
-        <div id="quizArea" class="form-col"></div>
-      </div>
+<script>
+/* ========== CONFIGURATION SÉCURITÉ (hard-coded demandé) ========== */
+/* MOT DE PASSE FIXE — tel que demandé */
+const ADMIN_PASSWORD = '89mLh21'; // <- mot de passe fixe (exposé dans le code)
 
-      <div class="game-card" id="guess_card">
-        <h3>Devine le nombre (1-50)</h3>
-        <div class="form-row">
-          <input id="guess_pseudo" type="text" placeholder="Ton pseudo" aria-label="pseudo guess">
-          <input id="guess_val" type="number" min="1" max="50" placeholder="Nombre">
-          <button id="guess_play" class="btn small">Jouer</button>
-        </div>
-        <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
-      </div>
+/* ========== SMALL HELPERS ========== */
+function lget(k, def){ try{ const r = localStorage.getItem(k); return r ? JSON.parse(r) : def; } catch(e){ console.error('lget',e); return def; } }
+function lset(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ console.error('lset',e); return false; } }
+function now(){ return new Date().toISOString().replace('T',' ').slice(0,16); }
+function esc(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+(function ensure(){ lget('lmc_announcements',[]); lget('lmc_suggestions',[]); lget('lmc_applications',[]); lget('lmc_quick_apps',[]); lget('lmc_contacts',[]); lget('lmc_roles',[]); lget('lmc_role_claims',{}); lget('lmc_audit',[]); lget('lmc_ai_saved',[]); lget('lmc_helpRequests',[]); lget('lmc_quiz_scores',[]); })();
+function auditLog(type,msg){ const logs = lget('lmc_audit',[]); logs.unshift({time:new Date().toISOString(),type,message:msg}); lset('lmc_audit',logs.slice(0,500)); }
 
-      <div class="game-card" id="rps_card">
-        <h3>Pierre / Feuille / Ciseaux</h3>
-        <div class="form-row">
-          <input id="rps_pseudo" type="text" placeholder="Ton pseudo">
-          <button data-rps="rock" class="btn small rps">Pierre</button>
-          <button data-rps="paper" class="btn small rps">Feuille</button>
-          <button data-rps="scissors" class="btn small rps">Ciseaux</button>
-        </div>
-        <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
-      </div>
+/* ========== PUBLIC UI HANDLERS (suggestions, apps, help) ========== */
+document.getElementById('suggestForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo = document.getElementById('suggest_pseudo').value.trim(); const text = document.getElementById('suggest_text').value.trim(); if(!text){ document.getElementById('suggest_msg').textContent='Message vide'; return; } const arr = lget('lmc_suggestions',[]); arr.unshift({ pseudo: pseudo||'Anon', text, date: now() }); lset('lmc_suggestions',arr); const contacts = lget('lmc_contacts',[]); contacts.unshift({ name: pseudo||'Anon', email:'', msg: text, date: now() }); lset('lmc_contacts',contacts); document.getElementById('suggest_msg').textContent='✅ Suggestion envoyée'; auditLog('suggestion', `Suggestion by ${pseudo||'Anon'}: ${text.slice(0,80)}`); this.reset(); renderSuggestions(); renderAdminData(); });
 
-      <div class="game-card" id="dice_card">
-        <h3>Dice Roll</h3>
-        <div class="form-row">
-          <input id="dice_pseudo" type="text" placeholder="Ton pseudo">
-          <button id="dice_roll" class="btn small">Lancer le dé</button>
-        </div>
-        <div id="dice_out" class="small muted" style="margin-top:8px"></div>
-      </div>
-    </section>
+function renderSuggestions(){ const arr=lget('lmc_suggestions',[]); const el=document.getElementById('suggest_list'); if(!arr.length){ el.innerHTML='Aucune suggestion'; return; } el.innerHTML = arr.slice(0,50).map(s=>`<div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div class="small muted">${esc(s.date||'')}</div></div>`).join(''); }
 
-    <!-- CONTACT / SUGGESTIONS -->
-    <section id="contact" class="card">
-      <h2>Contact & Suggestions</h2>
-      <form id="suggestForm" class="form-col" aria-label="suggestions">
-        <label for="suggest_pseudo">Pseudo (optionnel)</label>
-        <input id="suggest_pseudo" type="text" placeholder="Pseudo (optionnel)">
-        <label for="suggest_text">Suggestion / Message</label>
-        <textarea id="suggest_text" rows="4" required></textarea>
-        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
-        <div id="suggest_msg" class="small muted" style="margin-top:8px"></div>
-      </form>
+document.getElementById('quick_submit').addEventListener('click', function(){ const pseudo=document.getElementById('quick_pseudo').value.trim(); const role=document.getElementById('quick_role').value; const msg=document.getElementById('quick_msg'); if(!pseudo||!role){ msg.textContent='Pseudo et rôle requis'; return; } const arr=lget('lmc_quick_apps',[]); arr.unshift({ pseudo, role, date: now(), handled:false }); lset('lmc_quick_apps',arr); msg.textContent='✅ Postulation rapide enregistrée'; auditLog('quickapp', `QuickApp: ${pseudo} -> ${role}`); document.getElementById('quick_pseudo').value=''; document.getElementById('quick_role').selectedIndex=0; renderAdminData(); });
 
-      <h3 style="margin-top:12px">Suggestions récentes</h3>
-      <div id="suggest_list" class="list muted small">Aucune suggestion</div>
-    </section>
+document.getElementById('advancedApply').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('app_pseudo').value.trim(); const age=document.getElementById('app_age').value; const exp=document.getElementById('app_experience').value.trim(); const hours=document.getElementById('app_hours').value; const motiv=document.getElementById('app_motivation').value.trim(); if(!pseudo){ document.getElementById('app_msg').textContent='Pseudo requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('app_msg').textContent='✅ Candidature envoyée'; auditLog('application', `Application: ${pseudo}`); this.reset(); renderAdminData(); });
 
-    <!-- RECRUITMENT -->
-    <section id="recruitment" class="card">
-      <h2>Questionnaire de recrutement</h2>
-      <form id="recruitForm" class="form-col" aria-label="recrutement">
-        <label for="r_pseudo">Pseudo Discord</label>
-        <input id="r_pseudo" type="text" required>
-        <label for="r_age">Âge</label>
-        <input id="r_age" type="number" min="13" required>
-        <label for="r_experience">Expérience Discord</label>
-        <input id="r_experience" type="text" required>
-        <label for="r_hours">Disponibilité (h / semaine)</label>
-        <input id="r_hours" type="number" min="0" required>
-        <label for="r_motivation">Lettre de motivation</label>
-        <textarea id="r_motivation" rows="6" maxlength="2000" required></textarea>
-        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer ma candidature</button></div>
-        <div id="recruit_msg" class="small muted" style="margin-top:8px"></div>
-      </form>
-    </section>
+document.getElementById('recruitForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('r_pseudo').value.trim(); const age=document.getElementById('r_age').value; const exp=document.getElementById('r_experience').value.trim(); const hours=document.getElementById('r_hours').value; const motiv=document.getElementById('r_motivation').value.trim(); if(!pseudo||!age||!exp||!hours){ document.getElementById('recruit_msg').textContent='Remplis tous les champs requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('recruit_msg').textContent='✅ Candidature enregistrée'; auditLog('recruitment', `Recruit: ${pseudo}`); this.reset(); renderAdminData(); });
 
-    <!-- HELP PUBLIC -->
-    <section id="help" class="card">
-      <h2>Demande d'aide</h2>
-      <form id="helpForm" class="form-col" aria-label="aide">
-        <label for="help_pseudo">Pseudo (optionnel)</label>
-        <input id="help_pseudo" type="text" placeholder="Pseudo (optionnel)">
-        <label for="help_question">Question / Problème</label>
-        <textarea id="help_question" rows="4" required></textarea>
-        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
-        <div id="help_msg" class="small muted" style="margin-top:8px"></div>
-      </form>
+document.getElementById('helpForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('help_pseudo').value.trim()||'Anon'; const q=document.getElementById('help_question').value.trim(); if(!q){ document.getElementById('help_msg').textContent='Question vide'; return; } const arr=lget('lmc_helpRequests',[]); arr.unshift({ id: Date.now()+Math.random().toString(36).slice(2,8), pseudo, question: q, date: now(), answer: null }); lset('lmc_helpRequests',arr); const contacts=lget('lmc_contacts',[]); contacts.unshift({ name: pseudo, email:'', msg:q, date: now() }); lset('lmc_contacts',contacts); document.getElementById('help_msg').textContent='✅ Demande envoyée — un modérateur peut y répondre depuis le panneau'; auditLog('help_request', `Help by ${pseudo}: ${q.slice(0,80)}`); this.reset(); renderHelpAnswers(); renderAdminData(); });
 
-      <h3 style="margin-top:12px">Informations / Aide (réponses publiques)</h3>
-      <div id="help_answers" class="list muted small">Aucune information</div>
-    </section>
+function renderHelpAnswers(){ const arr=lget('lmc_helpRequests',[]); const answered=arr.filter(x=>x.answer); const out=answered.map(a=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">${esc(a.question)}</div><div style="margin-top:6px"><strong>Réponse:</strong> ${esc(a.answer)}</div></div><div class="small muted">${esc(a.date)}</div></div>`).join(''); document.getElementById('help_answers').innerHTML = out || 'Aucune information'; }
 
-    <footer class="footer">© Les Mecs Chills — Données en local (localStorage)</footer>
-  </main>
+/* ========== Quiz ========== */
+const quiz = { quizId:'culture_01', title:'Quiz Culture Générale', questions:[
+  { q:"Capitale de la France ?", choices:["Paris","Lyon","Marseille","Bordeaux"], answer:0 },
+  { q:"Combien de continents ?", choices:["5","6","7","8"], answer:2 },
+  { q:"Auteur du 'Petit Prince' ?", choices:["Victor Hugo","Camus","Saint-Exupéry","Jules Verne"], answer:2 }
+]};
+function renderQuiz(){ const container=document.getElementById('quizArea'); let html=`<div><strong>${esc(quiz.title)}</strong><div class="small muted">Test rapide — résultats sauvegardés localement</div></div>`; quiz.questions.forEach((q,idx)=>{ html+=`<div style="margin-top:8px"><div><strong>Q${idx+1}:</strong> ${esc(q.q)}</div>`; q.choices.forEach((c,ci)=>{ html+=`<label style="display:block;margin:6px 0"><input type="radio" name="qq_${idx}" value="${ci}"> ${esc(c)}</label>`; }); html+=`</div>`; }); html+=`<div style="margin-top:10px"><button id="submitQuiz" class="btn small">Soumettre</button><div id="quizResult" class="small muted" style="margin-top:8px"></div></div>`; container.innerHTML=html; document.getElementById('submitQuiz').addEventListener('click', ()=>{ const pseudo=(document.getElementById('guess_pseudo')&&document.getElementById('guess_pseudo').value.trim())||'anonymous'; let score=0; for(let i=0;i<quiz.questions.length;i++){ const sel=document.querySelector(`input[name="qq_${i}"]:checked`); if(sel&&parseInt(sel.value,10)===quiz.questions[i].answer) score++; } const arr=lget('lmc_quiz_scores',[]); arr.unshift({ quizId:quiz.quizId, pseudo, score, total:quiz.questions.length, date: now() }); lset('lmc_quiz_scores',arr); document.getElementById('quizResult').textContent=`Résultat: ${score}/${quiz.questions.length} — sauvegardé`; auditLog('quiz', `Quiz ${quiz.quizId} by ${pseudo}: ${score}/${quiz.questions.length}`); }); }
 
-  <!-- SCRIPT -->
-  <script>
-  // -------------------------
-  // Helpers (atomic get/modify/set)
-  // -------------------------
-  function lmc_get(key, def){
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : def;
-    } catch(e){
-      console.error('lmc_get error', key, e);
-      return def;
-    }
-  }
-  function lmc_set(key, value){
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-      return true;
-    } catch(e){
-      console.error('lmc_set error', key, e);
-      return false;
-    }
-  }
-  function nowStr(){ return new Date().toISOString().replace('T',' ').slice(0,16); }
-  function escapeHTML(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+/* ========== Games ========== */
+let secret=Math.floor(Math.random()*50)+1;
+document.getElementById('guess_play').addEventListener('click', ()=>{ const pseudo=document.getElementById('guess_pseudo').value.trim()||'anon'; const val=parseInt(document.getElementById('guess_val').value,10); const out=document.getElementById('guess_feedback'); if(isNaN(val)||val<1||val>50){ out.textContent='Choisis un nombre entre 1 et 50'; return; } if(val===secret){ out.textContent=`Bravo ${pseudo} — c'était ${secret} ! (réinitialisé)`; auditLog('game','guess correct by '+pseudo); secret=Math.floor(Math.random()*50)+1; } else{ out.textContent=val<secret?'Trop petit':'Trop grand'; auditLog('game',`guess ${val} by ${pseudo}`); } });
 
-  // Initialize keys (ensure default arrays exist)
-  (function initKeys(){
-    lmc_get('lmc_announcements', []);
-    lmc_get('lmc_suggestions', []);
-    lmc_get('lmc_applications', []);
-    lmc_get('lmc_quick_apps', []);
-    lmc_get('lmc_contacts', []);
-    lmc_get('lmc_roles', []);
-    lmc_get('lmc_role_claims', {});
-    lmc_get('lmc_audit', []);
-    lmc_get('lmc_ai_saved', []);
-    lmc_get('lmc_quiz_scores', []);
-  })();
+document.querySelectorAll('.rps').forEach(btn=>btn.addEventListener('click',function(){ const pseudo=document.getElementById('rps_pseudo').value.trim()||'anon'; const user=this.dataset.rps; const opts=['rock','paper','scissors']; const comp=opts[Math.floor(Math.random()*3)]; const out=document.getElementById('rps_feedback'); if(user===comp) out.textContent=`Égalité — Ordi: ${comp}`; else{ const win=(user==='rock'&&comp==='scissors')||(user==='paper'&&comp==='rock')||(user==='scissors'&&comp==='paper'); out.textContent=(win?'Tu gagnes !':'Tu perds...')+` (Ordi: ${comp})`; } auditLog('game',`rps ${user} vs ${comp} by ${pseudo}`); }));
 
-  // Audit logger
-  function audit(type, message){
-    const logs = lmc_get('lmc_audit', []);
-    logs.unshift({ time: new Date().toISOString(), type, message });
-    lmc_set('lmc_audit', logs.slice(0,200));
-  }
+document.getElementById('dice_roll').addEventListener('click', ()=>{ const pseudo=document.getElementById('dice_pseudo').value.trim()||'anon'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('dice_out'); out.textContent=`Toi: ${p} — Ordi: ${c} — ${p>c?'Gagné':p===c?'Égalité':'Perdu'}`; auditLog('game',`dice ${p} vs ${c} by ${pseudo}`); });
 
-  // -------------------------
-  // Suggestions / Contact (lmc_suggestions or lmc_contacts)
-  // -------------------------
-  const suggestForm = document.getElementById('suggestForm');
-  const suggestList = document.getElementById('suggest_list');
-  const suggestMsg = document.getElementById('suggest_msg');
+/* ========== three.js lazy load ========== */
+document.getElementById('load3DButton').addEventListener('click', function(){ const btn=this; btn.disabled=true; btn.textContent='Chargement...'; const s=document.createElement('script'); s.src='https://unpkg.com/three@0.152.2/build/three.min.js'; s.onload=function(){ init3D(); btn.style.display='none'; }; s.onerror=function(){ btn.textContent='Erreur chargement 3D'; btn.disabled=false; }; document.head.appendChild(s); });
+function init3D(){ const container=document.getElementById('threeDContainer'); if(typeof THREE==='undefined' || !container){ container.innerHTML='<div class="small muted">three.js non disponible</div>'; return; } const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(50,container.clientWidth/container.clientHeight,0.1,1000); const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(320,240); container.appendChild(renderer.domElement); const geometry=new THREE.BoxGeometry(); const material=new THREE.MeshNormalMaterial(); const cube=new THREE.Mesh(geometry,material); scene.add(cube); camera.position.z=3; function animate(){ requestAnimationFrame(animate); cube.rotation.x+=0.01; cube.rotation.y+=0.01; renderer.render(scene,camera); } animate(); }
 
-  function renderSuggestions(){
-    const arr = lmc_get('lmc_suggestions', []);
-    if(!arr.length){ suggestList.innerHTML = 'Aucune suggestion'; return; }
-    suggestList.innerHTML = arr.slice(0,50).map(s => `<div class="item"><div><strong>${escapeHTML(s.pseudo||'Anon')}</strong><div class="small muted">${escapeHTML(s.text)}</div></div><div class="small muted">${escapeHTML(s.date? s.date : '')}</div></div>`).join('');
-  }
+/* ========== ADMIN (hard-coded password) ========== */
+const adminLoginBtn=document.getElementById('admin_login_btn');
+const adminLogoutBtn=document.getElementById('admin_logout_btn');
+const adminPassInput=document.getElementById('admin_pass_input');
+const adminArea=document.getElementById('admin_area');
+const adminUnlockedMsg=document.getElementById('admin_unlocked_msg');
 
-  suggestForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    const pseudo = document.getElementById('suggest_pseudo').value.trim();
-    const text = document.getElementById('suggest_text').value.trim();
-    if(!text){ suggestMsg.textContent = 'Message vide'; return; }
-    // atomic
-    const arr = lmc_get('lmc_suggestions', []);
-    arr.unshift({ pseudo: pseudo || 'Anon', text, date: nowStr() });
-    lmc_set('lmc_suggestions', arr);
-    // also store in lmc_contacts for contact messages compatibility
-    const contacts = lmc_get('lmc_contacts', []);
-    contacts.unshift({ name: pseudo || 'Anon', email: '', msg: text, date: nowStr() });
-    lmc_set('lmc_contacts', contacts);
+function checkAdmin(pass){ return pass === ADMIN_PASSWORD; }
 
-    suggestMsg.textContent = '✅ Suggestion envoyée';
-    audit('suggestion', `Suggestion by ${pseudo||'Anon'}: ${text.slice(0,80)}`);
-    document.getElementById('suggest_pseudo').value = '';
-    document.getElementById('suggest_text').value = '';
-    renderSuggestions();
-  });
+adminLoginBtn.addEventListener('click', ()=>{ const pass=adminPassInput.value; if(checkAdmin(pass)){ adminArea.style.display='block'; adminUnlockedMsg.style.display='block'; adminLogoutBtn.style.display='inline-block'; adminLoginBtn.style.display='none'; adminPassInput.style.display='none'; auditLog('admin','Admin connecté'); renderAdminData(); } else { alert('Mot de passe incorrect'); } });
 
-  // -------------------------
-  // Quick apps (lmc_quick_apps)
-  // -------------------------
-  document.getElementById('quick_submit').addEventListener('click', function(){
-    const pseudo = document.getElementById('quick_pseudo').value.trim();
-    const role = document.getElementById('quick_role').value;
-    const msgEl = document.getElementById('quick_msg');
-    if(!pseudo || !role){ msgEl.textContent = 'Pseudo et rôle requis'; return; }
-    const arr = lmc_get('lmc_quick_apps', []);
-    arr.unshift({ pseudo, role, date: nowStr(), handled: false });
-    lmc_set('lmc_quick_apps', arr);
-    msgEl.textContent = '✅ Postulation rapide enregistrée';
-    audit('quickapp', `Quick app: ${pseudo} -> ${role}`);
-    document.getElementById('quick_pseudo').value = ''; document.getElementById('quick_role').selectedIndex = 0;
-  });
+adminLogoutBtn.addEventListener('click', ()=>{ adminArea.style.display='none'; adminUnlockedMsg.style.display='none'; adminLogoutBtn.style.display='none'; adminLoginBtn.style.display='inline-block'; adminPassInput.style.display='inline-block'; adminPassInput.value=''; auditLog('admin','Admin déconnecté'); });
 
-  // -------------------------
-  // Advanced application (lmc_applications)
-  // -------------------------
-  document.getElementById('advancedApply').addEventListener('submit', function(e){
-    e.preventDefault();
-    const pseudo = document.getElementById('app_pseudo').value.trim();
-    const age = document.getElementById('app_age').value;
-    const exp = document.getElementById('app_experience').value.trim();
-    const hours = document.getElementById('app_hours').value;
-    const motiv = document.getElementById('app_motivation').value.trim();
-    const msgEl = document.getElementById('app_msg');
-    if(!pseudo){ msgEl.textContent = 'Pseudo requis'; return; }
-    const arr = lmc_get('lmc_applications', []);
-    arr.unshift({ pseudo, age, experience: exp, hours, motivation: motiv, date: nowStr() });
-    lmc_set('lmc_applications', arr);
-    msgEl.textContent = '✅ Candidature envoyée';
-    audit('application', `Application: ${pseudo}`);
-    this.reset();
-  });
+/* ========== Admin rendering & actions ========== */
+function renderAdminData(){
+  // Suggestions
+  const suggestions=lget('lmc_suggestions',[]);
+  document.getElementById('adminSuggestions').innerHTML = suggestions.map((s,i)=>`<div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small accept-suggestion">✔</button><button data-idx="${i}" class="btn small ghost del-suggestion">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune suggestion</div>';
 
-  // -------------------------
-  // Recruitment form (store in lmc_applications as well for centralization)
-  // -------------------------
-  document.getElementById('recruitForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const pseudo = document.getElementById('r_pseudo').value.trim();
-    const age = document.getElementById('r_age').value;
-    const exp = document.getElementById('r_experience').value.trim();
-    const hours = document.getElementById('r_hours').value;
-    const motiv = document.getElementById('r_motivation').value.trim();
-    if(!pseudo || !age || !exp || !hours){ document.getElementById('recruit_msg').textContent = 'Remplis tous les champs requis'; return; }
-    const arr = lmc_get('lmc_applications', []);
-    arr.unshift({ pseudo, age, experience: exp, hours, motivation: motiv, date: nowStr() });
-    lmc_set('lmc_applications', arr);
-    document.getElementById('recruit_msg').textContent = '✅ Candidature enregistrée';
-    audit('recruitment', `Recruit: ${pseudo}`);
-    this.reset();
-  });
+  // Applications
+  const apps=lget('lmc_applications',[]);
+  document.getElementById('adminApplications').innerHTML = apps.map((a,i)=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">Age:${esc(a.age||'')}, Hs:${esc(a.hours||'')}</div><div style="margin-top:6px">${esc(a.motivation||a.experience||'')}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small view-app">Voir</button><button data-idx="${i}" class="btn small ghost del-app">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune candidature</div>';
 
-  // -------------------------
-  // Help requests (lmc_contacts)
-  // -------------------------
-  document.getElementById('helpForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const pseudo = document.getElementById('help_pseudo').value.trim() || 'Anon';
-    const q = document.getElementById('help_question').value.trim();
-    if(!q){ document.getElementById('help_msg').textContent = 'Question vide'; return; }
-    const arr = lmc_get('lmc_helpRequests', []);
-    arr.unshift({ pseudo, question: q, date: nowStr(), answer: null });
-    lmc_set('lmc_helpRequests', arr);
-    // Also push into lmc_contacts for contact consistency
-    const contacts = lmc_get('lmc_contacts', []);
-    contacts.unshift({ name: pseudo, email:'', msg: q, date: nowStr() });
-    lmc_set('lmc_contacts', contacts);
-    document.getElementById('help_msg').textContent = '✅ Demande envoyée — un modérateur peut y répondre depuis Discord';
-    audit('help', `Help request by ${pseudo}`);
-    this.reset();
-    renderHelpAnswers();
-  });
+  // Quick apps
+  const quick=lget('lmc_quick_apps',[]);
+  document.getElementById('adminQuickApps').innerHTML = quick.map((q,i)=>`<div class="item"><div><strong>${esc(q.pseudo)}</strong><div class="small muted">${esc(q.role)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small mark-handled">${q.handled?'✓':'✔'}</button><button data-idx="${i}" class="btn small ghost del-quick">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune quick-app</div>';
 
-  function renderHelpAnswers(){
-    // show only answered help requests (admin replies can be inserted into localStorage manually if needed)
-    const arr = lmc_get('lmc_helpRequests', []);
-    const out = arr.filter(r => r.answer).map(r => `<div class="item"><div><strong>${escapeHTML(r.pseudo)}</strong><div class="small muted">${escapeHTML(r.question)}</div><div style="margin-top:8px"><strong>Réponse:</strong> ${escapeHTML(r.answer)}</div></div><div class="small muted">${escapeHTML(r.date)}</div></div>`).join('');
-    document.getElementById('help_answers').innerHTML = out || 'Aucune information';
-  }
+  // Roles
+  const roles=lget('lmc_roles',[]);
+  document.getElementById('adminRoles').innerHTML = roles.map(r=>`<div class="item"><div><strong>${esc(r.name)}</strong><div class="small muted">${esc(r.desc||'')}</div></div><div><button data-id="${esc(r.id)}" class="btn small del-role">🗑</button></div></div>`).join('') || '<div class="small muted">Aucun rôle</div>';
 
-  // -------------------------
-  // Quiz (store scores in lmc_quiz_scores)
-  // -------------------------
-  const quizData = {
-    quizId: 'culture_01',
-    title: 'Quiz Culture Générale',
-    questions: [
-      { q: "Quelle est la capitale de la France ?", choices:["Paris","Lyon","Marseille","Bordeaux"], answer:0 },
-      { q: "Combien de continents ?", choices:["5","6","7","8"], answer:2 },
-      { q: "Auteur du 'Petit Prince' ?", choices:["Victor Hugo","Camus","Antoine de Saint-Exupéry","Jules Verne"], answer:2 }
-    ]
-  };
+  // Helps
+  const helps=lget('lmc_helpRequests',[]);
+  document.getElementById('adminHelps').innerHTML = helps.map((h,i)=>`<div class="item"><div><strong>${esc(h.pseudo)}</strong><div class="small muted">${esc(h.question)}</div>${h.answer?`<div style="margin-top:6px"><strong>Réponse:</strong> ${esc(h.answer)}</div>`:''}</div><div style="display:flex;flex-direction:column;gap:6px"><button data-idx="${i}" class="btn small answer-help">Répondre</button><button data-idx="${i}" class="btn small ghost del-help">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune demande</div>';
 
-  function renderQuiz(){
-    const container = document.getElementById('quizArea');
-    let html = `<div><strong>${escapeHTML(quizData.title)}</strong><div class="small muted">Test rapide — tes résultats sont sauvegardés localement</div></div>`;
-    quizData.questions.forEach((q, idx) => {
-      html += `<div style="margin-top:8px"><div><strong>Q${idx+1}:</strong> ${escapeHTML(q.q)}</div>`;
-      q.choices.forEach((c, ci) => {
-        html += `<label style="display:block;margin:6px 0"><input type="radio" name="qq_${idx}" value="${ci}"> ${escapeHTML(c)}</label>`;
-      });
-      html += `</div>`;
-    });
-    html += `<div style="margin-top:10px"><button id="submitQuiz" class="btn small">Soumettre</button> <div id="quizResult" class="small muted" style="margin-top:8px"></div></div>`;
-    container.innerHTML = html;
-    document.getElementById('submitQuiz').addEventListener('click', function(){
-      const pseudo = (document.getElementById('guess_pseudo') && document.getElementById('guess_pseudo').value.trim()) || 'anonymous';
-      let score = 0;
-      for(let i=0;i<quizData.questions.length;i++){
-        const sel = document.querySelector(`input[name="qq_${i}"]:checked`);
-        if(sel && parseInt(sel.value,10) === quizData.questions[i].answer) score++;
-      }
-      const scores = lmc_get('lmc_quiz_scores', []);
-      scores.unshift({ quizId: quizData.quizId, pseudo, score, total: quizData.questions.length, date: nowStr() });
-      lmc_set('lmc_quiz_scores', scores);
-      document.getElementById('quizResult').textContent = `Résultat: ${score}/${quizData.questions.length} — sauvegardé`;
-      audit('quiz', `Quiz ${quizData.quizId} by ${pseudo} => ${score}/${quizData.questions.length}`);
-    });
-  }
+  // Audit
+  const audit=lget('lmc_audit',[]);
+  document.getElementById('adminAudit').innerHTML = audit.slice(0,200).map(a=>`<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.02)"><div class="small muted">${esc(a.time)}</div><div>${esc('['+a.type+'] '+a.message)}</div></div>`).join('') || '<div class="small muted">Aucun log</div>';
+}
 
-  // -------------------------
-  // Guess number game
-  // -------------------------
-  let secret = Math.floor(Math.random()*50)+1;
-  document.getElementById('guess_play').addEventListener('click', function(){
-    const pseudo = document.getElementById('guess_pseudo').value.trim() || 'anon';
-    const val = parseInt(document.getElementById('guess_val').value,10);
-    const out = document.getElementById('guess_feedback');
-    if(isNaN(val) || val < 1 || val > 50){ out.textContent = 'Choisis un nombre entre 1 et 50'; return; }
-    if(val === secret){ out.textContent = `Bravo ${pseudo} — c'était ${secret} ! (réinitialisation)`; audit('game','guess correct by '+pseudo); secret = Math.floor(Math.random()*50)+1; }
-    else { out.textContent = val < secret ? 'Trop petit' : 'Trop grand'; audit('game', `guess ${val} by ${pseudo}`); }
-  });
+/* ========== admin delegated actions ========== */
+document.addEventListener('click', function(e){
+  if(e.target.matches('.del-suggestion')){ if(!confirm('Supprimer cette suggestion ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); arr.splice(i,1); lset('lmc_suggestions',arr); auditLog('admin','suppression suggestion'); renderAdminData(); renderSuggestions(); }
+  if(e.target.matches('.accept-suggestion')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); const s=arr.splice(i,1)[0]; if(s){ lset('lmc_suggestions',arr); const ann=lget('lmc_announcements',[]); ann.unshift({title:'Suggestion épinglée', text:s.text, date: now()}); lset('lmc_announcements',ann); auditLog('admin','epingle suggestion -> announcement'); alert('Suggestion transformée en annonce.'); renderAdminData(); renderSuggestions(); } }
+  if(e.target.matches('.del-app')){ if(!confirm('Supprimer cette candidature ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); arr.splice(i,1); lset('lmc_applications',arr); auditLog('admin','suppr application'); renderAdminData(); }
+  if(e.target.matches('.view-app')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); const a=arr[i]; if(a) alert(`Candidature de ${a.pseudo}\nAge: ${a.age}\nHours: ${a.hours}\nExp: ${a.experience}\nMotivation:\n${a.motivation}`); }
+  if(e.target.matches('.mark-handled')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); if(arr[i]){ arr[i].handled=!arr[i].handled; lset('lmc_quick_apps',arr); auditLog('admin','toggle quickapp handled'); renderAdminData(); } }
+  if(e.target.matches('.del-quick')){ if(!confirm('Supprimer cette quick-app ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); arr.splice(i,1); lset('lmc_quick_apps',arr); auditLog('admin','suppr quickapp'); renderAdminData(); }
+  if(e.target.id==='role_create'){ const name=document.getElementById('role_name').value.trim(); const desc=document.getElementById('role_desc').value.trim(); if(!name){ alert('Nom requis'); return; } const roles=lget('lmc_roles',[]); const id='r'+Date.now(); roles.unshift({id,name,desc}); lset('lmc_roles',roles); auditLog('admin','create role '+name); document.getElementById('role_name').value=''; document.getElementById('role_desc').value=''; renderAdminData(); }
+  if(e.target.matches('.del-role')){ if(!confirm('Supprimer ce rôle ?')) return; const id=e.target.dataset.id; const roles=lget('lmc_roles',[]); const idx=roles.findIndex(r=>r.id===id); if(idx!==-1){ roles.splice(idx,1); lset('lmc_roles',roles); auditLog('admin','del role '+id); renderAdminData(); } }
+  if(e.target.matches('.answer-help')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); const item=arr[i]; const ans=prompt(`Réponse à ${item.pseudo} :\n${item.question}\n\nTa réponse :`); if(ans!==null){ arr[i].answer=ans; lset('lmc_helpRequests',arr); auditLog('admin','answer help for '+item.pseudo); renderAdminData(); renderHelpAnswers(); } }
+  if(e.target.matches('.del-help')){ if(!confirm("Supprimer cette demande d'aide ?")) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); arr.splice(i,1); lset('lmc_helpRequests',arr); auditLog('admin','del help'); renderAdminData(); renderHelpAnswers(); }
+});
 
-  // -------------------------
-  // RPS
-  // -------------------------
-  document.querySelectorAll('.rps').forEach(btn => {
-    btn.addEventListener('click', function(){
-      const pseudo = document.getElementById('rps_pseudo').value.trim() || 'anon';
-      const user = this.dataset.rps;
-      const opts = ['rock','paper','scissors'];
-      const comp = opts[Math.floor(Math.random()*3)];
-      const out = document.getElementById('rps_feedback');
-      if(user === comp) out.textContent = `Égalité — Ordi: ${comp}`;
-      else {
-        const win = (user==='rock' && comp==='scissors') || (user==='paper' && comp==='rock') || (user==='scissors' && comp==='paper');
-        out.textContent = (win ? 'Tu gagnes !' : 'Tu perds...') + ` (Ordi: ${comp})`;
-      }
-      audit('game', `rps ${user} vs ${comp} by ${pseudo}`);
-    });
-  });
+/* ========== clear lists ========== */
+document.getElementById('clear_suggestions').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les suggestions ?')) return; lset('lmc_suggestions',[]); auditLog('admin','clear suggestions'); renderAdminData(); renderSuggestions(); });
+document.getElementById('clear_applications').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les candidatures ?')) return; lset('lmc_applications',[]); auditLog('admin','clear applications'); renderAdminData(); });
 
-  // -------------------------
-  // Dice roll
-  // -------------------------
-  document.getElementById('dice_roll').addEventListener('click', function(){
-    const pseudo = document.getElementById('dice_pseudo').value.trim() || 'anon';
-    const p = Math.floor(Math.random()*6)+1;
-    const c = Math.floor(Math.random()*6)+1;
-    const out = document.getElementById('dice_out');
-    out.textContent = `Toi: ${p} — Ordi: ${c} — ${p>c ? 'Gagné' : p===c ? 'Égalité' : 'Perdu'}`;
-    audit('game', `dice ${p} vs ${c} by ${pseudo}`);
-  });
+/* ========== meeting notes ========== */
+document.getElementById('save_meeting').addEventListener('click', ()=>{ const notes=document.getElementById('meeting_notes').value; const arr=lget('lmc_ai_saved',[]); arr.unshift({ text: notes, date: now() }); lset('lmc_ai_saved', arr); document.getElementById('meeting_msg').textContent='Notes sauvegardées'; auditLog('admin','meeting notes saved'); });
 
-  // -------------------------
-  // Rendering & init
-  // -------------------------
-  function renderAllPublic(){
-    renderSuggestions();
-    renderHelpAnswers();
-    renderQuiz();
-  }
+/* ========== export/import ========== */
+document.getElementById('export_all').addEventListener('click', ()=>{ const keys=['lmc_announcements','lmc_suggestions','lmc_applications','lmc_quick_apps','lmc_contacts','lmc_roles','lmc_role_claims','lmc_audit','lmc_ai_saved','lmc_helpRequests','lmc_quiz_scores']; const dump={}; keys.forEach(k=>dump[k]=lget(k,[])); const blob=new Blob([JSON.stringify(dump,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='lmc_dump_'+(new Date().toISOString().slice(0,10))+'.json'; document.body.appendChild(a); a.click(); a.remove(); });
+document.getElementById('import_btn').addEventListener('click', ()=>document.getElementById('import_file').click());
+document.getElementById('import_file').addEventListener('change', function(){ const f=this.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(){ try{ const data=JSON.parse(r.result); Object.keys(data).forEach(k=>localStorage.setItem(k,JSON.stringify(data[k]))); alert('Import terminé. Recharge la page.'); auditLog('admin','import data'); }catch(e){ alert('Fichier invalide'); } }; r.readAsText(f); });
 
-  // open games quick link
-  document.getElementById('openGames').addEventListener('click', function(){ document.querySelector('#games').scrollIntoView({behavior:'smooth'}); });
+/* ========== render & init ========== */
+function renderAllPublic(){ renderSuggestions(); renderHelpAnswers(); renderQuiz(); }
+function renderAdminIfVisible(){ if(document.getElementById('admin_area').style.display!=='none') renderAdminData(); }
+document.getElementById('openGames').addEventListener('click', ()=>{ document.querySelector('#games').scrollIntoView({behavior:'smooth'}); });
+document.addEventListener('DOMContentLoaded', function(){ renderAllPublic(); });
 
-  // initial render
-  document.addEventListener('DOMContentLoaded', function(){
-    renderAllPublic();
-    // ensure lmc_quiz_scores exists
-    lmc_get('lmc_quiz_scores', []);
-  });
-
-  // Expose some helpers for debugging (optional)
-  window._lmc = { get: lmc_get, set: lmc_set, audit: audit };
-  </script>
+/* expose if needed */
+window.lmc={get:lget,set:lset,audit:auditLog,renderAdmin:renderAdminData};
+</script>
 </body>
 </html>
