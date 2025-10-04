@@ -45,255 +45,255 @@ textarea{min-height:90px;resize:vertical}
 </head>
 <body>
 <header class="nav">
-  <div class="logo">
-    <div class="badge">LMC</div>
-    <div>
-      <div style="font-weight:800">Les Mecs Chills</div>
-      <div class="small">Serveur Discord • Hub communautaire</div>
-    </div>
-  </div>
-  <nav class="menu" aria-label="Main">
-    <a href="#home">Accueil</a>
-    <a href="#about">À propos</a>
-    <a href="#brawl">Brawl Stars</a>
-    <a href="#roles-section">Rôles</a>
-    <a href="#events">Événements</a>
-    <a href="#community">Communauté</a>
-    <a href="#games">Jeux</a>
-    <a href="#contact">Contact</a>
-    <a href="#help-section">Aide</a>
-    <a href="#admin-section" id="navAdmin">Admin</a>
-  </nav>
+  <div class="logo">
+    <div class="badge">LMC</div>
+    <div>
+      <div style="font-weight:800">Les Mecs Chills</div>
+      <div class="small">Serveur Discord • Hub communautaire</div>
+    </div>
+  </div>
+  <nav class="menu" aria-label="Main">
+    <a href="#home">Accueil</a>
+    <a href="#about">À propos</a>
+    <a href="#brawl">Brawl Stars</a>
+    <a href="#roles-section">Rôles</a>
+    <a href="#events">Événements</a>
+    <a href="#community">Communauté</a>
+    <a href="#games">Jeux</a>
+    <a href="#contact">Contact</a>
+    <a href="#help-section">Aide</a>
+    <a href="#admin-section" id="navAdmin">Admin</a>
+  </nav>
 </header>
 <main class="container">
-  <section id="home" class="hero">
-    <div class="hero-left">
-      <h1>JUSTE DES MECS CHILLS EN FAIT !</h1>
-      <p class="lead">Rejoins notre serveur Discord pour des tournois, quiz, mini-jeux et une ambiance chill. Clique pour rejoindre ou explore le site pour postuler et demander des rôles.</p>
-      <div style="display:flex;gap:8px;align-items:center">
-        <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le serveur</a>
-        <button id="btnOpenGames" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Ouvrir jeux</button>
-      </div>
-    </div>
-    <div style="width:340px;display:flex;flex-direction:column;gap:12px">
-      <div class="card">
-        <div style="font-weight:700">Prochains événements</div>
-        <div class="small" style="margin-top:6px">Tournoi Brawl — Dimanche 20h</div>
-      </div>
-      <div class="card">
-        <div style="font-weight:700">Rôles VIP</div>
-        <div class="small" style="margin-top:6px">Accès salon VIP & avantages</div>
-      </div>
-    </div>
-  </section>
+  <section id="home" class="hero">
+    <div class="hero-left">
+      <h1>JUSTE DES MECS CHILLS EN FAIT !</h1>
+      <p class="lead">Rejoins notre serveur Discord pour des tournois, quiz, mini-jeux et une ambiance chill. Clique pour rejoindre ou explore le site pour postuler et demander des rôles.</p>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le serveur</a>
+        <button id="btnOpenGames" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Ouvrir jeux</button>
+      </div>
+    </div>
+    <div style="width:340px;display:flex;flex-direction:column;gap:12px">
+      <div class="card">
+        <div style="font-weight:700">Prochains événements</div>
+        <div class="small" style="margin-top:6px">Tournoi Brawl — Dimanche 20h</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700">Rôles VIP</div>
+        <div class="small" style="margin-top:6px">Accès salon VIP & avantages</div>
+      </div>
+    </div>
+  </section>
 
-  <section id="about" class="section">
-    <div class="card">
-      <h2>À propos</h2>
-      <p class="small">Notre serveur Discord est un espace où règnent la bonne humeur, le respect et l'amitié. Chaque membre compte et a son rôle à jouer dans la communauté.</p>
-    </div>
-  </section>
+  <section id="about" class="section">
+    <div class="card">
+      <h2>À propos</h2>
+      <p class="small">Notre serveur Discord est un espace où règnent la bonne humeur, le respect et l'amitié. Chaque membre compte et a son rôle à jouer dans la communauté.</p>
+    </div>
+  </section>
 
-  <section id="brawl" class="section">
-    <div class="card">
-      <h2>Brawl Stars</h2>
-      <p class="small">Une catégorie dédiée avec salons stratégiques, clips, tournois et plus encore.</p>
-    </div>
-  </section>
+  <section id="brawl" class="section">
+    <div class="card">
+      <h2>Brawl Stars</h2>
+      <p class="small">Une catégorie dédiée avec salons stratégiques, clips, tournois et plus encore.</p>
+    </div>
+  </section>
 
-  <section id="roles-section" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Rôles & Demandes</h2>
-        <p class="small">Rôles dynamiques et demandes rapides.</p>
-        <div style="margin-top:12px" id="quickRoleCard">
-          <strong>Demande rapide</strong>
-          <div class="field"><label>Pseudo</label><input id="rq_pseudo" type="text" placeholder="Ex: ChillUser#1234"></div>
-          <div class="field"><label>Rôle</label>
-            <select id="rq_role"><option value="">-- Choisir --</option><option value="Modérateur">Modérateur</option><option value="Journaliste">Journaliste</option></select></div>
-          <div style="margin-top:10px"><button class="btn" id="rq_submit">Demander (rapide)</button></div>
-          <div id="rq_msg" class="small-muted" style="margin-top:8px"></div>
-        </div>
+  <section id="roles-section" class="section">
+    <div class="card cols">
+      <div>
+        <h2>Rôles & Demandes</h2>
+        <p class="small">Rôles dynamiques et demandes rapides.</p>
+        <div style="margin-top:12px" id="quickRoleCard">
+          <strong>Demande rapide</strong>
+          <div class="field"><label>Pseudo</label><input id="rq_pseudo" type="text" placeholder="Ex: ChillUser#1234"></div>
+          <div class="field"><label>Rôle</label>
+            <select id="rq_role"><option value="">-- Choisir --</option><option value="Modérateur">Modérateur</option><option value="Journaliste">Journaliste</option></select></div>
+          <div style="margin-top:10px"><button class="btn" id="rq_submit">Demander (rapide)</button></div>
+          <div id="rq_msg" class="small-muted" style="margin-top:8px"></div>
+        </div>
 
-        <div style="margin-top:18px" id="fullAppCard">
-          <strong>Candidature complète</strong>
-          <form id="fullAppForm">
-            <div class="field"><label>Pseudo Discord</label><input id="fa_pseudo" type="text" placeholder="Ex: ChillUser#1234" required></div>
-            <div class="field"><label>Âge</label><input id="fa_age" type="number" min="13" placeholder="Âge"></div>
-            <div class="field"><label>Expérience</label><input id="fa_experience" type="text" placeholder="Expérience sur Discord"></div>
-            <div class="field"><label>Disponibilité (h / semaine)</label><input id="fa_hours" type="number" min="0" placeholder="Ex: 10"></div>
-            <div class="field"><label>Lettre de motivation</label><textarea id="fa_motivation" maxlength="2000" placeholder="Pourquoi tu veux rejoindre le staff ?"></textarea></div>
-            <div style="display:flex;gap:10px;align-items:center"><button id="fullAppSubmit" class="btn">Envoyer la candidature</button><div id="fullAppMsg" class="small-muted"></div></div>
-          </form>
-        </div>
-      </div>
+        <div style="margin-top:18px" id="fullAppCard">
+          <strong>Candidature complète</strong>
+          <form id="fullAppForm">
+            <div class="field"><label>Pseudo Discord</label><input id="fa_pseudo" type="text" placeholder="Ex: ChillUser#1234" required></div>
+            <div class="field"><label>Âge</label><input id="fa_age" type="number" min="13" placeholder="Âge"></div>
+            <div class="field"><label>Expérience</label><input id="fa_experience" type="text" placeholder="Expérience sur Discord"></div>
+            <div class="field"><label>Disponibilité (h / semaine)</label><input id="fa_hours" type="number" min="0" placeholder="Ex: 10"></div>
+            <div class="field"><label>Lettre de motivation</label><textarea id="fa_motivation" maxlength="2000" placeholder="Pourquoi tu veux rejoindre le staff ?"></textarea></div>
+            <div style="display:flex;gap:10px;align-items:center"><button id="fullAppSubmit" class="btn">Envoyer la candidature</button><div id="fullAppMsg" class="small-muted"></div></div>
+          </form>
+        </div>
+      </div>
 
-      <aside>
-        <div class="card">
-          <strong>Rôles en rotation</strong>
-          <div id="rolesList" style="margin-top:8px" class="small-muted">Aucun rôle</div>
-          <button id="createDemoRole" class="btn-ghost" style="margin-top:8px">Créer rôle démo</button>
-        </div>
-      </aside>
-    </div>
-  </section>
+      <aside>
+        <div class="card">
+          <strong>Rôles en rotation</strong>
+          <div id="rolesList" style="margin-top:8px" class="small-muted">Aucun rôle</div>
+          <button id="createDemoRole" class="btn-ghost" style="margin-top:8px">Créer rôle démo</button>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <section id="events" class="section">
-    <div class="card">
-      <h2>Événements</h2>
-      <p class="small">Tournois hebdo, soirées chill, concours créa.</p>
-    </div>
-  </section>
+  <section id="events" class="section">
+    <div class="card">
+      <h2>Événements</h2>
+      <p class="small">Tournois hebdo, soirées chill, concours créa.</p>
+    </div>
+  </section>
 
-  <section id="community" class="section">
-    <div class="card">
-      <h2>Communauté</h2>
-      <p class="small">Partage, entraide et fun !</p>
-    </div>
-  </section>
+  <section id="community" class="section">
+    <div class="card">
+      <h2>Communauté</h2>
+      <p class="small">Partage, entraide et fun !</p>
+    </div>
+  </section>
 
-  <section id="games" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Jeux & Quiz</h2>
-        <div class="card" style="margin-top:8px;padding:12px">
-          <strong>Saisis ton pseudo pour jouer</strong>
-          <div style="margin-top:8px"><input id="playerPseudo" placeholder="Ex: ChillPlayer#1234"></div>
-        </div>
+  <section id="games" class="section">
+    <div class="card cols">
+      <div>
+        <h2>Jeux & Quiz</h2>
+        <div class="card" style="margin-top:8px;padding:12px">
+          <strong>Saisis ton pseudo pour jouer</strong>
+          <div style="margin-top:8px"><input id="playerPseudo" placeholder="Ex: ChillPlayer#1234"></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px" id="quizCard">
-          <h3>Quiz Culture Générale</h3>
-          <div id="quizContainer">Chargement quiz...</div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px" id="quizCard">
+          <h3>Quiz Culture Générale</h3>
+          <div id="quizContainer">Chargement quiz...</div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Devine le chiffre (1-20)</h3>
-          <div style="display:flex;gap:8px"><input id="guess_input" type="number" min="1" max="20" placeholder="1-20"><button id="guess_btn" class="btn">Valider</button></div>
-          <div id="guess_feedback" class="small-muted" style="margin-top:8px"></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Devine le chiffre (1-20)</h3>
+          <div style="display:flex;gap:8px"><input id="guess_input" type="number" min="1" max="20" placeholder="1-20"><button id="guess_btn" class="btn">Valider</button></div>
+          <div id="guess_feedback" class="small-muted" style="margin-top:8px"></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Pierre / Feuille / Ciseaux</h3>
-          <div style="display:flex;gap:8px"><button class="btn" data-rps="rock">Pierre</button><button class="btn" data-rps="paper">Feuille</button><button class="btn" data-rps="scissors">Ciseaux</button></div>
-          <div id="rps_feedback" class="small-muted" style="margin-top:8px"></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Pierre / Feuille / Ciseaux</h3>
+          <div style="display:flex;gap:8px"><button class="btn" data-rps="rock">Pierre</button><button class="btn" data-rps="paper">Feuille</button><button class="btn" data-rps="scissors">Ciseaux</button></div>
+          <div id="rps_feedback" class="small-muted" style="margin-top:8px"></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Dice Roll</h3>
-          <div style="display:flex;gap:8px"><button id="rollDiceBtn" class="btn">Lancer le dé</button><div id="diceRes" class="small-muted"></div></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Dice Roll</h3>
+          <div style="display:flex;gap:8px"><button id="rollDiceBtn" class="btn">Lancer le dé</button><div id="diceRes" class="small-muted"></div></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Memory Mini</h3>
-          <div id="memoryArea"></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Memory Mini</h3>
+          <div id="memoryArea"></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Flag Quiz</h3>
-          <div id="flagArea"></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Flag Quiz</h3>
+          <div id="flagArea"></div>
+        </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Scramble Word</h3>
-          <div style="display:flex;gap:8px"><div id="scrambleWord" class="small-muted"></div><input id="scrambleGuess" placeholder="ton essai"><button id="scrambleBtn" class="btn">Valider</button></div>
-          <div id="scrambleRes" class="small-muted" style="margin-top:8px"></div>
-        </div>
+        <div class="card" style="margin-top:12px;padding:12px">
+          <h3>Scramble Word</h3>
+          <div style="display:flex;gap:8px"><div id="scrambleWord" class="small-muted"></div><input id="scrambleGuess" placeholder="ton essai"><button id="scrambleBtn" class="btn">Valider</button></div>
+          <div id="scrambleRes" class="small-muted" style="margin-top:8px"></div>
+        </div>
 
-      </div>
+      </div>
 
-      <aside>
-        <div class="card">
-          <strong>Leaderboard</strong>
-          <div id="leaderboard" style="margin-top:10px" class="small-muted">Aucun score</div>
-        </div>
+      <aside>
+        <div class="card">
+          <strong>Leaderboard</strong>
+          <div id="leaderboard" style="margin-top:10px" class="small-muted">Aucun score</div>
+        </div>
 
-        <div class="card" style="margin-top:12px">
-          <strong>Badges</strong>
-          <div id="badges" style="margin-top:8px" class="small-muted">Aucun badge</div>
-        </div>
+        <div class="card" style="margin-top:12px">
+          <strong>Badges</strong>
+          <div id="badges" style="margin-top:8px" class="small-muted">Aucun badge</div>
+        </div>
 
-        <div class="card" style="margin-top:12px">
-          <strong>Charger 3D</strong>
-          <div style="margin-top:8px"><button id="load3d" class="btn">Charger démo 3D</button></div>
-          <div id="threeDContainer" style="margin-top:8px"></div>
-        </div>
-      </aside>
-    </div>
-  </section>
+        <div class="card" style="margin-top:12px">
+          <strong>Charger 3D</strong>
+          <div style="margin-top:8px"><button id="load3d" class="btn">Charger démo 3D</button></div>
+          <div id="threeDContainer" style="margin-top:8px"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <section id="contact" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Contact / Suggestions</h2>
-        <p class="small">Laisse une suggestion — elle sera visible par l'admin.</p>
-        <div style="margin-top:10px"><input id="suggest_pseudo" placeholder="Pseudo (optionnel)"><textarea id="suggest_text" placeholder="Ta suggestion" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="suggest_send" class="btn">Envoyer suggestion</button></div><div id="suggest_msg" class="small-muted" style="margin-top:8px"></div></div>
-      </div>
-      <aside>
-        <div class="card">
-          <strong>Suggestions récentes</strong>
-          <div id="recentSuggestions" class="small-muted" style="margin-top:10px">Aucune</div>
-        </div>
-      </aside>
-    </div>
-  </section>
+  <section id="contact" class="section">
+    <div class="card cols">
+      <div>
+        <h2>Contact / Suggestions</h2>
+        <p class="small">Laisse une suggestion — elle sera visible par l'admin.</p>
+        <div style="margin-top:10px"><input id="suggest_pseudo" placeholder="Pseudo (optionnel)"><textarea id="suggest_text" placeholder="Ta suggestion" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="suggest_send" class="btn">Envoyer suggestion</button></div><div id="suggest_msg" class="small-muted" style="margin-top:8px"></div></div>
+      </div>
+      <aside>
+        <div class="card">
+          <strong>Suggestions récentes</strong>
+          <div id="recentSuggestions" class="small-muted" style="margin-top:10px">Aucune</div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <section id="help-section" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Aide du site</h2>
-        <p class="small">Si tu as besoin d'aide, signale-le ici — l'admin répondra publiquement dans la section Informations Aide.</p>
-        <div style="margin-top:10px"><input id="helpPseudo" placeholder="Pseudo (optionnel)"><textarea id="helpQuestion" placeholder="Ta question / problème" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="helpSend" class="btn">Envoyer demande d'aide</button></div><div id="helpMsg" class="small-muted" style="margin-top:8px"></div></div>
-      </div>
-      <aside>
-        <div class="card">
-          <strong>Informations / Aide</strong>
-          <div id="helpAnswers" style="margin-top:10px" class="small-muted">Aucune</div>
-        </div>
-      </aside>
-    </div>
-  </section>
+  <section id="help-section" class="section">
+    <div class="card cols">
+      <div>
+        <h2>Aide du site</h2>
+        <p class="small">Si tu as besoin d'aide, signale-le ici — l'admin répondra publiquement dans la section Informations Aide.</p>
+        <div style="margin-top:10px"><input id="helpPseudo" placeholder="Pseudo (optionnel)"><textarea id="helpQuestion" placeholder="Ta question / problème" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="helpSend" class="btn">Envoyer demande d'aide</button></div><div id="helpMsg" class="small-muted" style="margin-top:8px"></div></div>
+      </div>
+      <aside>
+        <div class="card">
+          <strong>Informations / Aide</strong>
+          <div id="helpAnswers" style="margin-top:10px" class="small-muted">Aucune</div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <section id="admin-section" class="section">
-    <div class="card">
-      <h2>Panneau Admin</h2>
-      <div id="adminAuth">
-        <div style="display:flex;gap:8px;align-items:center"><input id="adminPassInput" type="password" placeholder="Mot de passe admin"><button id="adminLoginBtn" class="btn">Se connecter</button><div id="adminAuthMsg" class="small-muted"></div></div>
-      </div>
+  <section id="admin-section" class="section">
+    <div class="card">
+      <h2>Panneau Admin</h2>
+      <div id="adminAuth">
+        <div style="display:flex;gap:8px;align-items:center"><input id="adminPassInput" type="password" placeholder="Mot de passe admin"><button id="adminLoginBtn" class="btn">Se connecter</button><div id="adminAuthMsg" class="small-muted"></div></div>
+      </div>
 
-      <div id="adminDashboard" class="hidden" style="margin-top:12px">
-        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-          <div class="tabs" role="tablist">
-            <div class="tab active" data-tab="suggestionsTab">Suggestions</div>
-            <div class="tab" data-tab="quickappsTab">Quick-Apps</div>
-            <div class="tab" data-tab="applicationsTab">Applications</div>
-            <div class="tab" data-tab="rolesTab">Roles</div>
-            <div class="tab" data-tab="helpTab">Aide</div>
-            <div class="tab" data-tab="auditTab">Audit</div>
-            <div class="tab" data-tab="meetingTab">Réunion</div>
-          </div>
-          <div style="display:flex;gap:8px"><button id="adminExport" class="btn">Exporter JSON</button><button id="adminClearAll" class="btn" style="background:var(--danger)">Tout effacer</button></div>
-        </div>
+      <div id="adminDashboard" class="hidden" style="margin-top:12px">
+        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+          <div class="tabs" role="tablist">
+            <div class="tab active" data-tab="suggestionsTab">Suggestions</div>
+            <div class="tab" data-tab="quickappsTab">Quick-Apps</div>
+            <div class="tab" data-tab="applicationsTab">Applications</div>
+            <div class="tab" data-tab="rolesTab">Roles</div>
+            <div class="tab" data-tab="helpTab">Aide</div>
+            <div class="tab" data-tab="auditTab">Audit</div>
+            <div class="tab" data-tab="meetingTab">Réunion</div>
+          </div>
+          <div style="display:flex;gap:8px"><button id="adminExport" class="btn">Exporter JSON</button><button id="adminClearAll" class="btn" style="background:var(--danger)">Tout effacer</button></div>
+        </div>
 
-        <div id="adminTabContent" style="margin-top:12px">
-          <div id="suggestionsTab" class="list"></div>
-          <div id="quickappsTab" class="list hidden"></div>
-          <div id="applicationsTab" class="list hidden"></div>
-          <div id="rolesTab" class="list hidden"></div>
-          <div id="helpTab" class="list hidden"></div>
-          <div id="auditTab" class="list hidden"></div>
-          <div id="meetingTab" class="list hidden"></div>
-        </div>
+        <div id="adminTabContent" style="margin-top:12px">
+          <div id="suggestionsTab" class="list"></div>
+          <div id="quickappsTab" class="list hidden"></div>
+          <div id="applicationsTab" class="list hidden"></div>
+          <div id="rolesTab" class="list hidden"></div>
+          <div id="helpTab" class="list hidden"></div>
+          <div id="auditTab" class="list hidden"></div>
+          <div id="meetingTab" class="list hidden"></div>
+        </div>
 
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <input id="awardPseudo" placeholder="Pseudo"><input id="awardPoints" type="number" placeholder="Points"><button id="awardBtn" class="btn">Attribuer points</button>
-          <input id="awardBadgeName" placeholder="Nom du badge"><button id="awardBadgeBtn" class="btn">Attribuer badge</button>
-        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <input id="awardPseudo" placeholder="Pseudo"><input id="awardPoints" type="number" placeholder="Points"><button id="awardBtn" class="btn">Attribuer points</button>
+          <input id="awardBadgeName" placeholder="Nom du badge"><button id="awardBadgeBtn" class="btn">Attribuer badge</button>
+        </div>
 
-      </div>
-    </div>
-  </section>
+      </div>
+    </div>
+  </section>
 
-  <footer class="footer">© Les Mecs Chills — Demo • Données en local (localStorage)</footer>
+  <footer class="footer">© Les Mecs Chills — Données en local (localStorage)</footer>
 </main>
 
 <script>
@@ -309,10 +309,10 @@ function auditLog(type,message){ const a = lmc_get('lmc_audit',[]); a.unshift({t
 function getMemberStats(){ const saved = lmc_get('lmc_ai_saved',[]); let s = saved.find(x=>x && x.type==='member_stats'); if(!s){ s = {type:'member_stats',map:{}}; saved.unshift(s); lmc_set('lmc_ai_saved', saved); } return s.map; }
 function saveMemberStats(map){ const saved = lmc_get('lmc_ai_saved',[]); const idx = saved.findIndex(x=>x && x.type==='member_stats'); const obj = {type:'member_stats',map}; if(idx>=0) saved[idx]=obj; else saved.unshift(obj); lmc_set('lmc_ai_saved', saved); }
 function addPoints(pseudo, pts){ if(!pseudo) pseudo='anonymous'; const map = getMemberStats(); if(!map[pseudo]) map[pseudo]={points:0,badges:[]}; map[pseudo].points = (map[pseudo].points||0)+pts; // auto badges
- if(map[pseudo].points>=100 && !map[pseudo].badges.includes('Legend Chill')) map[pseudo].badges.push('Legend Chill');
- if(map[pseudo].points>=50 && !map[pseudo].badges.includes('Pro Chill')) map[pseudo].badges.push('Pro Chill');
- if(map[pseudo].points>=10 && !map[pseudo].badges.includes('Rookie Chill')) map[pseudo].badges.push('Rookie Chill');
- saveMemberStats(map); auditLog('points', `+${pts} pts -> ${pseudo}`); renderLeaderboard(); renderBadges(); }
+ if(map[pseudo].points>=100 && !map[pseudo].badges.includes('Legend Chill')) map[pseudo].badges.push('Legend Chill');
+ if(map[pseudo].points>=50 && !map[pseudo].badges.includes('Pro Chill')) map[pseudo].badges.push('Pro Chill');
+ if(map[pseudo].points>=10 && !map[pseudo].badges.includes('Rookie Chill')) map[pseudo].badges.push('Rookie Chill');
+ saveMemberStats(map); auditLog('points', `+${pts} pts -> ${pseudo}`); renderLeaderboard(); renderBadges(); }
 function awardBadge(pseudo,badge){ if(!pseudo) pseudo='anonymous'; const map=getMemberStats(); if(!map[pseudo]) map[pseudo]={points:0,badges:[]}; if(!map[pseudo].badges.includes(badge)) map[pseudo].badges.push(badge); saveMemberStats(map); auditLog('badge', `${badge} -> ${pseudo}`); renderBadges(); }
 
 // ----------------- Render leaderboard & badges -----------------
@@ -366,60 +366,4 @@ function setupGuess(){ const btn=document.getElementById('guess_btn'); btn.addEv
 function setupRPS(){ document.querySelectorAll('[data-rps]').forEach(btn=>{ btn.addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const choice=btn.dataset.rps; const ops=['rock','paper','scissors']; const comp=ops[Math.floor(Math.random()*3)]; const out=document.getElementById('rps_feedback'); const decide=(a,b)=>{ if(a===b) return 'Égalité'; if((a==='rock'&&b==='scissors')||(a==='paper'&&b==='rock')||(a==='scissors'&&b==='paper')) return 'Tu gagnes!'; return 'Tu perds'; }; const res=decide(choice,comp); out.textContent=`Toi: ${choice} — Ordi: ${comp} → ${res}`; auditLog('game',`RPS ${choice} vs ${comp} by ${pseudo}`); if(res==='Tu gagnes!') addPoints(pseudo,2); else if(res==='Égalité') addPoints(pseudo,1); renderLeaderboard(); }); }); }
 
 // Dice roll
-function setupDice(){ document.getElementById('rollDiceBtn').addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('diceRes'); out.textContent=`Toi: ${p} — Ordi: ${c}`; if(p>c){ out.textContent+= ' → Gagné'; addPoints(pseudo,3);} else if(p===c){ out.textContent+= ' → Égalité'; addPoints(pseudo,1);} else out.textContent+= ' → Perdu'; auditLog('game',`Dice ${p} vs ${c} by ${pseudo}`); renderLeaderboard(); }); }
-
-// Memory
-function setupMemory(){ const area=document.getElementById('memoryArea'); const icons=['🍀','🔥','⚡','🌊','🌟','🍕']; const deck=shuffle(icons.concat(icons)).slice(0,8); area.innerHTML = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"></div>'; const grid=area.querySelector('div'); deck.forEach((v,i)=>{ const card=document.createElement('button'); card.className='btn-ghost'; card.style.height='56px'; card.style.fontSize='20px'; card.dataset.val=v; card.dataset.open='0'; card.textContent='?'; grid.appendChild(card); card.addEventListener('click', ()=>{ if(card.dataset.open==='1' || card.dataset.matched==='1') return; card.textContent=card.dataset.val; card.dataset.open='1'; const opened=Array.from(grid.children).filter(c=>c.dataset.open==='1' && c.dataset.matched!=='1'); if(opened.length===2){ if(opened[0].dataset.val===opened[1].dataset.val){ opened.forEach(o=>{ o.dataset.matched='1'; }); auditLog('game','memory pair'); addPoints('anonymous',1); renderLeaderboard(); } else { setTimeout(()=>{ opened.forEach(o=>{ if(o.dataset.matched!=='1'){ o.dataset.open='0'; o.textContent='?'; } }); },700); } } }); }); }
-function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-
-// Flag quiz
-const flags=[{country:'France',emoji:'🇫🇷'},{country:'Japon',emoji:'🇯🇵'},{country:'Brésil',emoji:'🇧🇷'},{country:'Canada',emoji:'🇨🇦'},{country:'Inde',emoji:'🇮🇳'},{country:'Italie',emoji:'🇮🇹'}];
-function renderFlag(){ const pick=[...flags].sort(()=>0.5-Math.random()).slice(0,4); const correct=pick[Math.floor(Math.random()*4)]; const dom=document.getElementById('flagArea'); dom.innerHTML=`<div style="font-size:40px">${correct.emoji}</div><div style="margin-top:8px">${pick.map(p=>`<button class=\"btn-ghost\" style=\"margin-right:6px\" onclick=\"flagAns('${p.country}','${correct.country}')\">${p.country}</button>`).join('')}</div>`; }
-window.flagAns=function(guess,correct){ const dom=document.getElementById('flagArea'); if(guess===correct){ dom.innerHTML='<div class="small-muted">Bonne réponse !</div>'; addPoints('anonymous',2);} else dom.innerHTML=`<div class="small-muted">Non — c\'était ${escapeHTML(correct)}</div>`; auditLog('game',`flag ${guess}`); renderLeaderboard(); }
-
-// Scramble
-const words=['chill','discord','mecs','community','tournament','badge']; let currentWord=''; function scrambleNew(){ currentWord=words[Math.floor(Math.random()*words.length)]; document.getElementById('scrambleWord').textContent=currentWord.split('').sort(()=>0.5-Math.random()).join(''); }
-document.getElementById('scrambleBtn').addEventListener('click', ()=>{ const g=document.getElementById('scrambleGuess').value.trim().toLowerCase(); if(!g){ document.getElementById('scrambleRes').textContent='Entre une réponse'; return; } if(g===currentWord){ document.getElementById('scrambleRes').textContent='Correct !'; addPoints('anonymous',3); auditLog('game','scramble correct'); renderLeaderboard(); scrambleNew(); } else document.getElementById('scrambleRes').textContent='Non, réessaie'; }); scrambleNew();
-
-// Three.js lazy-load
-document.getElementById('load3d').addEventListener('click', ()=>{ const btn=document.getElementById('load3d'); btn.disabled=true; btn.textContent='Chargement...'; const s=document.createElement('script'); s.src='https://unpkg.com/three@0.152.2/build/three.min.js'; s.onload=()=>{ const area=document.getElementById('threeDContainer'); const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(50,400/200,0.1,1000); const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(400,200); area.appendChild(renderer.domElement); const geometry=new THREE.BoxGeometry(1,1,1); const material=new THREE.MeshNormalMaterial(); const cube=new THREE.Mesh(geometry,material); scene.add(cube); camera.position.z=3; (function animate(){ requestAnimationFrame(animate); cube.rotation.x+=0.01; cube.rotation.y+=0.01; renderer.render(scene,camera); })(); btn.style.display='none'; auditLog('3d','loaded'); }; s.onerror=()=>{ btn.textContent='Erreur chargement'; }; document.head.appendChild(s); });
-
-// ----------------- Admin wiring -----------------
-const ADMIN_PASS='89mLh21'; document.getElementById('adminLoginBtn').addEventListener('click', ()=>{ const v=document.getElementById('adminPassInput').value; const msg=document.getElementById('adminAuthMsg'); if(v===ADMIN_PASS){ msg.textContent='Accès autorisé'; msg.style.color='lightgreen'; document.getElementById('adminDashboard').classList.remove('hidden'); renderAdminSuggestions(); renderQuickApps(); renderApplications(); renderRoles(); renderHelpRequests(); renderHelpAnswers(); renderMeetingBoard(); renderAudit(); } else { msg.textContent='Mot de passe incorrect'; msg.style.color='salmon'; auditLog('security','Failed admin login attempt'); }});
-
-// Tabs
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click', ()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active'); document.querySelectorAll('#adminTabContent > .list').forEach(x=>x.classList.add('hidden')); document.getElementById(t.dataset.tab).classList.remove('hidden'); if(t.dataset.tab==='suggestionsTab') renderAdminSuggestions(); if(t.dataset.tab==='quickappsTab') renderQuickApps(); if(t.dataset.tab==='applicationsTab') renderApplications(); if(t.dataset.tab==='rolesTab') renderRoles(); if(t.dataset.tab==='helpTab') renderHelpRequests(); if(t.dataset.tab==='auditTab') renderAudit(); if(t.dataset.tab==='meetingTab') renderMeetingBoard(); }));
-
-document.getElementById('adminExport').addEventListener('click', ()=>{ const dump={ suggestions: lmc_get('lmc_suggestions',[]), quick_apps: lmc_get('lmc_quick_apps',[]), applications: lmc_get('lmc_applications',[]), roles: lmc_get('lmc_roles',[]), audit: lmc_get('lmc_audit',[]), quiz_scores: lmc_get('lmc_quiz_scores',[]), game_results: lmc_get('lmc_gameResults',[]), ai_saved: lmc_get('lmc_ai_saved',[]) }; const blob=new Blob([JSON.stringify(dump,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='lmc_export.json'; document.body.appendChild(a); a.click(); a.remove(); });
-
-document.getElementById('adminClearAll').addEventListener('click', ()=>{ if(!confirm('Effacer toutes les données locales ?')) return; lmc_set('lmc_suggestions',[]); lmc_set('lmc_quick_apps',[]); lmc_set('lmc_applications',[]); lmc_set('lmc_roles',[]); lmc_set('lmc_audit',[]); lmc_set('lmc_quiz_scores',[]); lmc_set('lmc_gameResults',[]); lmc_set('lmc_helpRequests',[]); lmc_set('lmc_meetingBoard',[]); lmc_set('lmc_ai_saved',[]); renderAll(); });
-
-// Award points/badges by admin
-document.getElementById('awardBtn').addEventListener('click', ()=>{ const p=document.getElementById('awardPseudo').value.trim(); const pts=parseInt(document.getElementById('awardPoints').value,10)||0; if(!p||!pts){ alert('Pseudo et points requis'); return; } addPoints(p,pts); alert(`+${pts} pts à ${p}`); });
-document.getElementById('awardBadgeBtn').addEventListener('click', ()=>{ const p=document.getElementById('awardPseudo').value.trim(); const b=document.getElementById('awardBadgeName').value.trim(); if(!p||!b) return alert('Pseudo et badge requis'); awardBadge(p,b); alert(`${b} attribué à ${p}`); });
-
-// ----------------- UI hookups for public forms -----------------
-document.getElementById('rq_submit').addEventListener('click', ()=>{ const pseudo=document.getElementById('rq_pseudo').value.trim(); const role=document.getElementById('rq_role').value; const msg=document.getElementById('rq_msg'); if(!pseudo||!role){ msg.textContent='Pseudo et rôle requis'; return; } const arr=lmc_get('lmc_quick_apps',[]); arr.unshift({pseudo,role,date:new Date().toISOString(),handled:false}); lmc_set('lmc_quick_apps',arr); auditLog('quickapp',`Quick-app ${role} by ${pseudo}`); addPoints(pseudo,2); msg.textContent=`Demande rapide envoyée pour ${pseudo} → ${role}`; document.getElementById('rq_pseudo').value=''; document.getElementById('rq_role').selectedIndex=0; renderQuickApps(); });
-
-document.getElementById('fullAppSubmit').addEventListener('click', (e)=>{ e.preventDefault(); const pseudo=document.getElementById('fa_pseudo').value.trim(); const age=document.getElementById('fa_age').value; const exp=document.getElementById('fa_experience').value.trim(); const hours=document.getElementById('fa_hours').value; const mot=document.getElementById('fa_motivation').value.trim(); const msgEl=document.getElementById('fullAppMsg'); if(!pseudo||!age){ msgEl.textContent='Pseudo & âge requis'; return; } const arr=lmc_get('lmc_applications',[]); arr.unshift({pseudo,age,experience:exp,hours,motivation:mot,date:new Date().toISOString()}); lmc_set('lmc_applications',arr); auditLog('application',`Application by ${pseudo}`); addPoints(pseudo,5); msgEl.textContent='Candidature envoyée'; document.getElementById('fullAppForm').reset(); renderApplications(); });
-
-document.getElementById('helpSend').addEventListener('click', ()=>{ const pseudo=document.getElementById('helpPseudo').value.trim()||'Anon'; const question=document.getElementById('helpQuestion').value.trim(); const msg=document.getElementById('helpMsg'); if(!question){ msg.textContent='Question vide'; return; } const arr=lmc_get('lmc_helpRequests',[]); arr.unshift({pseudo,question,date:new Date().toISOString(),answer:null}); lmc_set('lmc_helpRequests',arr); auditLog('help','Help request by '+pseudo); addPoints(pseudo,2); msg.textContent='Demande d\'aide envoyée'; renderHelpRequests(); renderHelpAnswers(); });
-
-// Admin helpers for render
-function renderQuickApps(){ const arr=lmc_get('lmc_quick_apps',[]); const el=document.getElementById('quickappsTab'); if(!arr.length){ el.innerHTML='<div class="item">Aucune postulation rapide.</div>'; return; } el.innerHTML = arr.map((q,i)=>`<div class="item"><div><b>${escapeHTML(q.pseudo)}</b><div class="meta">${escapeHTML(q.role)}</div><div class="meta">${new Date(q.date).toLocaleString()}</div></div><div style="display:flex;flex-direction:column;gap:6px"><button onclick="adminHandleQuick(${i})">Traiter</button><button onclick="adminDelQuick(${i})" style="background:var(--danger);color:#fff">Suppr</button></div></div>`).join(''); }
-function renderApplications(){ const arr=lmc_get('lmc_applications',[]); const el=document.getElementById('applicationsTab'); if(!arr.length){ el.innerHTML='<div class="item">Aucune candidature.</div>'; return; } el.innerHTML = arr.map((a,i)=>`<div class="item" style="flex-direction:column;align-items:flex-start"><div><b>${escapeHTML(a.pseudo)}</b> • ${escapeHTML(a.age||'n/a')} ans • ${escapeHTML(a.hours||'n/a')}h</div><div class="meta" style="margin-top:8px">Exp: ${escapeHTML(a.experience||'--')}</div><div class="meta" style="margin-top:8px">Motivation: ${escapeHTML(a.motivation||'--')}</div><div class="meta" style="margin-top:8px">${new Date(a.date).toLocaleString()}</div><div style="margin-top:10px;display:flex;gap:8px"><button onclick="adminAcceptApplication(${i})">Accepter</button><button onclick="adminDeleteApplication(${i})" style="background:var(--danger);color:#fff">Suppr</button></div></div>`).join(''); }
-
-// rendering helpers
-function renderAll(){ renderRecentSuggestions(); renderQuickApps(); renderApplications(); renderRoles(); renderHelpRequests(); renderHelpAnswers(); renderMeetingBoard(); renderAudit(); renderLeaderboard(); renderBadges(); }
-
-// Quick admin actions
-function adminDeleteSuggestion(i){ const arr=lmc_get('lmc_suggestions',[]); arr.splice(i,1); lmc_set('lmc_suggestions',arr); renderAdminSuggestions(); renderRecentSuggestions(); }
-function adminHandleQuick(i){ const arr=lmc_get('lmc_quick_apps',[]); if(!arr[i]) return; arr[i].handled=true; lmc_set('lmc_quick_apps',arr); auditLog('admin',`Quick handled ${arr[i].pseudo}`); renderQuickApps(); }
-function adminDelQuick(i){ const arr=lmc_get('lmc_quick_apps',[]); arr.splice(i,1); lmc_set('lmc_quick_apps',arr); auditLog('admin','quick deleted'); renderQuickApps(); }
-
-// ----------------- Initial setup -----------------
-window.addEventListener('DOMContentLoaded', ()=>{ renderAll(); renderCultureQuiz(); setupGuess(); setupRPS(); setupDice(); setupMemory(); renderFlag(); scrambleNew(); document.getElementById('btnOpenGames').addEventListener('click', ()=>{ document.querySelector('#games').scrollIntoView({behavior:'smooth'}); }); });
-
-</script>
-</body>
-</html>
+function setupDice(){ document.getElementById('rollDiceBtn').addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('diceRes'); out.textContent=`Toi: ${p} — Ordi: ${c}`; if(p>c){ out.textCon
