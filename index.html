@@ -11,7 +11,7 @@
 :root{--bg:#071126;--card:#0f1620;--muted:#9fb0c8;--accent1:#8e61ff;--accent2:#4fb3ff;--accent3:#43b581;--danger:#ff6b6b;--text:#eaf2ff;--glass:rgba(255,255,255,0.03);--radius:12px;--maxw:1150px}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(120deg,#071126,#08121a);color:var(--text);padding-top:72px;-webkit-font-smoothing:antialiased}
-.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(6,8,12,0.75);backdrop-filter:blur(6px);z-index:1000[...]
+.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(6,8,12,0.75);backdrop-filter:blur(6px);z-index:1000}
 .brand{display:flex;gap:12px;align-items:center}
 .badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
 .menu{display:flex;gap:8px;align-items:center}
@@ -52,14 +52,7 @@ textarea{resize:vertical}
     <div><div style="font-weight:800">Les Mecs Chills</div><div class="small muted">Serveur Discord • Hub Communautaire</div></div>
   </div>
   <nav class="menu" role="navigation" aria-label="Main menu">
-    <a href="#accueil">Accueil</a>
-    <a href="#about">À propos</a>
-    <a href="#roles">Rôles</a>
-    <a href="#games">Jeux</a>
-    <a href="#contact">Suggestions</a>
-    <a href="#recruitment">Recrutement</a>
-    <a href="#help">Aide</a>
-    <a href="#updates">Mises à jour</a>
+    <a href="#accueil">Accueil</a><a href="#about">À propos</a><a href="#roles">Rôles</a><a href="#games">Jeux</a><a href="#contact">Suggestions</a><a href="#recruitment">Recrutement</a><a href="#help">Aide</a><a href="#adminPanel">Admin</a>
   </nav>
 </header>
 
@@ -84,13 +77,13 @@ textarea{resize:vertical}
   <!-- ABOUT -->
   <section id="about" class="card"><h2>À propos</h2><p>Salut à toi ! Tu cherches un endroit pour te détendre et t'amuser ? Bienvenue sur JUSTE DES MECS CHILLS, MAIS ENCORE PLUS COOL !
 
-Tu kiffes Brawl Stars ? Alors tu vas adorer notre serveur ! Nous t'avons concocté une catégorie dédiée à Brawl Stars rien que pour toi. Mais ce n'est pas tout : tu trouveras également une catég[...]
+Tu kiffes Brawl Stars ? Alors tu vas adorer notre serveur ! Nous t'avons concocté une catégorie dédiée à Brawl Stars rien que pour toi. Mais ce n'est pas tout : tu trouveras également une catégorie pour tous les autres jeux vidéo qui t'intéressent, ainsi qu'une section Sport pour exprimer toutes tes passions.
 
-Chez nous, l'ambiance est au top, le respect et le fun sont garantis. Découvre nos rôles exclusifs à débloquer chaque jour et, surtout, rejoins les copains et copines prêts à tout déchirer avec[...]
+Chez nous, l'ambiance est au top, le respect et le fun sont garantis. Découvre nos rôles exclusifs à débloquer chaque jour et, surtout, rejoins les copains et copines prêts à tout déchirer avec toi !
 
 Notre serveur est super développé et prêt à t’accueillir comme il se doit. Nous organisons des évents réguliers à chaque palier de membres pour encore plus de fun !
 
-Ici, chaque membre compte : fais des suggestions, donne ton avis, et mets l’ambiance à ta manière ! Parle de tout, de rien, rigole et profite dans un espace chill où tout le monde est le bienvenu[...]
+Ici, chaque membre compte : fais des suggestions, donne ton avis, et mets l’ambiance à ta manière ! Parle de tout, de rien, rigole et profite dans un espace chill où tout le monde est le bienvenu.
 
 Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
 
@@ -101,7 +94,7 @@ Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
       <h3>Postulation rapide</h3>
       <div class="form-row" style="margin-top:8px">
         <input id="quick_pseudo" type="text" aria-label="pseudo rapide" placeholder="Ex: ChillUser#1234">
-        <select id="quick_role" aria-label="role rapide"><option value="">Choisir un rôle</option><option value="Partenariat">Partenariat</option><option value="Journaliste">Journaliste</option><opti[...]
+        <select id="quick_role" aria-label="role rapide"><option value="">Choisir un rôle</option><option value="Partenariat">Partenariat</option><option value="Journaliste">Journaliste</option><option value="Beta Testeur">Beta Testeur</option></select>
         <button id="quick_submit" class="btn small">Postuler</button>
       </div>
       <div id="quick_msg" class="small muted" style="margin-top:8px"></div>
@@ -127,12 +120,12 @@ Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
     <div class="game-card" id="quiz_card"><h3>Quiz Culture Générale</h3><div id="quizArea" class="form-col"></div></div>
 
     <div class="game-card" id="guess_card"><h3>Devine le nombre (1-50)</h3>
-      <div class="form-row"><input id="guess_pseudo" type="text" placeholder="Ton pseudo"><input id="guess_val" type="number" min="1" max="50" placeholder="Nombre"><button id="guess_play" class="btn s[...]
+      <div class="form-row"><input id="guess_pseudo" type="text" placeholder="Ton pseudo"><input id="guess_val" type="number" min="1" max="50" placeholder="Nombre"><button id="guess_play" class="btn small">Jouer</button></div>
       <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
     </div>
 
     <div class="game-card" id="rps_card"><h3>Pierre / Feuille / Ciseaux</h3>
-      <div class="form-row"><input id="rps_pseudo" type="text" placeholder="Ton pseudo"><button data-rps="rock" class="btn small rps">Pierre</button><button data-rps="paper" class="btn small rps">Feui[...]
+      <div class="form-row"><input id="rps_pseudo" type="text" placeholder="Ton pseudo"><button data-rps="rock" class="btn small rps">Pierre</button><button data-rps="paper" class="btn small rps">Feuille</button><button data-rps="scissors" class="btn small rps">Ciseaux</button></div>
       <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
     </div>
 
@@ -204,15 +197,15 @@ Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
     <div id="admin_area" style="display:none">
       <div class="admin-grid">
         <div>
-          <div class="panel"><h3>Suggestions</h3><div id="adminSuggestions" class="list"></div><div style="margin-top:8px"><button id="clear_suggestions" class="btn small ghost">Supprimer toutes les s[...]
+          <div class="panel"><h3>Suggestions</h3><div id="adminSuggestions" class="list"></div><div style="margin-top:8px"><button id="clear_suggestions" class="btn small ghost">Supprimer toutes les suggestions</button></div></div>
 
-          <div class="panel" style="margin-top:12px"><h3>Candidatures (Applications)</h3><div id="adminApplications" class="list"></div><div style="margin-top:8px"><button id="clear_applications" clas[...]
+          <div class="panel" style="margin-top:12px"><h3>Candidatures (Applications)</h3><div id="adminApplications" class="list"></div><div style="margin-top:8px"><button id="clear_applications" class="btn small ghost">Supprimer toutes les candidatures</button></div></div>
 
           <div class="panel" style="margin-top:12px"><h3>Quick Apps</h3><div id="adminQuickApps" class="list"></div></div>
         </div>
 
         <aside>
-          <div class="panel"><h3>Rôles</h3><div id="adminRoles" class="list"></div><div style="margin-top:8px"><input id="role_name" placeholder="Nom du rôle"><input id="role_desc" placeholder="Desc[...]
+          <div class="panel"><h3>Rôles</h3><div id="adminRoles" class="list"></div><div style="margin-top:8px"><input id="role_name" placeholder="Nom du rôle"><input id="role_desc" placeholder="Description"><button id="role_create" class="btn small">Créer rôle</button></div></div>
 
           <div class="panel" style="margin-top:12px"><h3>Aide publique</h3><div id="adminHelps" class="list"></div></div>
 
@@ -230,15 +223,6 @@ Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
     <div id="admin_unlocked_msg" class="small muted" style="display:none;margin-top:8px">Admin connecté — actions journalisées.</div>
   </section>
 
-  <!-- AJOUT : MISES À JOUR -->
-  <section id="updates" class="card">
-    <h2>Mises à jour</h2>
-    <ul class="list" id="updates_list">
-      <li><strong>04/10/2025</strong> — Création de l’onglet Mises à jour !</li>
-      <!-- Tu peux ajouter d'autres entrées ici -->
-    </ul>
-  </section>
-
   <footer class="footer">© Les Mecs Chills — Données locales (localStorage, clés lmc_*). Pour sécurité réelle, utiliser backend.</footer>
 </main>
 
@@ -252,23 +236,23 @@ function lget(k, def){ try{ const r = localStorage.getItem(k); return r ? JSON.p
 function lset(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ console.error('lset',e); return false; } }
 function now(){ return new Date().toISOString().replace('T',' ').slice(0,16); }
 function esc(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
-(function ensure(){ lget('lmc_announcements',[]); lget('lmc_suggestions',[]); lget('lmc_applications',[]); lget('lmc_quick_apps',[]); lget('lmc_contacts',[]); lget('lmc_roles',[]); lget('lmc_role_clai[...]
+(function ensure(){ lget('lmc_announcements',[]); lget('lmc_suggestions',[]); lget('lmc_applications',[]); lget('lmc_quick_apps',[]); lget('lmc_contacts',[]); lget('lmc_roles',[]); lget('lmc_role_claims',{}); lget('lmc_audit',[]); lget('lmc_ai_saved',[]); lget('lmc_helpRequests',[]); lget('lmc_quiz_scores',[]); })();
 function auditLog(type,msg){ const logs = lget('lmc_audit',[]); logs.unshift({time:new Date().toISOString(),type,message:msg}); lset('lmc_audit',logs.slice(0,500)); }
 
 /* ========== PUBLIC UI HANDLERS (suggestions, apps, help) ========== */
-document.getElementById('suggestForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo = document.getElementById('suggest_pseudo').value.trim(); const text = document.getEleme[...]
+document.getElementById('suggestForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo = document.getElementById('suggest_pseudo').value.trim(); const text = document.getElementById('suggest_text').value.trim(); if(!text){ document.getElementById('suggest_msg').textContent='Message vide'; return; } const arr = lget('lmc_suggestions',[]); arr.unshift({ pseudo: pseudo||'Anon', text, date: now() }); lset('lmc_suggestions',arr); const contacts = lget('lmc_contacts',[]); contacts.unshift({ name: pseudo||'Anon', email:'', msg: text, date: now() }); lset('lmc_contacts',contacts); document.getElementById('suggest_msg').textContent='✅ Suggestion envoyée'; auditLog('suggestion', Suggestion by ${pseudo||'Anon'}: ${text.slice(0,80)}); this.reset(); renderSuggestions(); renderAdminData(); });
 
-function renderSuggestions(){ const arr=lget('lmc_suggestions',[]); const el=document.getElementById('suggest_list'); if(!arr.length){ el.innerHTML='Aucune suggestion'; return; } el.innerHTML = arr.sl[...]
+function renderSuggestions(){ const arr=lget('lmc_suggestions',[]); const el=document.getElementById('suggest_list'); if(!arr.length){ el.innerHTML='Aucune suggestion'; return; } el.innerHTML = arr.slice(0,50).map(s=><div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div class="small muted">${esc(s.date||'')}</div></div>).join(''); }
 
-document.getElementById('quick_submit').addEventListener('click', function(){ const pseudo=document.getElementById('quick_pseudo').value.trim(); const role=document.getElementById('quick_role').value;[...]
+document.getElementById('quick_submit').addEventListener('click', function(){ const pseudo=document.getElementById('quick_pseudo').value.trim(); const role=document.getElementById('quick_role').value; const msg=document.getElementById('quick_msg'); if(!pseudo||!role){ msg.textContent='Pseudo et rôle requis'; return; } const arr=lget('lmc_quick_apps',[]); arr.unshift({ pseudo, role, date: now(), handled:false }); lset('lmc_quick_apps',arr); msg.textContent='✅ Postulation rapide enregistrée'; auditLog('quickapp', QuickApp: ${pseudo} -> ${role}); document.getElementById('quick_pseudo').value=''; document.getElementById('quick_role').selectedIndex=0; renderAdminData(); });
 
-document.getElementById('advancedApply').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('app_pseudo').value.trim(); const age=document.getElementById([...]
+document.getElementById('advancedApply').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('app_pseudo').value.trim(); const age=document.getElementById('app_age').value; const exp=document.getElementById('app_experience').value.trim(); const hours=document.getElementById('app_hours').value; const motiv=document.getElementById('app_motivation').value.trim(); if(!pseudo){ document.getElementById('app_msg').textContent='Pseudo requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('app_msg').textContent='✅ Candidature envoyée'; auditLog('application', Application: ${pseudo}); this.reset(); renderAdminData(); });
 
-document.getElementById('recruitForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('r_pseudo').value.trim(); const age=document.getElementById('r_a[...]
+document.getElementById('recruitForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('r_pseudo').value.trim(); const age=document.getElementById('r_age').value; const exp=document.getElementById('r_experience').value.trim(); const hours=document.getElementById('r_hours').value; const motiv=document.getElementById('r_motivation').value.trim(); if(!pseudo||!age||!exp||!hours){ document.getElementById('recruit_msg').textContent='Remplis tous les champs requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('recruit_msg').textContent='✅ Candidature enregistrée'; auditLog('recruitment', Recruit: ${pseudo}); this.reset(); renderAdminData(); });
 
-document.getElementById('helpForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('help_pseudo').value.trim()||'Anon'; const q=document.getElementByI[...]
+document.getElementById('helpForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('help_pseudo').value.trim()||'Anon'; const q=document.getElementById('help_question').value.trim(); if(!q){ document.getElementById('help_msg').textContent='Question vide'; return; } const arr=lget('lmc_helpRequests',[]); arr.unshift({ id: Date.now()+Math.random().toString(36).slice(2,8), pseudo, question: q, date: now(), answer: null }); lset('lmc_helpRequests',arr); const contacts=lget('lmc_contacts',[]); contacts.unshift({ name: pseudo, email:'', msg:q, date: now() }); lset('lmc_contacts',contacts); document.getElementById('help_msg').textContent='✅ Demande envoyée — un modérateur peut y répondre depuis le panneau'; auditLog('help_request', Help by ${pseudo}: ${q.slice(0,80)}); this.reset(); renderHelpAnswers(); renderAdminData(); });
 
-function renderHelpAnswers(){ const arr=lget('lmc_helpRequests',[]); const answered=arr.filter(x=>x.answer); const out=answered.map(a=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div cla[...]
+function renderHelpAnswers(){ const arr=lget('lmc_helpRequests',[]); const answered=arr.filter(x=>x.answer); const out=answered.map(a=><div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">${esc(a.question)}</div><div style="margin-top:6px"><strong>Réponse:</strong> ${esc(a.answer)}</div></div><div class="small muted">${esc(a.date)}</div></div>).join(''); document.getElementById('help_answers').innerHTML = out || 'Aucune information'; }
 
 /* ========== Quiz ========== */
 const quiz = { quizId:'culture_01', title:'Quiz Culture Générale', questions:[
@@ -276,19 +260,19 @@ const quiz = { quizId:'culture_01', title:'Quiz Culture Générale', questions:[
   { q:"Combien de continents ?", choices:["5","6","7","8"], answer:2 },
   { q:"Auteur du 'Petit Prince' ?", choices:["Victor Hugo","Camus","Saint-Exupéry","Jules Verne"], answer:2 }
 ]};
-function renderQuiz(){ const container=document.getElementById('quizArea'); let html=`<div><strong>${esc(quiz.title)}</strong><div class="small muted">Test rapide — résultats sauvegardés localemen[...]
+function renderQuiz(){ const container=document.getElementById('quizArea'); let html=<div><strong>${esc(quiz.title)}</strong><div class="small muted">Test rapide — résultats sauvegardés localement</div></div>; quiz.questions.forEach((q,idx)=>{ html+=<div style="margin-top:8px"><div><strong>Q${idx+1}:</strong> ${esc(q.q)}</div>; q.choices.forEach((c,ci)=>{ html+=<label style="display:block;margin:6px 0"><input type="radio" name="qq_${idx}" value="${ci}"> ${esc(c)}</label>; }); html+=</div>; }); html+=<div style="margin-top:10px"><button id="submitQuiz" class="btn small">Soumettre</button><div id="quizResult" class="small muted" style="margin-top:8px"></div></div>; container.innerHTML=html; document.getElementById('submitQuiz').addEventListener('click', ()=>{ const pseudo=(document.getElementById('guess_pseudo')&&document.getElementById('guess_pseudo').value.trim())||'anonymous'; let score=0; for(let i=0;i<quiz.questions.length;i++){ const sel=document.querySelector(input[name="qq_${i}"]:checked); if(sel&&parseInt(sel.value,10)===quiz.questions[i].answer) score++; } const arr=lget('lmc_quiz_scores',[]); arr.unshift({ quizId:quiz.quizId, pseudo, score, total:quiz.questions.length, date: now() }); lset('lmc_quiz_scores',arr); document.getElementById('quizResult').textContent=Résultat: ${score}/${quiz.questions.length} — sauvegardé; auditLog('quiz', Quiz ${quiz.quizId} by ${pseudo}: ${score}/${quiz.questions.length}); }); }
 
 /* ========== Games ========== */
 let secret=Math.floor(Math.random()*50)+1;
-document.getElementById('guess_play').addEventListener('click', ()=>{ const pseudo=document.getElementById('guess_pseudo').value.trim()||'anon'; const val=parseInt(document.getElementById('guess_val')[...]
+document.getElementById('guess_play').addEventListener('click', ()=>{ const pseudo=document.getElementById('guess_pseudo').value.trim()||'anon'; const val=parseInt(document.getElementById('guess_val').value,10); const out=document.getElementById('guess_feedback'); if(isNaN(val)||val<1||val>50){ out.textContent='Choisis un nombre entre 1 et 50'; return; } if(val===secret){ out.textContent=Bravo ${pseudo} — c'était ${secret} ! (réinitialisé); auditLog('game','guess correct by '+pseudo); secret=Math.floor(Math.random()*50)+1; } else{ out.textContent=val<secret?'Trop petit':'Trop grand'; auditLog('game',guess ${val} by ${pseudo}); } });
 
-document.querySelectorAll('.rps').forEach(btn=>btn.addEventListener('click',function(){ const pseudo=document.getElementById('rps_pseudo').value.trim()||'anon'; const user=this.dataset.rps; const opts[...]
+document.querySelectorAll('.rps').forEach(btn=>btn.addEventListener('click',function(){ const pseudo=document.getElementById('rps_pseudo').value.trim()||'anon'; const user=this.dataset.rps; const opts=['rock','paper','scissors']; const comp=opts[Math.floor(Math.random()*3)]; const out=document.getElementById('rps_feedback'); if(user===comp) out.textContent=Égalité — Ordi: ${comp}; else{ const win=(user==='rock'&&comp==='scissors')||(user==='paper'&&comp==='rock')||(user==='scissors'&&comp==='paper'); out.textContent=(win?'Tu gagnes !':'Tu perds...')+` (Ordi: ${comp})`; } auditLog('game',rps ${user} vs ${comp} by ${pseudo}); }));
 
-document.getElementById('dice_roll').addEventListener('click', ()=>{ const pseudo=document.getElementById('dice_pseudo').value.trim()||'anon'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor[...]
+document.getElementById('dice_roll').addEventListener('click', ()=>{ const pseudo=document.getElementById('dice_pseudo').value.trim()||'anon'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('dice_out'); out.textContent=Toi: ${p} — Ordi: ${c} — ${p>c?'Gagné':p===c?'Égalité':'Perdu'}; auditLog('game',dice ${p} vs ${c} by ${pseudo}); });
 
 /* ========== three.js lazy load ========== */
-document.getElementById('load3DButton').addEventListener('click', function(){ const btn=this; btn.disabled=true; btn.textContent='Chargement...'; const s=document.createElement('script'); s.src='https[...]
-function init3D(){ const container=document.getElementById('threeDContainer'); if(typeof THREE==='undefined' || !container){ container.innerHTML='<div class="small muted">three.js non disponible</div>[...]
+document.getElementById('load3DButton').addEventListener('click', function(){ const btn=this; btn.disabled=true; btn.textContent='Chargement...'; const s=document.createElement('script'); s.src='https://unpkg.com/three@0.152.2/build/three.min.js'; s.onload=function(){ init3D(); btn.style.display='none'; }; s.onerror=function(){ btn.textContent='Erreur chargement 3D'; btn.disabled=false; }; document.head.appendChild(s); });
+function init3D(){ const container=document.getElementById('threeDContainer'); if(typeof THREE==='undefined' || !container){ container.innerHTML='<div class="small muted">three.js non disponible</div>'; return; } const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(50,container.clientWidth/container.clientHeight,0.1,1000); const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(320,240); container.appendChild(renderer.domElement); const geometry=new THREE.BoxGeometry(); const material=new THREE.MeshNormalMaterial(); const cube=new THREE.Mesh(geometry,material); scene.add(cube); camera.position.z=3; function animate(){ requestAnimationFrame(animate); cube.rotation.x+=0.01; cube.rotation.y+=0.01; renderer.render(scene,camera); } animate(); }
 
 /* ========== ADMIN (hard-coded password) ========== */
 const adminLoginBtn=document.getElementById('admin_login_btn');
@@ -299,62 +283,62 @@ const adminUnlockedMsg=document.getElementById('admin_unlocked_msg');
 
 function checkAdmin(pass){ return pass === ADMIN_PASSWORD; }
 
-adminLoginBtn.addEventListener('click', ()=>{ const pass=adminPassInput.value; if(checkAdmin(pass)){ adminArea.style.display='block'; adminUnlockedMsg.style.display='block'; adminLogoutBtn.style.displ[...]
+adminLoginBtn.addEventListener('click', ()=>{ const pass=adminPassInput.value; if(checkAdmin(pass)){ adminArea.style.display='block'; adminUnlockedMsg.style.display='block'; adminLogoutBtn.style.display='inline-block'; adminLoginBtn.style.display='none'; adminPassInput.style.display='none'; auditLog('admin','Admin connecté'); renderAdminData(); } else { alert('Mot de passe incorrect'); } });
 
-adminLogoutBtn.addEventListener('click', ()=>{ adminArea.style.display='none'; adminUnlockedMsg.style.display='none'; adminLogoutBtn.style.display='none'; adminLoginBtn.style.display='inline-block'; a[...]
+adminLogoutBtn.addEventListener('click', ()=>{ adminArea.style.display='none'; adminUnlockedMsg.style.display='none'; adminLogoutBtn.style.display='none'; adminLoginBtn.style.display='inline-block'; adminPassInput.style.display='inline-block'; adminPassInput.value=''; auditLog('admin','Admin déconnecté'); });
 
 /* ========== Admin rendering & actions ========== */
 function renderAdminData(){
   // Suggestions
   const suggestions=lget('lmc_suggestions',[]);
-  document.getElementById('adminSuggestions').innerHTML = suggestions.map((s,i)=>`<div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><di[...]
+  document.getElementById('adminSuggestions').innerHTML = suggestions.map((s,i)=><div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small accept-suggestion">✔</button><button data-idx="${i}" class="btn small ghost del-suggestion">🗑</button></div></div>).join('') || '<div class="small muted">Aucune suggestion</div>';
 
   // Applications
   const apps=lget('lmc_applications',[]);
-  document.getElementById('adminApplications').innerHTML = apps.map((a,i)=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">Age:${esc(a.age||'')}, Hs:${esc(a.hours||''[...]
+  document.getElementById('adminApplications').innerHTML = apps.map((a,i)=><div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">Age:${esc(a.age||'')}, Hs:${esc(a.hours||'')}</div><div style="margin-top:6px">${esc(a.motivation||a.experience||'')}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small view-app">Voir</button><button data-idx="${i}" class="btn small ghost del-app">🗑</button></div></div>).join('') || '<div class="small muted">Aucune candidature</div>';
 
   // Quick apps
   const quick=lget('lmc_quick_apps',[]);
-  document.getElementById('adminQuickApps').innerHTML = quick.map((q,i)=>`<div class="item"><div><strong>${esc(q.pseudo)}</strong><div class="small muted">${esc(q.role)}</div></div><div style="display[...]
+  document.getElementById('adminQuickApps').innerHTML = quick.map((q,i)=><div class="item"><div><strong>${esc(q.pseudo)}</strong><div class="small muted">${esc(q.role)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small mark-handled">${q.handled?'✓':'✔'}</button><button data-idx="${i}" class="btn small ghost del-quick">🗑</button></div></div>).join('') || '<div class="small muted">Aucune quick-app</div>';
 
   // Roles
   const roles=lget('lmc_roles',[]);
-  document.getElementById('adminRoles').innerHTML = roles.map(r=>`<div class="item"><div><strong>${esc(r.name)}</strong><div class="small muted">${esc(r.desc||'')}</div></div><div><button data-id="${e[...]
+  document.getElementById('adminRoles').innerHTML = roles.map(r=><div class="item"><div><strong>${esc(r.name)}</strong><div class="small muted">${esc(r.desc||'')}</div></div><div><button data-id="${esc(r.id)}" class="btn small del-role">🗑</button></div></div>).join('') || '<div class="small muted">Aucun rôle</div>';
 
   // Helps
   const helps=lget('lmc_helpRequests',[]);
-  document.getElementById('adminHelps').innerHTML = helps.map((h,i)=>`<div class="item"><div><strong>${esc(h.pseudo)}</strong><div class="small muted">${esc(h.question)}</div>${h.answer?`<div style="m[...]
+  document.getElementById('adminHelps').innerHTML = helps.map((h,i)=><div class="item"><div><strong>${esc(h.pseudo)}</strong><div class="small muted">${esc(h.question)}</div>${h.answer?<div style="margin-top:6px"><strong>Réponse:</strong> ${esc(h.answer)}</div>:''}</div><div style="display:flex;flex-direction:column;gap:6px"><button data-idx="${i}" class="btn small answer-help">Répondre</button><button data-idx="${i}" class="btn small ghost del-help">🗑</button></div></div>).join('') || '<div class="small muted">Aucune demande</div>';
 
   // Audit
   const audit=lget('lmc_audit',[]);
-  document.getElementById('adminAudit').innerHTML = audit.slice(0,200).map(a=>`<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.02)"><div class="small muted">${esc(a.time)}</div><d[...]
+  document.getElementById('adminAudit').innerHTML = audit.slice(0,200).map(a=><div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.02)"><div class="small muted">${esc(a.time)}</div><div>${esc('['+a.type+'] '+a.message)}</div></div>).join('') || '<div class="small muted">Aucun log</div>';
 }
 
 /* ========== admin delegated actions ========== */
 document.addEventListener('click', function(e){
-  if(e.target.matches('.del-suggestion')){ if(!confirm('Supprimer cette suggestion ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); arr.splice(i,1); lset('[...]
-  if(e.target.matches('.accept-suggestion')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); const s=arr.splice(i,1)[0]; if(s){ lset('lmc_suggestions',arr); const ann[...]
-  if(e.target.matches('.del-app')){ if(!confirm('Supprimer cette candidature ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); arr.splice(i,1); lset('lmc_a[...]
-  if(e.target.matches('.view-app')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); const a=arr[i]; if(a) alert(`Candidature de ${a.pseudo}\nAge: ${a.age}\nHours: ${[...]
-  if(e.target.matches('.mark-handled')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); if(arr[i]){ arr[i].handled=!arr[i].handled; lset('lmc_quick_apps',arr); auditLo[...]
-  if(e.target.matches('.del-quick')){ if(!confirm('Supprimer cette quick-app ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); arr.splice(i,1); lset('lmc_qui[...]
-  if(e.target.id==='role_create'){ const name=document.getElementById('role_name').value.trim(); const desc=document.getElementById('role_desc').value.trim(); if(!name){ alert('Nom requis'); return; }[...]
-  if(e.target.matches('.del-role')){ if(!confirm('Supprimer ce rôle ?')) return; const id=e.target.dataset.id; const roles=lget('lmc_roles',[]); const idx=roles.findIndex(r=>r.id===id); if(idx!==-1){[...]
-  if(e.target.matches('.answer-help')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); const item=arr[i]; const ans=prompt(`Réponse à ${item.pseudo} :\n${item.ques[...]
-  if(e.target.matches('.del-help')){ if(!confirm("Supprimer cette demande d'aide ?")) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); arr.splice(i,1); lset('l[...]
+  if(e.target.matches('.del-suggestion')){ if(!confirm('Supprimer cette suggestion ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); arr.splice(i,1); lset('lmc_suggestions',arr); auditLog('admin','suppression suggestion'); renderAdminData(); renderSuggestions(); }
+  if(e.target.matches('.accept-suggestion')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); const s=arr.splice(i,1)[0]; if(s){ lset('lmc_suggestions',arr); const ann=lget('lmc_announcements',[]); ann.unshift({title:'Suggestion épinglée', text:s.text, date: now()}); lset('lmc_announcements',ann); auditLog('admin','epingle suggestion -> announcement'); alert('Suggestion transformée en annonce.'); renderAdminData(); renderSuggestions(); } }
+  if(e.target.matches('.del-app')){ if(!confirm('Supprimer cette candidature ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); arr.splice(i,1); lset('lmc_applications',arr); auditLog('admin','suppr application'); renderAdminData(); }
+  if(e.target.matches('.view-app')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); const a=arr[i]; if(a) alert(Candidature de ${a.pseudo}\nAge: ${a.age}\nHours: ${a.hours}\nExp: ${a.experience}\nMotivation:\n${a.motivation}); }
+  if(e.target.matches('.mark-handled')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); if(arr[i]){ arr[i].handled=!arr[i].handled; lset('lmc_quick_apps',arr); auditLog('admin','toggle quickapp handled'); renderAdminData(); } }
+  if(e.target.matches('.del-quick')){ if(!confirm('Supprimer cette quick-app ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); arr.splice(i,1); lset('lmc_quick_apps',arr); auditLog('admin','suppr quickapp'); renderAdminData(); }
+  if(e.target.id==='role_create'){ const name=document.getElementById('role_name').value.trim(); const desc=document.getElementById('role_desc').value.trim(); if(!name){ alert('Nom requis'); return; } const roles=lget('lmc_roles',[]); const id='r'+Date.now(); roles.unshift({id,name,desc}); lset('lmc_roles',roles); auditLog('admin','create role '+name); document.getElementById('role_name').value=''; document.getElementById('role_desc').value=''; renderAdminData(); }
+  if(e.target.matches('.del-role')){ if(!confirm('Supprimer ce rôle ?')) return; const id=e.target.dataset.id; const roles=lget('lmc_roles',[]); const idx=roles.findIndex(r=>r.id===id); if(idx!==-1){ roles.splice(idx,1); lset('lmc_roles',roles); auditLog('admin','del role '+id); renderAdminData(); } }
+  if(e.target.matches('.answer-help')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); const item=arr[i]; const ans=prompt(Réponse à ${item.pseudo} :\n${item.question}\n\nTa réponse :); if(ans!==null){ arr[i].answer=ans; lset('lmc_helpRequests',arr); auditLog('admin','answer help for '+item.pseudo); renderAdminData(); renderHelpAnswers(); } }
+  if(e.target.matches('.del-help')){ if(!confirm("Supprimer cette demande d'aide ?")) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); arr.splice(i,1); lset('lmc_helpRequests',arr); auditLog('admin','del help'); renderAdminData(); renderHelpAnswers(); }
 });
 
 /* ========== clear lists ========== */
-document.getElementById('clear_suggestions').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les suggestions ?')) return; lset('lmc_suggestions',[]); auditLog('admin','clear suggestions'[...]
-document.getElementById('clear_applications').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les candidatures ?')) return; lset('lmc_applications',[]); auditLog('admin','clear applicati[...]
+document.getElementById('clear_suggestions').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les suggestions ?')) return; lset('lmc_suggestions',[]); auditLog('admin','clear suggestions'); renderAdminData(); renderSuggestions(); });
+document.getElementById('clear_applications').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les candidatures ?')) return; lset('lmc_applications',[]); auditLog('admin','clear applications'); renderAdminData(); });
 
 /* ========== meeting notes ========== */
-document.getElementById('save_meeting').addEventListener('click', ()=>{ const notes=document.getElementById('meeting_notes').value; const arr=lget('lmc_ai_saved',[]); arr.unshift({ text: notes, date: [...]
+document.getElementById('save_meeting').addEventListener('click', ()=>{ const notes=document.getElementById('meeting_notes').value; const arr=lget('lmc_ai_saved',[]); arr.unshift({ text: notes, date: now() }); lset('lmc_ai_saved', arr); document.getElementById('meeting_msg').textContent='Notes sauvegardées'; auditLog('admin','meeting notes saved'); });
 
 /* ========== export/import ========== */
-document.getElementById('export_all').addEventListener('click', ()=>{ const keys=['lmc_announcements','lmc_suggestions','lmc_applications','lmc_quick_apps','lmc_contacts','lmc_roles','lmc_role_claims'[...]
+document.getElementById('export_all').addEventListener('click', ()=>{ const keys=['lmc_announcements','lmc_suggestions','lmc_applications','lmc_quick_apps','lmc_contacts','lmc_roles','lmc_role_claims','lmc_audit','lmc_ai_saved','lmc_helpRequests','lmc_quiz_scores']; const dump={}; keys.forEach(k=>dump[k]=lget(k,[])); const blob=new Blob([JSON.stringify(dump,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='lmc_dump_'+(new Date().toISOString().slice(0,10))+'.json'; document.body.appendChild(a); a.click(); a.remove(); });
 document.getElementById('import_btn').addEventListener('click', ()=>document.getElementById('import_file').click());
-document.getElementById('import_file').addEventListener('change', function(){ const f=this.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(){ try{ const data=JSON.parse(r.result);[...]
+document.getElementById('import_file').addEventListener('change', function(){ const f=this.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(){ try{ const data=JSON.parse(r.result); Object.keys(data).forEach(k=>localStorage.setItem(k,JSON.stringify(data[k]))); alert('Import terminé. Recharge la page.'); auditLog('admin','import data'); }catch(e){ alert('Fichier invalide'); } }; r.readAsText(f); });
 
 /* ========== render & init ========== */
 function renderAllPublic(){ renderSuggestions(); renderHelpAnswers(); renderQuiz(); }
