@@ -1,369 +1,538 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Les Mecs Chills — Hub Complet</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{ --bg:#0b0f14; --card:#0f1620; --muted:#9fb0c8; --accent1:#8e61ff; --accent2:#4fb3ff; --success:#43b581; --danger:#ff6b6b; --glass:rgba(255,255,255,0.03); --radius:12px; --trans:all .22s ease; --text:#eaf2ff; }
-*{box-sizing:border-box}
-body{margin:0;font-family:'Poppins',system-ui,Arial;background:linear-gradient(120deg,#071126,#08121a);color:var(--text);-webkit-font-smoothing:antialiased;padding-top:72px}
-.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 22px;background:rgba(6,8,12,0.75);backdrop-filter: blur(6px);z-index:1000}
-.logo{display:flex;gap:12px;align-items:center}
-.logo .badge{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800}
-.menu{display:flex;gap:10px;align-items:center}
-.menu a{padding:8px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:600}
-.menu a:hover{color:#fff;box-shadow:0 6px 24px rgba(79,179,255,0.06)}
-.container{max-width:1150px;margin:24px auto;padding:0 20px}
-.hero{display:flex;gap:20px;align-items:center;background:linear-gradient(180deg, rgba(143,86,255,0.06), rgba(79,179,255,0.02));padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-.hero-left{flex:1}
-h1{font-size:34px;margin:0 0 8px}
-.lead{color:var(--muted);margin:0 0 16px}
-.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(123,97,255,0.12)}
-.card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.5)}
-.section{margin-top:18px}
-.cols{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-@media(max-width:980px){.cols{grid-template-columns:1fr}}
-.field{margin-bottom:10px}
-label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
-input[type="text"],input[type="number"],input[type="password"],select,textarea{width:100%;padding:10px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);color:var(--text);outline:none}
-textarea{min-height:90px;resize:vertical}
-.small{font-size:13px;color:var(--muted)}
-.list{display:flex;flex-direction:column;gap:10px}
-.item{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:10px;display:flex;justify-content:space-between;gap:12px}
-.tab{padding:8px 10px;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
-.tab.active{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#071126;font-weight:700}
-.choice{display:block;padding:8px;border-radius:8px;margin:6px 0;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
-.hidden{display:none!important}
-.footer{padding:20px;text-align:center;color:var(--muted);font-size:13px}
-.badge{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);font-weight:700}
-.small-muted{color:var(--muted)}
-.admin-area{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:10px}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Les Mecs Chills — Hub Complet</title>
+
+  <!-- Eviter cache navigateur après publication -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <style>
+    :root{
+      --bg:#071126;
+      --card:#0f1620;
+      --muted:#9fb0c8;
+      --accent1:#8e61ff;
+      --accent2:#4fb3ff;
+      --success:#43b581;
+      --danger:#ff6b6b;
+      --text:#eaf2ff;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, Poppins, system-ui, Arial, sans-serif;
+      background: linear-gradient(120deg,#071126 0%, #08121a 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      padding-top:72px;
+    }
+    /* NAV */
+    .nav{
+      position:fixed;top:0;left:0;right:0;height:72px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 20px;background:rgba(6,8,12,0.75);
+      backdrop-filter: blur(6px);z-index:1000;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
+    .brand-title{font-weight:800}
+    .menu{display:flex;gap:8px;align-items:center}
+    .menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+    .menu a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+    /* Container & cards */
+    .container{max-width:1150px;margin:22px auto;padding:0 18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:18px}
+    .hero{display:flex;gap:18px;align-items:center}
+    .hero-left{flex:1}
+    h1{font-size:28px;margin:0}
+    h2{margin:0 0 8px}
+    .lead{color:var(--muted);margin:8px 0 12px}
+    .actions{display:flex;gap:8px}
+    .btn{padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    .btn.small{padding:6px 10px;border-radius:8px}
+    .small{font-size:13px}
+    .muted{color:var(--muted)}
+    input,select,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px;outline:none;width:100%;box-sizing:border-box}
+    textarea{resize:vertical}
+    .form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .form-col{display:flex;flex-direction:column;gap:8px}
+    .subcard{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
+    .game-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
+    .list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    .item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+    @media(max-width:900px){ .hero{flex-direction:column} .menu{display:none} .form-row{flex-direction:column} }
+  </style>
 </head>
 <body>
-<header class="nav">
-  <div class="logo">
-    <div class="badge">LMC</div>
-    <div>
-      <div style="font-weight:800">Les Mecs Chills</div>
-      <div class="small">Serveur Discord • Hub communautaire</div>
-    </div>
-  </div>
-  <nav class="menu" aria-label="Main">
-    <a href="#home">Accueil</a>
-    <a href="#about">À propos</a>
-    <a href="#brawl">Brawl Stars</a>
-    <a href="#roles-section">Rôles</a>
-    <a href="#events">Événements</a>
-    <a href="#community">Communauté</a>
-    <a href="#games">Jeux</a>
-    <a href="#contact">Contact</a>
-    <a href="#help-section">Aide</a>
-    <a href="#admin-section" id="navAdmin">Admin</a>
-  </nav>
-</header>
-<main class="container">
-  <section id="home" class="hero">
-    <div class="hero-left">
-      <h1>JUSTE DES MECS CHILLS EN FAIT !</h1>
-      <p class="lead">Rejoins notre serveur Discord pour des tournois, quiz, mini-jeux et une ambiance chill. Clique pour rejoindre ou explore le site pour postuler et demander des rôles.</p>
-      <div style="display:flex;gap:8px;align-items:center">
-        <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le serveur</a>
-        <button id="btnOpenGames" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Ouvrir jeux</button>
-      </div>
-    </div>
-    <div style="width:340px;display:flex;flex-direction:column;gap:12px">
-      <div class="card">
-        <div style="font-weight:700">Prochains événements</div>
-        <div class="small" style="margin-top:6px">Tournoi Brawl — Dimanche 20h</div>
-      </div>
-      <div class="card">
-        <div style="font-weight:700">Rôles VIP</div>
-        <div class="small" style="margin-top:6px">Accès salon VIP & avantages</div>
-      </div>
-    </div>
-  </section>
+  <header class="nav" role="banner">
+    <div class="brand" aria-label="Brand">
+      <div class="badge" aria-hidden="true">LMC</div>
+      <div>
+        <div class="brand-title">Les Mecs Chills</div>
+        <div class="small muted">Serveur Discord — Hub communautaire</div>
+      </div>
+    </div>
+    <nav class="menu" role="navigation" aria-label="Main menu">
+      <a href="#accueil">Accueil</a>
+      <a href="#about">À propos</a>
+      <a href="#brawl">Brawl</a>
+      <a href="#roles">Rôles</a>
+      <a href="#games">Jeux</a>
+      <a href="#contact">Suggestions</a>
+      <a href="#recruitment">Recrutement</a>
+      <a href="#help">Aide</a>
+    </nav>
+  </header>
 
-  <section id="about" class="section">
-    <div class="card">
-      <h2>À propos</h2>
-      <p class="small">Notre serveur Discord est un espace où règnent la bonne humeur, le respect et l'amitié. Chaque membre compte et a son rôle à jouer dans la communauté.</p>
-    </div>
-  </section>
+  <main class="container" role="main">
+    <!-- ACCUEIL -->
+    <section id="accueil" class="card hero" aria-labelledby="home-title">
+      <div class="hero-left">
+        <h1 id="home-title">JUSTE DES MECS CHILLS EN FAIT !</h1>
+        <p class="lead">Rejoins notre serveur Discord pour des tournois, soirées chill, mini-jeux, rôles exclusifs et une communauté sympa.</p>
+        <div class="actions">
+          <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le Discord</a>
+          <button id="openGames" class="btn ghost">Voir jeux</button>
+        </div>
+        <div class="small muted" style="margin-top:10px">Site 100% client — données stockées localement en localStorage (clé lmc_*).</div>
+      </div>
+      <div style="width:340px;display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <strong>Prochains events</strong>
+          <div class="small muted" style="margin-top:8px">Tournoi Brawl — Dimanche 20h</div>
+        </div>
+        <div class="card">
+          <strong>Rôles VIP</strong>
+          <div class="small muted" style="margin-top:8px">Accès salon VIP & avantages</div>
+        </div>
+      </div>
+    </section>
 
-  <section id="brawl" class="section">
-    <div class="card">
-      <h2>Brawl Stars</h2>
-      <p class="small">Une catégorie dédiée avec salons stratégiques, clips, tournois et plus encore.</p>
-    </div>
-  </section>
+    <!-- ABOUT -->
+    <section id="about" class="card" aria-labelledby="about-title">
+      <h2 id="about-title">À propos</h2>
+      <p>Notre serveur est un espace de partage, entraide et fun. Que tu sois compétitif ou chill, tu trouveras ta place.</p>
+    </section>
 
-  <section id="roles-section" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Rôles & Demandes</h2>
-        <p class="small">Rôles dynamiques et demandes rapides.</p>
-        <div style="margin-top:12px" id="quickRoleCard">
-          <strong>Demande rapide</strong>
-          <div class="field"><label>Pseudo</label><input id="rq_pseudo" type="text" placeholder="Ex: ChillUser#1234"></div>
-          <div class="field"><label>Rôle</label>
-            <select id="rq_role"><option value="">-- Choisir --</option><option value="Modérateur">Modérateur</option><option value="Journaliste">Journaliste</option></select></div>
-          <div style="margin-top:10px"><button class="btn" id="rq_submit">Demander (rapide)</button></div>
-          <div id="rq_msg" class="small-muted" style="margin-top:8px"></div>
-        </div>
+    <!-- BRAWL -->
+    <section id="brawl" class="card">
+      <h2>Brawl Stars</h2>
+      <p>Salons dédiés, stratégies, clips et organisation d'équipes pour jouer ensemble.</p>
+    </section>
 
-        <div style="margin-top:18px" id="fullAppCard">
-          <strong>Candidature complète</strong>
-          <form id="fullAppForm">
-            <div class="field"><label>Pseudo Discord</label><input id="fa_pseudo" type="text" placeholder="Ex: ChillUser#1234" required></div>
-            <div class="field"><label>Âge</label><input id="fa_age" type="number" min="13" placeholder="Âge"></div>
-            <div class="field"><label>Expérience</label><input id="fa_experience" type="text" placeholder="Expérience sur Discord"></div>
-            <div class="field"><label>Disponibilité (h / semaine)</label><input id="fa_hours" type="number" min="0" placeholder="Ex: 10"></div>
-            <div class="field"><label>Lettre de motivation</label><textarea id="fa_motivation" maxlength="2000" placeholder="Pourquoi tu veux rejoindre le staff ?"></textarea></div>
-            <div style="display:flex;gap:10px;align-items:center"><button id="fullAppSubmit" class="btn">Envoyer la candidature</button><div id="fullAppMsg" class="small-muted"></div></div>
-          </form>
-        </div>
-      </div>
+    <!-- ROLES -->
+    <section id="roles" class="card" aria-labelledby="roles-title">
+      <h2 id="roles-title">Rôles & Postulations</h2>
 
-      <aside>
-        <div class="card">
-          <strong>Rôles en rotation</strong>
-          <div id="rolesList" style="margin-top:8px" class="small-muted">Aucun rôle</div>
-          <button id="createDemoRole" class="btn-ghost" style="margin-top:8px">Créer rôle démo</button>
-        </div>
-      </aside>
-    </div>
-  </section>
+      <div class="subcard" aria-labelledby="quick-title">
+        <h3 id="quick-title">Postulation rapide</h3>
+        <p class="small muted">Pseudo + rôle → postulation instantanée.</p>
+        <div class="form-row" style="margin-top:8px">
+          <input id="quick_pseudo" type="text" aria-label="pseudo rapide" placeholder="Ex: ChillUser#1234">
+          <select id="quick_role" aria-label="role rapide">
+            <option value="">Choisir un rôle</option>
+            <option value="Modérateur">Modérateur</option>
+            <option value="Journaliste">Journaliste</option>
+            <option value="Beta Testeur">Beta Testeur</option>
+          </select>
+          <button id="quick_submit" class="btn small">Postuler</button>
+        </div>
+        <div id="quick_msg" class="small muted" style="margin-top:8px"></div>
+      </div>
 
-  <section id="events" class="section">
-    <div class="card">
-      <h2>Événements</h2>
-      <p class="small">Tournois hebdo, soirées chill, concours créa.</p>
-    </div>
-  </section>
+      <div class="subcard" aria-labelledby="full-title">
+        <h3 id="full-title">Candidature détaillée</h3>
+        <form id="advancedApply" class="form-col" aria-label="candidature détaillée">
+          <label for="app_pseudo">Pseudo</label><input id="app_pseudo" type="text" required>
+          <label for="app_age">Âge</label><input id="app_age" type="number" min="13">
+          <label for="app_experience">Expérience</label><input id="app_experience" type="text">
+          <label for="app_hours">Heures / semaine</label><input id="app_hours" type="number" min="0">
+          <label for="app_motivation">Lettre de motivation</label>
+          <textarea id="app_motivation" rows="5" maxlength="2000"></textarea>
+          <div style="margin-top:8px"><button type="submit" class="btn small">Envoyer candidature</button></div>
+          <div id="app_msg" class="small muted" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </section>
 
-  <section id="community" class="section">
-    <div class="card">
-      <h2>Communauté</h2>
-      <p class="small">Partage, entraide et fun !</p>
-    </div>
-  </section>
+    <!-- EVENTS -->
+    <section id="events" class="card">
+      <h2>Événements</h2>
+      <p>Tournois, soirées, concours et streamings communautaires.</p>
+    </section>
 
-  <section id="games" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Jeux & Quiz</h2>
-        <div class="card" style="margin-top:8px;padding:12px">
-          <strong>Saisis ton pseudo pour jouer</strong>
-          <div style="margin-top:8px"><input id="playerPseudo" placeholder="Ex: ChillPlayer#1234"></div>
-        </div>
+    <!-- GAMES -->
+    <section id="games" class="card" aria-labelledby="games-title">
+      <h2 id="games-title">Jeux & Quiz</h2>
 
-        <div class="card" style="margin-top:12px;padding:12px" id="quizCard">
-          <h3>Quiz Culture Générale</h3>
-          <div id="quizContainer">Chargement quiz...</div>
-        </div>
+      <div class="game-card" id="quiz_card">
+        <h3>Quiz — Culture générale</h3>
+        <div id="quizArea" class="form-col"></div>
+      </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Devine le chiffre (1-20)</h3>
-          <div style="display:flex;gap:8px"><input id="guess_input" type="number" min="1" max="20" placeholder="1-20"><button id="guess_btn" class="btn">Valider</button></div>
-          <div id="guess_feedback" class="small-muted" style="margin-top:8px"></div>
-        </div>
+      <div class="game-card" id="guess_card">
+        <h3>Devine le nombre (1-50)</h3>
+        <div class="form-row">
+          <input id="guess_pseudo" type="text" placeholder="Ton pseudo" aria-label="pseudo guess">
+          <input id="guess_val" type="number" min="1" max="50" placeholder="Nombre">
+          <button id="guess_play" class="btn small">Jouer</button>
+        </div>
+        <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
+      </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Pierre / Feuille / Ciseaux</h3>
-          <div style="display:flex;gap:8px"><button class="btn" data-rps="rock">Pierre</button><button class="btn" data-rps="paper">Feuille</button><button class="btn" data-rps="scissors">Ciseaux</button></div>
-          <div id="rps_feedback" class="small-muted" style="margin-top:8px"></div>
-        </div>
+      <div class="game-card" id="rps_card">
+        <h3>Pierre / Feuille / Ciseaux</h3>
+        <div class="form-row">
+          <input id="rps_pseudo" type="text" placeholder="Ton pseudo">
+          <button data-rps="rock" class="btn small rps">Pierre</button>
+          <button data-rps="paper" class="btn small rps">Feuille</button>
+          <button data-rps="scissors" class="btn small rps">Ciseaux</button>
+        </div>
+        <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
+      </div>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Dice Roll</h3>
-          <div style="display:flex;gap:8px"><button id="rollDiceBtn" class="btn">Lancer le dé</button><div id="diceRes" class="small-muted"></div></div>
-        </div>
+      <div class="game-card" id="dice_card">
+        <h3>Dice Roll</h3>
+        <div class="form-row">
+          <input id="dice_pseudo" type="text" placeholder="Ton pseudo">
+          <button id="dice_roll" class="btn small">Lancer le dé</button>
+        </div>
+        <div id="dice_out" class="small muted" style="margin-top:8px"></div>
+      </div>
+    </section>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Memory Mini</h3>
-          <div id="memoryArea"></div>
-        </div>
+    <!-- CONTACT / SUGGESTIONS -->
+    <section id="contact" class="card">
+      <h2>Contact & Suggestions</h2>
+      <form id="suggestForm" class="form-col" aria-label="suggestions">
+        <label for="suggest_pseudo">Pseudo (optionnel)</label>
+        <input id="suggest_pseudo" type="text" placeholder="Pseudo (optionnel)">
+        <label for="suggest_text">Suggestion / Message</label>
+        <textarea id="suggest_text" rows="4" required></textarea>
+        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
+        <div id="suggest_msg" class="small muted" style="margin-top:8px"></div>
+      </form>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Flag Quiz</h3>
-          <div id="flagArea"></div>
-        </div>
+      <h3 style="margin-top:12px">Suggestions récentes</h3>
+      <div id="suggest_list" class="list muted small">Aucune suggestion</div>
+    </section>
 
-        <div class="card" style="margin-top:12px;padding:12px">
-          <h3>Scramble Word</h3>
-          <div style="display:flex;gap:8px"><div id="scrambleWord" class="small-muted"></div><input id="scrambleGuess" placeholder="ton essai"><button id="scrambleBtn" class="btn">Valider</button></div>
-          <div id="scrambleRes" class="small-muted" style="margin-top:8px"></div>
-        </div>
+    <!-- RECRUITMENT -->
+    <section id="recruitment" class="card">
+      <h2>Questionnaire de recrutement</h2>
+      <form id="recruitForm" class="form-col" aria-label="recrutement">
+        <label for="r_pseudo">Pseudo Discord</label>
+        <input id="r_pseudo" type="text" required>
+        <label for="r_age">Âge</label>
+        <input id="r_age" type="number" min="13" required>
+        <label for="r_experience">Expérience Discord</label>
+        <input id="r_experience" type="text" required>
+        <label for="r_hours">Disponibilité (h / semaine)</label>
+        <input id="r_hours" type="number" min="0" required>
+        <label for="r_motivation">Lettre de motivation</label>
+        <textarea id="r_motivation" rows="6" maxlength="2000" required></textarea>
+        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer ma candidature</button></div>
+        <div id="recruit_msg" class="small muted" style="margin-top:8px"></div>
+      </form>
+    </section>
 
-      </div>
+    <!-- HELP PUBLIC -->
+    <section id="help" class="card">
+      <h2>Demande d'aide</h2>
+      <form id="helpForm" class="form-col" aria-label="aide">
+        <label for="help_pseudo">Pseudo (optionnel)</label>
+        <input id="help_pseudo" type="text" placeholder="Pseudo (optionnel)">
+        <label for="help_question">Question / Problème</label>
+        <textarea id="help_question" rows="4" required></textarea>
+        <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
+        <div id="help_msg" class="small muted" style="margin-top:8px"></div>
+      </form>
 
-      <aside>
-        <div class="card">
-          <strong>Leaderboard</strong>
-          <div id="leaderboard" style="margin-top:10px" class="small-muted">Aucun score</div>
-        </div>
+      <h3 style="margin-top:12px">Informations / Aide (réponses publiques)</h3>
+      <div id="help_answers" class="list muted small">Aucune information</div>
+    </section>
 
-        <div class="card" style="margin-top:12px">
-          <strong>Badges</strong>
-          <div id="badges" style="margin-top:8px" class="small-muted">Aucun badge</div>
-        </div>
+    <footer class="footer">© Les Mecs Chills — Données en local (localStorage)</footer>
+  </main>
 
-        <div class="card" style="margin-top:12px">
-          <strong>Charger 3D</strong>
-          <div style="margin-top:8px"><button id="load3d" class="btn">Charger démo 3D</button></div>
-          <div id="threeDContainer" style="margin-top:8px"></div>
-        </div>
-      </aside>
-    </div>
-  </section>
+  <!-- SCRIPT -->
+  <script>
+  // -------------------------
+  // Helpers (atomic get/modify/set)
+  // -------------------------
+  function lmc_get(key, def){
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : def;
+    } catch(e){
+      console.error('lmc_get error', key, e);
+      return def;
+    }
+  }
+  function lmc_set(key, value){
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch(e){
+      console.error('lmc_set error', key, e);
+      return false;
+    }
+  }
+  function nowStr(){ return new Date().toISOString().replace('T',' ').slice(0,16); }
+  function escapeHTML(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
 
-  <section id="contact" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Contact / Suggestions</h2>
-        <p class="small">Laisse une suggestion — elle sera visible par l'admin.</p>
-        <div style="margin-top:10px"><input id="suggest_pseudo" placeholder="Pseudo (optionnel)"><textarea id="suggest_text" placeholder="Ta suggestion" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="suggest_send" class="btn">Envoyer suggestion</button></div><div id="suggest_msg" class="small-muted" style="margin-top:8px"></div></div>
-      </div>
-      <aside>
-        <div class="card">
-          <strong>Suggestions récentes</strong>
-          <div id="recentSuggestions" class="small-muted" style="margin-top:10px">Aucune</div>
-        </div>
-      </aside>
-    </div>
-  </section>
+  // Initialize keys (ensure default arrays exist)
+  (function initKeys(){
+    lmc_get('lmc_announcements', []);
+    lmc_get('lmc_suggestions', []);
+    lmc_get('lmc_applications', []);
+    lmc_get('lmc_quick_apps', []);
+    lmc_get('lmc_contacts', []);
+    lmc_get('lmc_roles', []);
+    lmc_get('lmc_role_claims', {});
+    lmc_get('lmc_audit', []);
+    lmc_get('lmc_ai_saved', []);
+    lmc_get('lmc_quiz_scores', []);
+  })();
 
-  <section id="help-section" class="section">
-    <div class="card cols">
-      <div>
-        <h2>Aide du site</h2>
-        <p class="small">Si tu as besoin d'aide, signale-le ici — l'admin répondra publiquement dans la section Informations Aide.</p>
-        <div style="margin-top:10px"><input id="helpPseudo" placeholder="Pseudo (optionnel)"><textarea id="helpQuestion" placeholder="Ta question / problème" style="margin-top:8px"></textarea><div style="margin-top:8px"><button id="helpSend" class="btn">Envoyer demande d'aide</button></div><div id="helpMsg" class="small-muted" style="margin-top:8px"></div></div>
-      </div>
-      <aside>
-        <div class="card">
-          <strong>Informations / Aide</strong>
-          <div id="helpAnswers" style="margin-top:10px" class="small-muted">Aucune</div>
-        </div>
-      </aside>
-    </div>
-  </section>
+  // Audit logger
+  function audit(type, message){
+    const logs = lmc_get('lmc_audit', []);
+    logs.unshift({ time: new Date().toISOString(), type, message });
+    lmc_set('lmc_audit', logs.slice(0,200));
+  }
 
-  <section id="admin-section" class="section">
-    <div class="card">
-      <h2>Panneau Admin</h2>
-      <div id="adminAuth">
-        <div style="display:flex;gap:8px;align-items:center"><input id="adminPassInput" type="password" placeholder="Mot de passe admin"><button id="adminLoginBtn" class="btn">Se connecter</button><div id="adminAuthMsg" class="small-muted"></div></div>
-      </div>
+  // -------------------------
+  // Suggestions / Contact (lmc_suggestions or lmc_contacts)
+  // -------------------------
+  const suggestForm = document.getElementById('suggestForm');
+  const suggestList = document.getElementById('suggest_list');
+  const suggestMsg = document.getElementById('suggest_msg');
 
-      <div id="adminDashboard" class="hidden" style="margin-top:12px">
-        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-          <div class="tabs" role="tablist">
-            <div class="tab active" data-tab="suggestionsTab">Suggestions</div>
-            <div class="tab" data-tab="quickappsTab">Quick-Apps</div>
-            <div class="tab" data-tab="applicationsTab">Applications</div>
-            <div class="tab" data-tab="rolesTab">Roles</div>
-            <div class="tab" data-tab="helpTab">Aide</div>
-            <div class="tab" data-tab="auditTab">Audit</div>
-            <div class="tab" data-tab="meetingTab">Réunion</div>
-          </div>
-          <div style="display:flex;gap:8px"><button id="adminExport" class="btn">Exporter JSON</button><button id="adminClearAll" class="btn" style="background:var(--danger)">Tout effacer</button></div>
-        </div>
+  function renderSuggestions(){
+    const arr = lmc_get('lmc_suggestions', []);
+    if(!arr.length){ suggestList.innerHTML = 'Aucune suggestion'; return; }
+    suggestList.innerHTML = arr.slice(0,50).map(s => `<div class="item"><div><strong>${escapeHTML(s.pseudo||'Anon')}</strong><div class="small muted">${escapeHTML(s.text)}</div></div><div class="small muted">${escapeHTML(s.date? s.date : '')}</div></div>`).join('');
+  }
 
-        <div id="adminTabContent" style="margin-top:12px">
-          <div id="suggestionsTab" class="list"></div>
-          <div id="quickappsTab" class="list hidden"></div>
-          <div id="applicationsTab" class="list hidden"></div>
-          <div id="rolesTab" class="list hidden"></div>
-          <div id="helpTab" class="list hidden"></div>
-          <div id="auditTab" class="list hidden"></div>
-          <div id="meetingTab" class="list hidden"></div>
-        </div>
+  suggestForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const pseudo = document.getElementById('suggest_pseudo').value.trim();
+    const text = document.getElementById('suggest_text').value.trim();
+    if(!text){ suggestMsg.textContent = 'Message vide'; return; }
+    // atomic
+    const arr = lmc_get('lmc_suggestions', []);
+    arr.unshift({ pseudo: pseudo || 'Anon', text, date: nowStr() });
+    lmc_set('lmc_suggestions', arr);
+    // also store in lmc_contacts for contact messages compatibility
+    const contacts = lmc_get('lmc_contacts', []);
+    contacts.unshift({ name: pseudo || 'Anon', email: '', msg: text, date: nowStr() });
+    lmc_set('lmc_contacts', contacts);
 
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <input id="awardPseudo" placeholder="Pseudo"><input id="awardPoints" type="number" placeholder="Points"><button id="awardBtn" class="btn">Attribuer points</button>
-          <input id="awardBadgeName" placeholder="Nom du badge"><button id="awardBadgeBtn" class="btn">Attribuer badge</button>
-        </div>
+    suggestMsg.textContent = '✅ Suggestion envoyée';
+    audit('suggestion', `Suggestion by ${pseudo||'Anon'}: ${text.slice(0,80)}`);
+    document.getElementById('suggest_pseudo').value = '';
+    document.getElementById('suggest_text').value = '';
+    renderSuggestions();
+  });
 
-      </div>
-    </div>
-  </section>
+  // -------------------------
+  // Quick apps (lmc_quick_apps)
+  // -------------------------
+  document.getElementById('quick_submit').addEventListener('click', function(){
+    const pseudo = document.getElementById('quick_pseudo').value.trim();
+    const role = document.getElementById('quick_role').value;
+    const msgEl = document.getElementById('quick_msg');
+    if(!pseudo || !role){ msgEl.textContent = 'Pseudo et rôle requis'; return; }
+    const arr = lmc_get('lmc_quick_apps', []);
+    arr.unshift({ pseudo, role, date: nowStr(), handled: false });
+    lmc_set('lmc_quick_apps', arr);
+    msgEl.textContent = '✅ Postulation rapide enregistrée';
+    audit('quickapp', `Quick app: ${pseudo} -> ${role}`);
+    document.getElementById('quick_pseudo').value = ''; document.getElementById('quick_role').selectedIndex = 0;
+  });
 
-  <footer class="footer">© Les Mecs Chills — Données en local (localStorage)</footer>
-</main>
+  // -------------------------
+  // Advanced application (lmc_applications)
+  // -------------------------
+  document.getElementById('advancedApply').addEventListener('submit', function(e){
+    e.preventDefault();
+    const pseudo = document.getElementById('app_pseudo').value.trim();
+    const age = document.getElementById('app_age').value;
+    const exp = document.getElementById('app_experience').value.trim();
+    const hours = document.getElementById('app_hours').value;
+    const motiv = document.getElementById('app_motivation').value.trim();
+    const msgEl = document.getElementById('app_msg');
+    if(!pseudo){ msgEl.textContent = 'Pseudo requis'; return; }
+    const arr = lmc_get('lmc_applications', []);
+    arr.unshift({ pseudo, age, experience: exp, hours, motivation: motiv, date: nowStr() });
+    lmc_set('lmc_applications', arr);
+    msgEl.textContent = '✅ Candidature envoyée';
+    audit('application', `Application: ${pseudo}`);
+    this.reset();
+  });
 
-<script>
-// ----------------- Helpers localStorage & audit -----------------
-function lmc_get(key, def){ try{ const r = localStorage.getItem(key); return r ? JSON.parse(r) : def; }catch(e){console.error(e); return def;} }
-function lmc_set(key, value){ try{ localStorage.setItem(key, JSON.stringify(value)); return true; }catch(e){console.error(e); return false;} }
-function auditLog(type,message){ const a = lmc_get('lmc_audit',[]); a.unshift({time:new Date().toISOString(),type,message}); lmc_set('lmc_audit', a.slice(0,200)); }
+  // -------------------------
+  // Recruitment form (store in lmc_applications as well for centralization)
+  // -------------------------
+  document.getElementById('recruitForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const pseudo = document.getElementById('r_pseudo').value.trim();
+    const age = document.getElementById('r_age').value;
+    const exp = document.getElementById('r_experience').value.trim();
+    const hours = document.getElementById('r_hours').value;
+    const motiv = document.getElementById('r_motivation').value.trim();
+    if(!pseudo || !age || !exp || !hours){ document.getElementById('recruit_msg').textContent = 'Remplis tous les champs requis'; return; }
+    const arr = lmc_get('lmc_applications', []);
+    arr.unshift({ pseudo, age, experience: exp, hours, motivation: motiv, date: nowStr() });
+    lmc_set('lmc_applications', arr);
+    document.getElementById('recruit_msg').textContent = '✅ Candidature enregistrée';
+    audit('recruitment', `Recruit: ${pseudo}`);
+    this.reset();
+  });
 
-// Ensure keys
-(function init(){ lmc_get('lmc_suggestions',[]); lmc_get('lmc_quick_apps',[]); lmc_get('lmc_applications',[]); lmc_get('lmc_roles',[]); lmc_get('lmc_quiz_scores',[]); lmc_get('lmc_gameResults',[]); lmc_get('lmc_helpRequests',[]); lmc_get('lmc_meetingBoard',[]); lmc_get('lmc_ai_saved',[]); lmc_get('lmc_announcements',[]); })();
+  // -------------------------
+  // Help requests (lmc_contacts)
+  // -------------------------
+  document.getElementById('helpForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const pseudo = document.getElementById('help_pseudo').value.trim() || 'Anon';
+    const q = document.getElementById('help_question').value.trim();
+    if(!q){ document.getElementById('help_msg').textContent = 'Question vide'; return; }
+    const arr = lmc_get('lmc_helpRequests', []);
+    arr.unshift({ pseudo, question: q, date: nowStr(), answer: null });
+    lmc_set('lmc_helpRequests', arr);
+    // Also push into lmc_contacts for contact consistency
+    const contacts = lmc_get('lmc_contacts', []);
+    contacts.unshift({ name: pseudo, email:'', msg: q, date: nowStr() });
+    lmc_set('lmc_contacts', contacts);
+    document.getElementById('help_msg').textContent = '✅ Demande envoyée — un modérateur peut y répondre depuis Discord';
+    audit('help', `Help request by ${pseudo}`);
+    this.reset();
+    renderHelpAnswers();
+  });
 
-// ----------------- Member stats & badges stored in lmc_ai_saved -----------------
-function getMemberStats(){ const saved = lmc_get('lmc_ai_saved',[]); let s = saved.find(x=>x && x.type==='member_stats'); if(!s){ s = {type:'member_stats',map:{}}; saved.unshift(s); lmc_set('lmc_ai_saved', saved); } return s.map; }
-function saveMemberStats(map){ const saved = lmc_get('lmc_ai_saved',[]); const idx = saved.findIndex(x=>x && x.type==='member_stats'); const obj = {type:'member_stats',map}; if(idx>=0) saved[idx]=obj; else saved.unshift(obj); lmc_set('lmc_ai_saved', saved); }
-function addPoints(pseudo, pts){ if(!pseudo) pseudo='anonymous'; const map = getMemberStats(); if(!map[pseudo]) map[pseudo]={points:0,badges:[]}; map[pseudo].points = (map[pseudo].points||0)+pts; // auto badges
- if(map[pseudo].points>=100 && !map[pseudo].badges.includes('Legend Chill')) map[pseudo].badges.push('Legend Chill');
- if(map[pseudo].points>=50 && !map[pseudo].badges.includes('Pro Chill')) map[pseudo].badges.push('Pro Chill');
- if(map[pseudo].points>=10 && !map[pseudo].badges.includes('Rookie Chill')) map[pseudo].badges.push('Rookie Chill');
- saveMemberStats(map); auditLog('points', `+${pts} pts -> ${pseudo}`); renderLeaderboard(); renderBadges(); }
-function awardBadge(pseudo,badge){ if(!pseudo) pseudo='anonymous'; const map=getMemberStats(); if(!map[pseudo]) map[pseudo]={points:0,badges:[]}; if(!map[pseudo].badges.includes(badge)) map[pseudo].badges.push(badge); saveMemberStats(map); auditLog('badge', `${badge} -> ${pseudo}`); renderBadges(); }
+  function renderHelpAnswers(){
+    // show only answered help requests (admin replies can be inserted into localStorage manually if needed)
+    const arr = lmc_get('lmc_helpRequests', []);
+    const out = arr.filter(r => r.answer).map(r => `<div class="item"><div><strong>${escapeHTML(r.pseudo)}</strong><div class="small muted">${escapeHTML(r.question)}</div><div style="margin-top:8px"><strong>Réponse:</strong> ${escapeHTML(r.answer)}</div></div><div class="small muted">${escapeHTML(r.date)}</div></div>`).join('');
+    document.getElementById('help_answers').innerHTML = out || 'Aucune information';
+  }
 
-// ----------------- Render leaderboard & badges -----------------
-function renderLeaderboard(){ const map = getMemberStats(); const arr = Object.keys(map).map(k=>({pseudo:k,points:map[k].points||0})).sort((a,b)=>b.points-a.points); const el = document.getElementById('leaderboard'); el.innerHTML = arr.length ? arr.slice(0,10).map((x,i)=>`${i+1}. <b>${escapeHTML(x.pseudo)}</b> — ${x.points} pts`).join('<br>') : 'Aucun score'; }
-function renderBadges(){ const map=getMemberStats(); const badges = Object.keys(map).flatMap(k => (map[k].badges||[]).map(b=>({pseudo:k,badge:b}))); const el=document.getElementById('badges'); el.innerHTML = badges.length ? badges.slice(0,12).map(x=>`${escapeHTML(x.pseudo)} • ${escapeHTML(x.badge)}`).join('<br>') : 'Aucun badge'; }
+  // -------------------------
+  // Quiz (store scores in lmc_quiz_scores)
+  // -------------------------
+  const quizData = {
+    quizId: 'culture_01',
+    title: 'Quiz Culture Générale',
+    questions: [
+      { q: "Quelle est la capitale de la France ?", choices:["Paris","Lyon","Marseille","Bordeaux"], answer:0 },
+      { q: "Combien de continents ?", choices:["5","6","7","8"], answer:2 },
+      { q: "Auteur du 'Petit Prince' ?", choices:["Victor Hugo","Camus","Antoine de Saint-Exupéry","Jules Verne"], answer:2 }
+    ]
+  };
 
-// ----------------- Utility -----------------
-function escapeHTML(s){ if(!s && s!==0) return ''; return String(s).replace(/[&<>\"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+  function renderQuiz(){
+    const container = document.getElementById('quizArea');
+    let html = `<div><strong>${escapeHTML(quizData.title)}</strong><div class="small muted">Test rapide — tes résultats sont sauvegardés localement</div></div>`;
+    quizData.questions.forEach((q, idx) => {
+      html += `<div style="margin-top:8px"><div><strong>Q${idx+1}:</strong> ${escapeHTML(q.q)}</div>`;
+      q.choices.forEach((c, ci) => {
+        html += `<label style="display:block;margin:6px 0"><input type="radio" name="qq_${idx}" value="${ci}"> ${escapeHTML(c)}</label>`;
+      });
+      html += `</div>`;
+    });
+    html += `<div style="margin-top:10px"><button id="submitQuiz" class="btn small">Soumettre</button> <div id="quizResult" class="small muted" style="margin-top:8px"></div></div>`;
+    container.innerHTML = html;
+    document.getElementById('submitQuiz').addEventListener('click', function(){
+      const pseudo = (document.getElementById('guess_pseudo') && document.getElementById('guess_pseudo').value.trim()) || 'anonymous';
+      let score = 0;
+      for(let i=0;i<quizData.questions.length;i++){
+        const sel = document.querySelector(`input[name="qq_${i}"]:checked`);
+        if(sel && parseInt(sel.value,10) === quizData.questions[i].answer) score++;
+      }
+      const scores = lmc_get('lmc_quiz_scores', []);
+      scores.unshift({ quizId: quizData.quizId, pseudo, score, total: quizData.questions.length, date: nowStr() });
+      lmc_set('lmc_quiz_scores', scores);
+      document.getElementById('quizResult').textContent = `Résultat: ${score}/${quizData.questions.length} — sauvegardé`;
+      audit('quiz', `Quiz ${quizData.quizId} by ${pseudo} => ${score}/${quizData.questions.length}`);
+    });
+  }
 
-// ----------------- Suggestions -----------------
-function renderRecentSuggestions(){ const list = lmc_get('lmc_suggestions',[]); document.getElementById('recentSuggestions').innerHTML = list.length ? list.slice(0,6).map(s=>escapeHTML(s.pseudo? `${s.pseudo}: ${s.text}`: s)).join('<br>') : 'Aucune'; }
-document.getElementById('suggest_send').addEventListener('click', ()=>{ const pseudo=document.getElementById('suggest_pseudo').value.trim(); const text=document.getElementById('suggest_text').value.trim(); if(!text){ document.getElementById('suggest_msg').textContent='Suggestion vide'; return; } const arr=lmc_get('lmc_suggestions',[]); arr.unshift({pseudo: pseudo||'Anon', text, date:new Date().toISOString()}); lmc_set('lmc_suggestions', arr); auditLog('suggestion', `${pseudo||'Anon'}: ${text.slice(0,80)}`); addPoints(pseudo||'Anon',3); document.getElementById('suggest_msg').textContent='Suggestion envoyée'; document.getElementById('suggest_pseudo').value=''; document.getElementById('suggest_text').value=''; renderRecentSuggestions(); renderAdminSuggestions(); });
+  // -------------------------
+  // Guess number game
+  // -------------------------
+  let secret = Math.floor(Math.random()*50)+1;
+  document.getElementById('guess_play').addEventListener('click', function(){
+    const pseudo = document.getElementById('guess_pseudo').value.trim() || 'anon';
+    const val = parseInt(document.getElementById('guess_val').value,10);
+    const out = document.getElementById('guess_feedback');
+    if(isNaN(val) || val < 1 || val > 50){ out.textContent = 'Choisis un nombre entre 1 et 50'; return; }
+    if(val === secret){ out.textContent = `Bravo ${pseudo} — c'était ${secret} ! (réinitialisation)`; audit('game','guess correct by '+pseudo); secret = Math.floor(Math.random()*50)+1; }
+    else { out.textContent = val < secret ? 'Trop petit' : 'Trop grand'; audit('game', `guess ${val} by ${pseudo}`); }
+  });
 
-function renderAdminSuggestions(){ const arr=lmc_get('lmc_suggestions',[]); const el=document.getElementById('suggestionsTab'); if(!arr.length){ el.innerHTML='<div class="item">Aucune suggestion</div>'; return; } el.innerHTML = arr.map((s,i)=>`<div class="item"><div><b>${escapeHTML(s.pseudo)}</b><div class="meta">${escapeHTML(s.text)}</div><div class="meta">${new Date(s.date).toLocaleString()}</div></div><div style="display:flex;flex-direction:column;gap:6px"><button onclick="adminDeleteSuggestion(${i})">Suppr</button></div></div>`).join(''); }
-function adminDeleteSuggestion(i){ const arr=lmc_get('lmc_suggestions',[]); arr.splice(i,1); lmc_set('lmc_suggestions',arr); auditLog('admin','Suggestion supprimée'); renderAdminSuggestions(); renderRecentSuggestions(); }
+  // -------------------------
+  // RPS
+  // -------------------------
+  document.querySelectorAll('.rps').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const pseudo = document.getElementById('rps_pseudo').value.trim() || 'anon';
+      const user = this.dataset.rps;
+      const opts = ['rock','paper','scissors'];
+      const comp = opts[Math.floor(Math.random()*3)];
+      const out = document.getElementById('rps_feedback');
+      if(user === comp) out.textContent = `Égalité — Ordi: ${comp}`;
+      else {
+        const win = (user==='rock' && comp==='scissors') || (user==='paper' && comp==='rock') || (user==='scissors' && comp==='paper');
+        out.textContent = (win ? 'Tu gagnes !' : 'Tu perds...') + ` (Ordi: ${comp})`;
+      }
+      audit('game', `rps ${user} vs ${comp} by ${pseudo}`);
+    });
+  });
 
-// ----------------- Quick Apps & Applications -----------------
-function renderQuickApps(){ const arr=lmc_get('lmc_quick_apps',[]); const el=document.getElementById('quickappsTab'); if(!arr.length){ el.innerHTML='<div class="item">Aucune postulation rapide</div>'; return; } el.innerHTML = arr.map((q,i)=>`<div class="item"><div><b>${escapeHTML(q.pseudo)}</b><div class="meta">${escapeHTML(q.role||q.message||'--')}</div><div class="meta">${new Date(q.date).toLocaleString()}</div></div><div style="display:flex;flex-direction:column;gap:6px"><button onclick="adminHandleQuick(${i})">Traiter</button><button onclick="adminDelQuick(${i})" style="background:var(--danger);color:#fff">Suppr</button></div></div>`).join(''); }
-function renderApplications(){ const arr=lmc_get('lmc_applications',[]); const el=document.getElementById('applicationsTab'); if(!arr.length){ el.innerHTML='<div class="item">Aucune candidature</div>'; return; } el.innerHTML = arr.map((a,i)=>`<div class="item" style="flex-direction:column;align-items:flex-start"><div><b>${escapeHTML(a.pseudo||a.discord||'Anon')}</b> • ${escapeHTML(a.age||'n/a')} ans • dispo: ${escapeHTML(a.hours||'n/a')}h</div><div class="meta" style="margin-top:8px">Exp: ${escapeHTML(a.experience||'--')}</div><div class="meta" style="margin-top:8px">Motivation: ${escapeHTML(a.motivation||'--')}</div><div class="meta" style="margin-top:8px">${new Date(a.date).toLocaleString()}</div><div style="margin-top:10px;display:flex;gap:8px"><button onclick="adminAcceptApplication(${i})">Accepter</button><button onclick="adminDeleteApplication(${i})" style="background:var(--danger);color:#fff">Suppr</button></div></div>`).join(''); }
-function adminHandleQuick(i){ const arr=lmc_get('lmc_quick_apps',[]); if(!arr[i]) return; arr[i].handled=true; lmc_set('lmc_quick_apps',arr); auditLog('admin',`Quick-app traitée: ${arr[i].pseudo}`); renderQuickApps(); }
-function adminDelQuick(i){ const arr=lmc_get('lmc_quick_apps',[]); arr.splice(i,1); lmc_set('lmc_quick_apps',arr); auditLog('admin','quick deleted'); renderQuickApps(); }
-function adminAcceptApplication(i){ const arr=lmc_get('lmc_applications',[]); if(!arr[i]) return; const app=arr[i]; const roleId = createRole(`Member-${app.pseudo||'user'}`, 'Accepted applicant'); auditLog('admin', `Application acceptée: ${app.pseudo||app.discord} -> role ${roleId}`); arr.splice(i,1); lmc_set('lmc_applications',arr); renderApplications(); renderRoles(); }
-function adminDeleteApplication(i){ const arr=lmc_get('lmc_applications',[]); arr.splice(i,1); lmc_set('lmc_applications',arr); auditLog('admin','application deleted'); renderApplications(); }
+  // -------------------------
+  // Dice roll
+  // -------------------------
+  document.getElementById('dice_roll').addEventListener('click', function(){
+    const pseudo = document.getElementById('dice_pseudo').value.trim() || 'anon';
+    const p = Math.floor(Math.random()*6)+1;
+    const c = Math.floor(Math.random()*6)+1;
+    const out = document.getElementById('dice_out');
+    out.textContent = `Toi: ${p} — Ordi: ${c} — ${p>c ? 'Gagné' : p===c ? 'Égalité' : 'Perdu'}`;
+    audit('game', `dice ${p} vs ${c} by ${pseudo}`);
+  });
 
-// ----------------- Roles management -----------------
-function createRole(name,desc){ const roles=lmc_get('lmc_roles',[]); const id='r'+Date.now(); roles.unshift({id,name,desc}); lmc_set('lmc_roles',roles); auditLog('role',`Role created: ${name}`); renderRoles(); return id; }
-function deleteRole(id){ let roles=lmc_get('lmc_roles',[]); roles=roles.filter(r=>r.id!==id); lmc_set('lmc_roles',roles); auditLog('role',`Role deleted: ${id}`); renderRoles(); }
-function renderRoles(){ const roles=lmc_get('lmc_roles',[]); const el=document.getElementById('rolesTab'); const publicRoles=document.getElementById('rolesList'); el.innerHTML = roles.length ? roles.map(r=>`<div class="item"><div><b>${escapeHTML(r.name)}</b><div class="meta">${escapeHTML(r.desc||'')}</div></div><div><button onclick="deleteRole('${r.id}')">Suppr</button></div></div>`).join('') : '<div class="item">Aucun rôle</div>'; publicRoles.innerHTML = roles.length ? roles.map(r=>`<div class="small">${escapeHTML(r.name)}${r.desc? ' • '+escapeHTML(r.desc):''}</div>`).join('') : '<div class="small-muted">Aucun rôle</div>'; }
+  // -------------------------
+  // Rendering & init
+  // -------------------------
+  function renderAllPublic(){
+    renderSuggestions();
+    renderHelpAnswers();
+    renderQuiz();
+  }
 
-// ----------------- Help Requests & Answers -----------------
-function renderHelpRequests(){ const requests=lmc_get('lmc_helpRequests',[]); const el=document.getElementById('helpTab'); if(!requests.length){ el.innerHTML='<div class="item">Aucune demande</div>'; return; } el.innerHTML = requests.map((req,i)=>`<div class="item"><div><b>${escapeHTML(req.pseudo||'Anon')}</b><div class="meta">${escapeHTML(req.question)}</div><div class="meta">${req.answer? 'Réponse: '+escapeHTML(req.answer):'❌ Pas de réponse'}</div></div><div style="display:flex;flex-direction:column;gap:6px"><input id="helpAnswer${i}" placeholder="Répondre..."><button onclick="replyHelp(${i})">Répondre</button></div></div>`).join(''); }
-function replyHelp(i){ const requests=lmc_get('lmc_helpRequests',[]); const answer = document.getElementById('helpAnswer'+i).value.trim(); if(!answer) return alert('Écris une réponse'); requests[i].answer = answer; lmc_set('lmc_helpRequests',requests); auditLog('admin',`Help replied: ${requests[i].pseudo}`); renderHelpRequests(); renderHelpAnswers(); }
-function renderHelpAnswers(){ const requests=lmc_get('lmc_helpRequests',[]); const out = requests.filter(r=>r.answer).map(r=>`<div class="suggestion"><b>${escapeHTML(r.pseudo||'Anon')}</b> a demandé: ${escapeHTML(r.question)}<br>💡 Réponse: ${escapeHTML(r.answer)}</div>`).join(''); document.getElementById('helpAnswers').innerHTML = out || 'Aucune'; }
+  // open games quick link
+  document.getElementById('openGames').addEventListener('click', function(){ document.querySelector('#games').scrollIntoView({behavior:'smooth'}); });
 
-// ----------------- Meeting board (admin) -----------------
-function postMeetingMsg(){ const txt = prompt('Écris ton message pour le board de réunion (short):'); if(!txt) return; const board=lmc_get('lmc_meetingBoard',[]); board.unshift({text:txt, time:new Date().toISOString()}); lmc_set('lmc_meetingBoard',board); auditLog('meeting','New meeting msg'); renderMeetingBoard(); }
-function renderMeetingBoard(){ const board=lmc_get('lmc_meetingBoard',[]); const el=document.getElementById('meetingTab'); el.innerHTML = board.length ? board.map(m=>`<div class="item">${escapeHTML(m.text)}<div class="meta">${new Date(m.time).toLocaleString()}</div></div>`).join('') : '<div class="item">Aucun message de réunion</div>'; }
+  // initial render
+  document.addEventListener('DOMContentLoaded', function(){
+    renderAllPublic();
+    // ensure lmc_quiz_scores exists
+    lmc_get('lmc_quiz_scores', []);
+  });
 
-// ----------------- Audit -----------------
-function renderAudit(){ const logs=lmc_get('lmc_audit',[]); const el=document.getElementById('auditTab'); if(!logs.length){ el.innerHTML = '<div class="item">Journal vide</div>'; return; } el.innerHTML = logs.slice(0,200).map(l=>`<div class="item"><div><b>${escapeHTML(l.type)}</b><div class="meta">${escapeHTML(l.message)}</div></div><div class="meta">${new Date(l.time).toLocaleString()}</div></div>`).join(''); }
-
-// ----------------- Games & Quiz implementations -----------------
-let currentQuiz = null;
-const cultureQuiz = { quizId:'culture_01', title:'Quiz Culture Générale', description:'10 questions', questions:[ { q:'Quelle est la capitale de l\'Espagne ?', choices:['Madrid','Barcelone','Valence','Séville'], answer:0 }, { q:'Qui a peint la Joconde ?', choices:['Van Gogh','Picasso','Léonard de Vinci','Rembrandt'], answer:2 }, { q:'Combien de continents ?', choices:['5','6','7','8'], answer:2 }, { q:'Symbole O ?', choices:['Or','Oxygène','Argent','Osmium'], answer:1 }, { q:'Langue la plus parlée ?', choices:['Anglais','Mandarin','Espagnol','Arabe'], answer:1 }, { q:'Plus grand océan ?', choices:['Atlantique','Indien','Pacifique','Arctique'], answer:2 }, { q:'Auteur Le Petit Prince ?', choices:['Saint-Exupéry','Victor Hugo','Jules Verne','Camus'], answer:0 }, { q:'Planète rouge ?', choices:['Vénus','Mars','Jupiter','Saturne'], answer:1 }, { q:'Année premier pas sur la Lune ?', choices:['1965','1969','1972','1959'], answer:1 }, { q:'Pays du Soleil Levant ?', choices:['Chine','Japon','Thaïlande','Corée'], answer:1 } ] };
-function renderCultureQuiz(){ currentQuiz = cultureQuiz; const c = document.getElementById('quizContainer'); let html = `<div><strong>${escapeHTML(cultureQuiz.title)}</strong><div class="small">${escapeHTML(cultureQuiz.description)}</div>`; cultureQuiz.questions.forEach((qq,idx)=>{ html += `<div class="question"><div><b>Q${idx+1}</b> ${escapeHTML(qq.q)}</div>`; qq.choices.forEach((ch,i)=>{ html += `<label class="choice"><input type="radio" name="cq_${idx}" value="${i}"> ${escapeHTML(ch)}</label>`; }); html += `</div>`; }); html += `<div style="margin-top:8px"><button id="submitCulture" class="btn">Soumettre</button><div id="cultureRes" class="small-muted" style="margin-top:8px"></div></div></div>`; c.innerHTML = html; document.getElementById('submitCulture').addEventListener('click', ()=>{ const pseudo = document.getElementById('playerPseudo').value.trim() || 'anonymous'; let score=0; for(let i=0;i<cultureQuiz.questions.length;i++){ const sel=document.querySelector(`input[name="cq_${i}"]:checked`); if(sel && parseInt(sel.value,10)===cultureQuiz.questions[i].answer) score++; } const scoreObj={quizId:cultureQuiz.quizId, pseudo, score, total:cultureQuiz.questions.length, date:new Date().toISOString()}; const arr=lmc_get('lmc_quiz_scores',[]); arr.unshift(scoreObj); lmc_set('lmc_quiz_scores',arr); auditLog('quiz',`Score ${score}/${cultureQuiz.questions.length} by ${pseudo}`); addPoints(pseudo, score*3); document.getElementById('cultureRes').textContent=`Score: ${score}/${cultureQuiz.questions.length} — sauvegardé`; renderLeaderboard(); }); }
-
-// Guess number game
-function setupGuess(){ const btn=document.getElementById('guess_btn'); btn.addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const val=parseInt(document.getElementById('guess_input').value,10); const out=document.getElementById('guess_feedback'); if(!val||val<1||val>20){ out.textContent='Choisis 1-20'; return; } const rnd=Math.floor(Math.random()*20)+1; if(val===rnd){ out.textContent=`Bravo ! C'était ${rnd} 🎉`; addPoints(pseudo,5); auditLog('game',`Guess correct by ${pseudo}`); } else { out.textContent=`Perdu — le nombre était ${rnd}`; auditLog('game',`Guess ${val} by ${pseudo} vs ${rnd}`); } renderLeaderboard(); }); }
-
-// RPS
-function setupRPS(){ document.querySelectorAll('[data-rps]').forEach(btn=>{ btn.addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const choice=btn.dataset.rps; const ops=['rock','paper','scissors']; const comp=ops[Math.floor(Math.random()*3)]; const out=document.getElementById('rps_feedback'); const decide=(a,b)=>{ if(a===b) return 'Égalité'; if((a==='rock'&&b==='scissors')||(a==='paper'&&b==='rock')||(a==='scissors'&&b==='paper')) return 'Tu gagnes!'; return 'Tu perds'; }; const res=decide(choice,comp); out.textContent=`Toi: ${choice} — Ordi: ${comp} → ${res}`; auditLog('game',`RPS ${choice} vs ${comp} by ${pseudo}`); if(res==='Tu gagnes!') addPoints(pseudo,2); else if(res==='Égalité') addPoints(pseudo,1); renderLeaderboard(); }); }); }
-
-// Dice roll
-function setupDice(){ document.getElementById('rollDiceBtn').addEventListener('click', ()=>{ const pseudo=document.getElementById('playerPseudo').value.trim()||'anonymous'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('diceRes'); out.textContent=`Toi: ${p} — Ordi: ${c}`; if(p>c){ out.textCon
+  // Expose some helpers for debugging (optional)
+  window._lmc = { get: lmc_get, set: lmc_set, audit: audit };
+  </script>
+</body>
+</html>
