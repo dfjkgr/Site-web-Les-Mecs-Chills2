@@ -1,770 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Les Mecs Chills — Hub Officiel (admin pwd hard-coded)</title>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<style>
-:root{--bg:#071126;--card:#0f1620;--muted:#9fb0c8;--accent1:#8e61ff;--accent2:#4fb3ff;--accent3:#43b581;--danger:#ff6b6b;--text:#eaf2ff;--glass:rgba(255,255,255,0.03);--radius:12px;--maxw:1150px}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(120deg,#071126,#08121a);color:var(--text);padding-top:72px;-webkit-font-smoothing:antialiased}
-.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(6,8,12,0.75);backdrop-filter:blur(6px);z-index:1000}
-.brand{display:flex;gap:12px;align-items:center}
-.badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
-.menu{display:flex;gap:8px;align-items:center}
-.menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-.menu a:hover{color:#fff;background:rgba(255,255,255,0.03)}
-.container{max-width:var(--maxw);margin:22px auto;padding:0 18px}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:18px}
-.hero{display:flex;gap:18px;align-items:center}
-.lead{color:var(--muted);margin:8px 0 12px}
-.actions{display:flex;gap:8px}
-.btn{padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
-.btn.small{padding:6px 10px;border-radius:8px;font-size:0.9rem}
-.small{font-size:13px}
-.muted{color:var(--muted)}
-input,select,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px;outline:none;width:100%;box-sizing:border-box}
-textarea{resize:vertical}
-.form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.form-col{display:flex;flex-direction:column;gap:8px}
-.subcard{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-.game-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-.list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-.item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-.footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-.admin-grid{display:grid;grid-template-columns:1fr 340px;gap:12px}
-.panel{background:#071324;padding:12px;border-radius:10px}
-.table{width:100%;border-collapse:collapse}
-.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;font-size:13px}
-.controls{display:flex;gap:8px;flex-wrap:wrap}
-.export-btn{background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#071126;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
-@media(max-width:900px){.hero{flex-direction:column}.menu{display:none}.form-row{flex-direction:column}.admin-grid{grid-template-columns:1fr}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Imprévue - Retour Prochainement</title>
+    <!-- Chargement de Tailwind CSS pour un style rapide et responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Utilisation de la police Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .maintenance-card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body>
-<header class="nav" role="banner">
-  <div class="brand">
-    <div class="badge" aria-hidden="true">LMC</div>
-    <div><div style="font-weight:800">Les Mecs Chills</div><div class="small muted">Serveur Discord • Hub Communautaire</div></div>
-  </div>
-  <nav class="menu" role="navigation" aria-label="Main menu">
-    <a href="#accueil">Accueil</a><a href="#about">À propos</a><a href="#roles">Rôles</a><a href="#games">Jeux</a><a href="#contact">Suggestions</a><a href="#recruitment">Recrutement</a><a href="#help">Aide</a><a href="#adminPanel">Admin</a>
-  </nav>
-</header>
+<body class="flex items-center justify-center min-h-screen p-4">
 
-<main class="container" role="main">
-  <!-- ACCUEIL -->
-  <section id="accueil" class="card hero" aria-labelledby="home-title">
-    <div style="flex:1">
-      <h1 id="home-title">JUSTE DES MECS CHILLS EN FAIT !</h1>
-      <p class="lead">Rejoins notre Discord pour des tournois, events, rôles exclusifs, et une communauté chill.</p>
-      <div class="actions">
-        <a class="btn" href="https://discord.gg/wUtq5ZA9Kt" target="_blank" rel="noopener">Rejoindre le Discord</a>
-        <button id="openGames" class="btn ghost">Voir les jeux</button>
-      </div>
-      <div class="small muted" style="margin-top:10px">Données locales (localStorage). Clés utilisées : <code>lmc_*</code>.</div>
-    </div>
-    <div style="width:340px;display:flex;flex-direction:column;gap:12px">
-      <div class="card"><strong>Prochains events</strong><div class="small muted" style="margin-top:8px">Mise à jour ajout de points le 1 novembre ou avant</div></div>
-      <div class="card"><strong>Rôles VIP</strong><div class="small muted" style="margin-top:8px">Accès salon VIP & avantages</div></div>
-    </div>
-  </section>
+    <div class="maintenance-card max-w-4xl w-full bg-white p-6 md:p-10 rounded-xl border-t-8 border-red-600">
 
-  <!-- ABOUT -->
-  <section id="about" class="card"><h2>À propos</h2><p> JUSTE DES MECS CHILLS, MAIS ENCORE PLUS COOL ! 
-
-Tu kiffes Brawl Stars  ? Alors tu vas adorer notre serveur !
-
- Ce que tu y trouveras :
-
-Une catégorie Brawl Stars rien que pour toi 
-
-Ainsi qu'une catégorie pour les autres jeux vidéos !  
-
-Et aussi une catégorie Sport pour exprimer tes passions ! 
-
-Une ambiance au top, du respect et du fun garantit 
-
-Des rôles exclusifs à débloquer chaque jour 
-
-Et surtout… les copains et copines prêts à tout déchirer avec toi ! 
-
-
- Notre serveur est super développé et prêt à t’accueillir comme il se doit !
-
- Des évents réguliers à chaque palier de membres pour encore plus de fun !
-
- Ici, chaque membre compte : fais des suggestions, donne ton avis, et mets l’ambiance à ta manière !
-
- Parle de tout, de rien, rigole et profite dans un espace chill où tout le monde est le bienvenu !
-
- Rejoins-nous maintenant et deviens plus chill que jamais !</p></section>
-
-  <!-- ROLES -->
-  <section id="roles" class="card">
-    <h2>Rôles & Postulations</h2>
-    <div class="subcard">
-      <h3>Postulation rapide</h3>
-      <div class="form-row" style="margin-top:8px">
-        <input id="quick_pseudo" type="text" aria-label="pseudo rapide" placeholder="Ex: ChillUser#1234">
-        <select id="quick_role" aria-label="role rapide"><option value="">Choisir un rôle</option><option value="Modérateur">Modérateur</option><option value="Journaliste">Journaliste</option><option value="Beta Testeur">Beta Testeur</option></select>
-        <button id="quick_submit" class="btn small">Postuler</button>
-      </div>
-      <div id="quick_msg" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-    <div class="subcard" style="margin-top:12px">
-      <h3>Candidature détaillée</h3>
-      <form id="advancedApply" class="form-col" aria-label="candidature">
-        <label for="app_pseudo">Pseudo</label><input id="app_pseudo" type="text" required>
-        <label for="app_age">Âge</label><input id="app_age" type="number" min="13">
-        <label for="app_experience">Expérience</label><input id="app_experience" type="text">
-        <label for="app_hours">Heures / semaine</label><input id="app_hours" type="number" min="0">
-        <label for="app_motivation">Lettre de motivation</label><textarea id="app_motivation" rows="5" maxlength="2000"></textarea>
-        <div style="margin-top:8px"><button type="submit" class="btn small">Envoyer</button></div>
-        <div id="app_msg" class="small muted" style="margin-top:8px"></div>
-      </form>
-    </div>
-  </section>
-
-  <!-- GAMES -->
-  <section id="games" class="card">
-    <h2>Jeux & Quiz</h2>
-    <div class="game-card" id="quiz_card"><h3>Quiz Culture Générale</h3><div id="quizArea" class="form-col"></div></div>
-
-    <div class="game-card" id="guess_card"><h3>Devine le nombre (1-50)</h3>
-      <div class="form-row"><input id="guess_pseudo" type="text" placeholder="Ton pseudo"><input id="guess_val" type="number" min="1" max="50" placeholder="Nombre"><button id="guess_play" class="btn small">Jouer</button></div>
-      <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-    <div class="game-card" id="rps_card"><h3>Pierre / Feuille / Ciseaux</h3>
-      <div class="form-row"><input id="rps_pseudo" type="text" placeholder="Ton pseudo"><button data-rps="rock" class="btn small rps">Pierre</button><button data-rps="paper" class="btn small rps">Feuille</button><button data-rps="scissors" class="btn small rps">Ciseaux</button></div>
-      <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-    <div class="game-card" id="dice_card"><h3>Dice Roll</h3>
-      <div class="form-row"><input id="dice_pseudo" type="text" placeholder="Ton pseudo"><button id="dice_roll" class="btn small">Lancer le dé</button></div>
-      <div id="dice_out" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-    <div style="margin-top:12px"><button id="load3DButton" class="btn small ghost">Charger démo 3D (three.js lazy-load)</button><div id="threeDContainer" style="margin-top:8px"></div></div>
-  </section>
-
-  <!-- CONTACT / SUGGESTIONS -->
-  <section id="contact" class="card">
-    <h2>Contact & Suggestions</h2>
-    <form id="suggestForm" class="form-col" aria-label="suggestions">
-      <label for="suggest_pseudo">Pseudo (optionnel)</label><input id="suggest_pseudo" type="text" placeholder="Pseudo (optionnel)">
-      <label for="suggest_text">Suggestion / Message</label><textarea id="suggest_text" rows="4" required></textarea>
-      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
-      <div id="suggest_msg" class="small muted" style="margin-top:8px"></div>
-    </form>
-    <h3 style="margin-top:12px">Suggestions récentes</h3>
-    <div id="suggest_list" class="list muted small">Aucune suggestion</div>
-  </section>
-
-  <!-- RECRUITMENT -->
-  <section id="recruitment" class="card">
-    <h2>Questionnaire de recrutement</h2>
-    <form id="recruitForm" class="form-col" aria-label="recrutement">
-      <label for="r_pseudo">Pseudo Discord</label><input id="r_pseudo" type="text" required>
-      <label for="r_age">Âge</label><input id="r_age" type="number" min="13" required>
-      <label for="r_experience">Expérience Discord</label><input id="r_experience" type="text" required>
-      <label for="r_hours">Disponibilité (h / semaine)</label><input id="r_hours" type="number" min="0" required>
-      <label for="r_motivation">Lettre de motivation</label><textarea id="r_motivation" rows="6" maxlength="2000" required></textarea>
-      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer ma candidature</button></div>
-      <div id="recruit_msg" class="small muted" style="margin-top:8px"></div>
-    </form>
-  </section>
-
-  <!-- HELP -->
-  <section id="help" class="card">
-    <h2>Demande d'aide</h2>
-    <form id="helpForm" class="form-col" aria-label="aide">
-      <label for="help_pseudo">Pseudo (optionnel)</label><input id="help_pseudo" type="text" placeholder="Pseudo (optionnel)">
-      <label for="help_question">Question / Problème</label><textarea id="help_question" rows="4" required></textarea>
-      <div style="margin-top:8px"><button type="submit" class="btn">Envoyer</button></div>
-      <div id="help_msg" class="small muted" style="margin-top:8px"></div>
-    </form>
-    <h3 style="margin-top:12px">Informations / Aide (réponses publiques)</h3>
-    <div id="help_answers" class="list muted small">Aucune information</div>
-  </section>
-
-  <!-- ADMIN PANEL -->
-  <section id="adminPanel" class="card">
-    <h2>Panneau Admin</h2>
-
-    <div style="margin-bottom:12px" class="controls">
-      <div style="display:flex;gap:8px;align-items:center">
-        <input id="admin_pass_input" type="password" placeholder="Mot de passe admin">
-        <button id="admin_login_btn" class="btn small">Se connecter</button>
-        <button id="admin_logout_btn" class="btn small ghost" style="display:none">Se déconnecter</button>
-      </div>
-      <div style="margin-left:auto" class="controls">
-        <button id="export_all" class="export-btn">Exporter données (JSON)</button>
-        <input id="import_file" type="file" accept="application/json" style="display:none">
-        <button id="import_btn" class="btn small ghost">Importer JSON</button>
-      </div>
-    </div>
-
-    <div id="admin_area" style="display:none">
-      <div class="admin-grid">
-        <div>
-          <div class="panel"><h3>Suggestions</h3><div id="adminSuggestions" class="list"></div><div style="margin-top:8px"><button id="clear_suggestions" class="btn small ghost">Supprimer toutes les suggestions</button></div></div>
-
-          <div class="panel" style="margin-top:12px"><h3>Candidatures (Applications)</h3><div id="adminApplications" class="list"></div><div style="margin-top:8px"><button id="clear_applications" class="btn small ghost">Supprimer toutes les candidatures</button></div></div>
-
-          <div class="panel" style="margin-top:12px"><h3>Quick Apps</h3><div id="adminQuickApps" class="list"></div></div>
+        <!-- En-tête de la Maintenance -->
+        <div class="text-center mb-8">
+            <svg class="w-16 h-16 text-red-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Zm-1-5H13V7H11ZM12 17.5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 12 17.5Z"/>
+            </svg>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">
+                Maintenance Imprévue Majeure
+            </h1>
+            <p class="text-lg text-red-600 font-semibold">
+                Nous serons de retour en ligne dès que possible.
+            </p>
         </div>
 
-        <aside>
-          <div class="panel"><h3>Rôles</h3><div id="adminRoles" class="list"></div><div style="margin-top:8px"><input id="role_name" placeholder="Nom du rôle"><input id="role_desc" placeholder="Description"><button id="role_create" class="btn small">Créer rôle</button></div></div>
+        <!-- Corps du Message -->
+        <div class="text-gray-700 space-y-6">
+            <p class="text-xl font-medium leading-relaxed">
+                Bonjour à tous,
+            </p>
+            <p>
+                Je vous écris ce message pour vous informer d’un problème technique majeur actuellement en cours sur notre site web. Depuis quelque temps, nous rencontrons un bug critique lié au système de candidatures, plus précisément à la gestion des adresses IP.
+            </p>
 
-          <div class="panel" style="margin-top:12px"><h3>Aide publique</h3><div id="adminHelps" class="list"></div></div>
+            <p>
+                Concrètement, cela signifie que certaines candidatures ne sont pas correctement enregistrées ou traitées, voire même bloquées par erreur à cause d’une anomalie au niveau du serveur. Ce dysfonctionnement empêche le bon fonctionnement de plusieurs outils internes, et pourrait créer des erreurs dans la base de données si nous laissions le site actif dans cet état. <span class="text-xl">⚠️</span>
+            </p>
 
-          <div class="panel" style="margin-top:12px"><h3>Audit (logs)</h3><div id="adminAudit" class="list small muted" style="max-height:200px;overflow:auto"></div></div>
-        </aside>
-      </div>
+            <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                <p class="font-bold text-red-800 mb-2">
+                    🚫 Décision d'urgence :
+                </p>
+                <p>
+                    Pour éviter tout risque de perte de données ou de mauvais traitement des candidatures, j’ai pris la décision de placer le site en <span class="font-bold">maintenance complète pendant quelques jours</span>.
+                </p>
+            </div>
 
-      <div class="panel" style="margin-top:12px">
-        <h3>Salle de réunion</h3>
-        <textarea id="meeting_notes" rows="6" placeholder="Notes de réunion..."></textarea>
-        <div style="margin-top:8px"><button id="save_meeting" class="btn small">Sauvegarder notes</button> <span id="meeting_msg" class="small muted"></span></div>
-      </div>
+
+            <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">
+                Objectifs de cette Maintenance
+            </h2>
+
+            <!-- Liste des objectifs avec icônes -->
+            <ul class="space-y-3 pl-0">
+                <li class="flex items-start">
+                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12A10 10 0 0 1 2 12A10 10 0 0 1 22 12Z M12 4a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8Z M12 6a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6Z M12 8a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4Z"/></svg>
+                    <span class="flex-1">Identifier l’origine exacte du problème au niveau du système d’adresse IP <span class="font-semibold text-gray-900">🧩</span></span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm-1 14l-4-4l1.41-1.41L11 13.17l4.59-4.58L17 10L11 16Z"/></svg>
+                    <span class="flex-1">Corriger le code responsable de cette erreur <span class="font-semibold text-gray-900">💻</span></span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M18 8H20V19H4V8H6V6A6 6 0 0 1 12 0A6 6 0 0 1 18 6Z M12 2A4 4 0 0 0 8 6V8H16V6A4 4 0 0 0 12 2Z M2 20V22H22V20Z"/></svg>
+                    <span class="flex-1">Tester en profondeur chaque partie du site pour m’assurer qu’il soit entièrement stable et sécurisé <span class="font-semibold text-gray-900">🔒</span></span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20a8 8 0 0 0 8-8H4a8 8 0 0 0 8 8Z M12 4a8 8 0 0 1 8 8h-4a4 4 0 0 0-4-4V4Z"/></svg>
+                    <span class="flex-1">Mettre en place une optimisation globale afin d’éviter que ce type d’incident ne se reproduise à l’avenir <span class="font-semibold text-gray-900">🚀</span></span>
+                </li>
+            </ul>
+
+            <!-- Mise à jour et Projet Halloween -->
+            <p>
+                Pour le moment, je ne peux pas donner de date précise de fin de maintenance, car tout dépendra du temps nécessaire pour analyser et corriger le bug. Cependant, je m’engage à vous tenir informés de chaque avancée importante, afin que vous sachiez exactement où en est le processus.
+            </p>
+
+            <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
+                <p class="font-bold text-yellow-800 mb-2">
+                    <span class="text-xl">🎃</span> Info Projet Halloween :
+                </p>
+                <p>
+                    Concernant le projet Halloween, <span class="font-semibold">ne vous inquiétez pas</span> : il reste en cours ! Le développement continue comme prévu, et vous aurez tout le temps nécessaire pour le finaliser avant la date prévue. Le site étant momentanément indisponible, cela ne remet absolument pas en cause l’avancement du projet ni vos participations.
+                </p>
+            </div>
+
+            <p>
+                Je sais que cette situation peut être frustrante, surtout pour ceux qui avaient des actions prévues sur le site ces prochains jours, mais cette décision est essentielle pour la sécurité et la stabilité du projet. Je préfère prendre le temps de faire les choses proprement, plutôt que de risquer d’aggraver le problème en laissant le site accessible avec des erreurs non corrigées.
+            </p>
+
+            <!-- Conclusion -->
+            <p class="text-center pt-4 text-xl font-semibold text-gray-800">
+                Merci à tous pour votre patience, votre compréhension et votre soutien <span class="text-2xl">🙏</span>
+            </p>
+            <p class="text-center text-sm text-gray-500">
+                Je fais tout mon possible pour que le site revienne plus performant et plus sûr que jamais.
+            </p>
+        </div>
+
     </div>
-
-    <div id="admin_unlocked_msg" class="small muted" style="display:none;margin-top:8px">Admin connecté — actions journalisées.</div>
-  </section>
-
-  <footer class="footer">© Les Mecs Chills — Données locales (localStorage, clés lmc_*). Pour sécurité réelle, utiliser backend.</footer>
-</main>
-
-<script>
-/* ========== CONFIGURATION SÉCURITÉ (hard-coded demandé) ========== */
-/* MOT DE PASSE FIXE — tel que demandé */
-const ADMIN_PASSWORD = '89mLh21'; // <- mot de passe fixe (exposé dans le code)
-
-/* ========== SMALL HELPERS ========== */
-function lget(k, def){ try{ const r = localStorage.getItem(k); return r ? JSON.parse(r) : def; } catch(e){ console.error('lget',e); return def; } }
-function lset(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ console.error('lset',e); return false; } }
-function now(){ return new Date().toISOString().replace('T',' ').slice(0,16); }
-function esc(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
-(function ensure(){ lget('lmc_announcements',[]); lget('lmc_suggestions',[]); lget('lmc_applications',[]); lget('lmc_quick_apps',[]); lget('lmc_contacts',[]); lget('lmc_roles',[]); lget('lmc_role_claims',{}); lget('lmc_audit',[]); lget('lmc_ai_saved',[]); lget('lmc_helpRequests',[]); lget('lmc_quiz_scores',[]); })();
-function auditLog(type,msg){ const logs = lget('lmc_audit',[]); logs.unshift({time:new Date().toISOString(),type,message:msg}); lset('lmc_audit',logs.slice(0,500)); }
-
-/* ========== PUBLIC UI HANDLERS (suggestions, apps, help) ========== */
-document.getElementById('suggestForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo = document.getElementById('suggest_pseudo').value.trim(); const text = document.getElementById('suggest_text').value.trim(); if(!text){ document.getElementById('suggest_msg').textContent='Message vide'; return; } const arr = lget('lmc_suggestions',[]); arr.unshift({ pseudo: pseudo||'Anon', text, date: now() }); lset('lmc_suggestions',arr); const contacts = lget('lmc_contacts',[]); contacts.unshift({ name: pseudo||'Anon', email:'', msg: text, date: now() }); lset('lmc_contacts',contacts); document.getElementById('suggest_msg').textContent='✅ Suggestion envoyée'; auditLog('suggestion', `Suggestion by ${pseudo||'Anon'}: ${text.slice(0,80)}`); this.reset(); renderSuggestions(); renderAdminData(); });
-
-function renderSuggestions(){ const arr=lget('lmc_suggestions',[]); const el=document.getElementById('suggest_list'); if(!arr.length){ el.innerHTML='Aucune suggestion'; return; } el.innerHTML = arr.slice(0,50).map(s=>`<div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div class="small muted">${esc(s.date||'')}</div></div>`).join(''); }
-
-document.getElementById('quick_submit').addEventListener('click', function(){ const pseudo=document.getElementById('quick_pseudo').value.trim(); const role=document.getElementById('quick_role').value; const msg=document.getElementById('quick_msg'); if(!pseudo||!role){ msg.textContent='Pseudo et rôle requis'; return; } const arr=lget('lmc_quick_apps',[]); arr.unshift({ pseudo, role, date: now(), handled:false }); lset('lmc_quick_apps',arr); msg.textContent='✅ Postulation rapide enregistrée'; auditLog('quickapp', `QuickApp: ${pseudo} -> ${role}`); document.getElementById('quick_pseudo').value=''; document.getElementById('quick_role').selectedIndex=0; renderAdminData(); });
-
-document.getElementById('advancedApply').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('app_pseudo').value.trim(); const age=document.getElementById('app_age').value; const exp=document.getElementById('app_experience').value.trim(); const hours=document.getElementById('app_hours').value; const motiv=document.getElementById('app_motivation').value.trim(); if(!pseudo){ document.getElementById('app_msg').textContent='Pseudo requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('app_msg').textContent='✅ Candidature envoyée'; auditLog('application', `Application: ${pseudo}`); this.reset(); renderAdminData(); });
-
-document.getElementById('recruitForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('r_pseudo').value.trim(); const age=document.getElementById('r_age').value; const exp=document.getElementById('r_experience').value.trim(); const hours=document.getElementById('r_hours').value; const motiv=document.getElementById('r_motivation').value.trim(); if(!pseudo||!age||!exp||!hours){ document.getElementById('recruit_msg').textContent='Remplis tous les champs requis'; return; } const arr=lget('lmc_applications',[]); arr.unshift({ pseudo, age, experience:exp, hours, motivation:motiv, date: now() }); lset('lmc_applications',arr); document.getElementById('recruit_msg').textContent='✅ Candidature enregistrée'; auditLog('recruitment', `Recruit: ${pseudo}`); this.reset(); renderAdminData(); });
-
-document.getElementById('helpForm').addEventListener('submit', function(e){ e.preventDefault(); const pseudo=document.getElementById('help_pseudo').value.trim()||'Anon'; const q=document.getElementById('help_question').value.trim(); if(!q){ document.getElementById('help_msg').textContent='Question vide'; return; } const arr=lget('lmc_helpRequests',[]); arr.unshift({ id: Date.now()+Math.random().toString(36).slice(2,8), pseudo, question: q, date: now(), answer: null }); lset('lmc_helpRequests',arr); const contacts=lget('lmc_contacts',[]); contacts.unshift({ name: pseudo, email:'', msg:q, date: now() }); lset('lmc_contacts',contacts); document.getElementById('help_msg').textContent='✅ Demande envoyée — un modérateur peut y répondre depuis le panneau'; auditLog('help_request', `Help by ${pseudo}: ${q.slice(0,80)}`); this.reset(); renderHelpAnswers(); renderAdminData(); });
-
-function renderHelpAnswers(){ const arr=lget('lmc_helpRequests',[]); const answered=arr.filter(x=>x.answer); const out=answered.map(a=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">${esc(a.question)}</div><div style="margin-top:6px"><strong>Réponse:</strong> ${esc(a.answer)}</div></div><div class="small muted">${esc(a.date)}</div></div>`).join(''); document.getElementById('help_answers').innerHTML = out || 'Aucune information'; }
-
-/* ========== Quiz ========== */
-const quiz = { quizId:'culture_01', title:'Quiz Culture Générale', questions:[
-  { q:"Capitale de la France ?", choices:["Paris","Lyon","Marseille","Bordeaux"], answer:0 },
-  { q:"Combien de continents ?", choices:["5","6","7","8"], answer:2 },
-  { q:"Auteur du 'Petit Prince' ?", choices:["Victor Hugo","Camus","Saint-Exupéry","Jules Verne"], answer:2 }
-]};
-function renderQuiz(){ const container=document.getElementById('quizArea'); let html=`<div><strong>${esc(quiz.title)}</strong><div class="small muted">Test rapide — résultats sauvegardés localement</div></div>`; quiz.questions.forEach((q,idx)=>{ html+=`<div style="margin-top:8px"><div><strong>Q${idx+1}:</strong> ${esc(q.q)}</div>`; q.choices.forEach((c,ci)=>{ html+=`<label style="display:block;margin:6px 0"><input type="radio" name="qq_${idx}" value="${ci}"> ${esc(c)}</label>`; }); html+=`</div>`; }); html+=`<div style="margin-top:10px"><button id="submitQuiz" class="btn small">Soumettre</button><div id="quizResult" class="small muted" style="margin-top:8px"></div></div>`; container.innerHTML=html; document.getElementById('submitQuiz').addEventListener('click', ()=>{ const pseudo=(document.getElementById('guess_pseudo')&&document.getElementById('guess_pseudo').value.trim())||'anonymous'; let score=0; for(let i=0;i<quiz.questions.length;i++){ const sel=document.querySelector(`input[name="qq_${i}"]:checked`); if(sel&&parseInt(sel.value,10)===quiz.questions[i].answer) score++; } const arr=lget('lmc_quiz_scores',[]); arr.unshift({ quizId:quiz.quizId, pseudo, score, total:quiz.questions.length, date: now() }); lset('lmc_quiz_scores',arr); document.getElementById('quizResult').textContent=`Résultat: ${score}/${quiz.questions.length} — sauvegardé`; auditLog('quiz', `Quiz ${quiz.quizId} by ${pseudo}: ${score}/${quiz.questions.length}`); }); }
-
-/* ========== Games ========== */
-let secret=Math.floor(Math.random()*50)+1;
-document.getElementById('guess_play').addEventListener('click', ()=>{ const pseudo=document.getElementById('guess_pseudo').value.trim()||'anon'; const val=parseInt(document.getElementById('guess_val').value,10); const out=document.getElementById('guess_feedback'); if(isNaN(val)||val<1||val>50){ out.textContent='Choisis un nombre entre 1 et 50'; return; } if(val===secret){ out.textContent=`Bravo ${pseudo} — c'était ${secret} ! (réinitialisé)`; auditLog('game','guess correct by '+pseudo); secret=Math.floor(Math.random()*50)+1; } else{ out.textContent=val<secret?'Trop petit':'Trop grand'; auditLog('game',`guess ${val} by ${pseudo}`); } });
-
-document.querySelectorAll('.rps').forEach(btn=>btn.addEventListener('click',function(){ const pseudo=document.getElementById('rps_pseudo').value.trim()||'anon'; const user=this.dataset.rps; const opts=['rock','paper','scissors']; const comp=opts[Math.floor(Math.random()*3)]; const out=document.getElementById('rps_feedback'); if(user===comp) out.textContent=`Égalité — Ordi: ${comp}`; else{ const win=(user==='rock'&&comp==='scissors')||(user==='paper'&&comp==='rock')||(user==='scissors'&&comp==='paper'); out.textContent=(win?'Tu gagnes !':'Tu perds...')+` (Ordi: ${comp})`; } auditLog('game',`rps ${user} vs ${comp} by ${pseudo}`); }));
-
-document.getElementById('dice_roll').addEventListener('click', ()=>{ const pseudo=document.getElementById('dice_pseudo').value.trim()||'anon'; const p=Math.floor(Math.random()*6)+1; const c=Math.floor(Math.random()*6)+1; const out=document.getElementById('dice_out'); out.textContent=`Toi: ${p} — Ordi: ${c} — ${p>c?'Gagné':p===c?'Égalité':'Perdu'}`; auditLog('game',`dice ${p} vs ${c} by ${pseudo}`); });
-
-/* ========== three.js lazy load ========== */
-document.getElementById('load3DButton').addEventListener('click', function(){ const btn=this; btn.disabled=true; btn.textContent='Chargement...'; const s=document.createElement('script'); s.src='https://unpkg.com/three@0.152.2/build/three.min.js'; s.onload=function(){ init3D(); btn.style.display='none'; }; s.onerror=function(){ btn.textContent='Erreur chargement 3D'; btn.disabled=false; }; document.head.appendChild(s); });
-function init3D(){ const container=document.getElementById('threeDContainer'); if(typeof THREE==='undefined' || !container){ container.innerHTML='<div class="small muted">three.js non disponible</div>'; return; } const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(50,container.clientWidth/container.clientHeight,0.1,1000); const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(320,240); container.appendChild(renderer.domElement); const geometry=new THREE.BoxGeometry(); const material=new THREE.MeshNormalMaterial(); const cube=new THREE.Mesh(geometry,material); scene.add(cube); camera.position.z=3; function animate(){ requestAnimationFrame(animate); cube.rotation.x+=0.01; cube.rotation.y+=0.01; renderer.render(scene,camera); } animate(); }
-
-/* ========== ADMIN (hard-coded password) ========== */
-const adminLoginBtn=document.getElementById('admin_login_btn');
-const adminLogoutBtn=document.getElementById('admin_logout_btn');
-const adminPassInput=document.getElementById('admin_pass_input');
-const adminArea=document.getElementById('admin_area');
-const adminUnlockedMsg=document.getElementById('admin_unlocked_msg');
-
-function checkAdmin(pass){ return pass === ADMIN_PASSWORD; }
-
-adminLoginBtn.addEventListener('click', ()=>{ const pass=adminPassInput.value; if(checkAdmin(pass)){ adminArea.style.display='block'; adminUnlockedMsg.style.display='block'; adminLogoutBtn.style.display='inline-block'; adminLoginBtn.style.display='none'; adminPassInput.style.display='none'; auditLog('admin','Admin connecté'); renderAdminData(); } else { alert('Mot de passe incorrect'); } });
-
-adminLogoutBtn.addEventListener('click', ()=>{ adminArea.style.display='none'; adminUnlockedMsg.style.display='none'; adminLogoutBtn.style.display='none'; adminLoginBtn.style.display='inline-block'; adminPassInput.style.display='inline-block'; adminPassInput.value=''; auditLog('admin','Admin déconnecté'); });
-
-/* ========== Admin rendering & actions ========== */
-function renderAdminData(){
-  // Suggestions
-  const suggestions=lget('lmc_suggestions',[]);
-  document.getElementById('adminSuggestions').innerHTML = suggestions.map((s,i)=>`<div class="item"><div><strong>${esc(s.pseudo||'Anon')}</strong><div class="small muted">${esc(s.text)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small accept-suggestion">✔</button><button data-idx="${i}" class="btn small ghost del-suggestion">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune suggestion</div>';
-
-  // Applications
-  const apps=lget('lmc_applications',[]);
-  document.getElementById('adminApplications').innerHTML = apps.map((a,i)=>`<div class="item"><div><strong>${esc(a.pseudo)}</strong><div class="small muted">Age:${esc(a.age||'')}, Hs:${esc(a.hours||'')}</div><div style="margin-top:6px">${esc(a.motivation||a.experience||'')}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small view-app">Voir</button><button data-idx="${i}" class="btn small ghost del-app">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune candidature</div>';
-
-  // Quick apps
-  const quick=lget('lmc_quick_apps',[]);
-  document.getElementById('adminQuickApps').innerHTML = quick.map((q,i)=>`<div class="item"><div><strong>${esc(q.pseudo)}</strong><div class="small muted">${esc(q.role)}</div></div><div style="display:flex;gap:8px"><button data-idx="${i}" class="btn small mark-handled">${q.handled?'✓':'✔'}</button><button data-idx="${i}" class="btn small ghost del-quick">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune quick-app</div>';
-
-  // Roles
-  const roles=lget('lmc_roles',[]);
-  document.getElementById('adminRoles').innerHTML = roles.map(r=>`<div class="item"><div><strong>${esc(r.name)}</strong><div class="small muted">${esc(r.desc||'')}</div></div><div><button data-id="${esc(r.id)}" class="btn small del-role">🗑</button></div></div>`).join('') || '<div class="small muted">Aucun rôle</div>';
-
-  // Helps
-  const helps=lget('lmc_helpRequests',[]);
-  document.getElementById('adminHelps').innerHTML = helps.map((h,i)=>`<div class="item"><div><strong>${esc(h.pseudo)}</strong><div class="small muted">${esc(h.question)}</div>${h.answer?`<div style="margin-top:6px"><strong>Réponse:</strong> ${esc(h.answer)}</div>`:''}</div><div style="display:flex;flex-direction:column;gap:6px"><button data-idx="${i}" class="btn small answer-help">Répondre</button><button data-idx="${i}" class="btn small ghost del-help">🗑</button></div></div>`).join('') || '<div class="small muted">Aucune demande</div>';
-
-  // Audit
-  const audit=lget('lmc_audit',[]);
-  document.getElementById('adminAudit').innerHTML = audit.slice(0,200).map(a=>`<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.02)"><div class="small muted">${esc(a.time)}</div><div>${esc('['+a.type+'] '+a.message)}</div></div>`).join('') || '<div class="small muted">Aucun log</div>';
-}
-
-/* ========== admin delegated actions ========== */
-document.addEventListener('click', function(e){
-  if(e.target.matches('.del-suggestion')){ if(!confirm('Supprimer cette suggestion ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); arr.splice(i,1); lset('lmc_suggestions',arr); auditLog('admin','suppression suggestion'); renderAdminData(); renderSuggestions(); }
-  if(e.target.matches('.accept-suggestion')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_suggestions',[]); const s=arr.splice(i,1)[0]; if(s){ lset('lmc_suggestions',arr); const ann=lget('lmc_announcements',[]); ann.unshift({title:'Suggestion épinglée', text:s.text, date: now()}); lset('lmc_announcements',ann); auditLog('admin','epingle suggestion -> announcement'); alert('Suggestion transformée en annonce.'); renderAdminData(); renderSuggestions(); } }
-  if(e.target.matches('.del-app')){ if(!confirm('Supprimer cette candidature ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); arr.splice(i,1); lset('lmc_applications',arr); auditLog('admin','suppr application'); renderAdminData(); }
-  if(e.target.matches('.view-app')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_applications',[]); const a=arr[i]; if(a) alert(`Candidature de ${a.pseudo}\nAge: ${a.age}\nHours: ${a.hours}\nExp: ${a.experience}\nMotivation:\n${a.motivation}`); }
-  if(e.target.matches('.mark-handled')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); if(arr[i]){ arr[i].handled=!arr[i].handled; lset('lmc_quick_apps',arr); auditLog('admin','toggle quickapp handled'); renderAdminData(); } }
-  if(e.target.matches('.del-quick')){ if(!confirm('Supprimer cette quick-app ?')) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_quick_apps',[]); arr.splice(i,1); lset('lmc_quick_apps',arr); auditLog('admin','suppr quickapp'); renderAdminData(); }
-  if(e.target.id==='role_create'){ const name=document.getElementById('role_name').value.trim(); const desc=document.getElementById('role_desc').value.trim(); if(!name){ alert('Nom requis'); return; } const roles=lget('lmc_roles',[]); const id='r'+Date.now(); roles.unshift({id,name,desc}); lset('lmc_roles',roles); auditLog('admin','create role '+name); document.getElementById('role_name').value=''; document.getElementById('role_desc').value=''; renderAdminData(); }
-  if(e.target.matches('.del-role')){ if(!confirm('Supprimer ce rôle ?')) return; const id=e.target.dataset.id; const roles=lget('lmc_roles',[]); const idx=roles.findIndex(r=>r.id===id); if(idx!==-1){ roles.splice(idx,1); lset('lmc_roles',roles); auditLog('admin','del role '+id); renderAdminData(); } }
-  if(e.target.matches('.answer-help')){ const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); const item=arr[i]; const ans=prompt(`Réponse à ${item.pseudo} :\n${item.question}\n\nTa réponse :`); if(ans!==null){ arr[i].answer=ans; lset('lmc_helpRequests',arr); auditLog('admin','answer help for '+item.pseudo); renderAdminData(); renderHelpAnswers(); } }
-  if(e.target.matches('.del-help')){ if(!confirm("Supprimer cette demande d'aide ?")) return; const i=parseInt(e.target.dataset.idx,10); const arr=lget('lmc_helpRequests',[]); arr.splice(i,1); lset('lmc_helpRequests',arr); auditLog('admin','del help'); renderAdminData(); renderHelpAnswers(); }
-});
-
-/* ========== clear lists ========== */
-document.getElementById('clear_suggestions').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les suggestions ?')) return; lset('lmc_suggestions',[]); auditLog('admin','clear suggestions'); renderAdminData(); renderSuggestions(); });
-document.getElementById('clear_applications').addEventListener('click', ()=>{ if(!confirm('Supprimer toutes les candidatures ?')) return; lset('lmc_applications',[]); auditLog('admin','clear applications'); renderAdminData(); });
-
-/* ========== meeting notes ========== */
-document.getElementById('save_meeting').addEventListener('click', ()=>{ const notes=document.getElementById('meeting_notes').value; const arr=lget('lmc_ai_saved',[]); arr.unshift({ text: notes, date: now() }); lset('lmc_ai_saved', arr); document.getElementById('meeting_msg').textContent='Notes sauvegardées'; auditLog('admin','meeting notes saved'); });
-
-/* ========== export/import ========== */
-document.getElementById('export_all').addEventListener('click', ()=>{ const keys=['lmc_announcements','lmc_suggestions','lmc_applications','lmc_quick_apps','lmc_contacts','lmc_roles','lmc_role_claims','lmc_audit','lmc_ai_saved','lmc_helpRequests','lmc_quiz_scores']; const dump={}; keys.forEach(k=>dump[k]=lget(k,[])); const blob=new Blob([JSON.stringify(dump,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='lmc_dump_'+(new Date().toISOString().slice(0,10))+'.json'; document.body.appendChild(a); a.click(); a.remove(); });
-document.getElementById('import_btn').addEventListener('click', ()=>document.getElementById('import_file').click());
-document.getElementById('import_file').addEventListener('change', function(){ const f=this.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(){ try{ const data=JSON.parse(r.result); Object.keys(data).forEach(k=>localStorage.setItem(k,JSON.stringify(data[k]))); alert('Import terminé. Recharge la page.'); auditLog('admin','import data'); }catch(e){ alert('Fichier invalide'); } }; r.readAsText(f); });
-
-/* ========== render & init ========== */
-function renderAllPublic(){ renderSuggestions(); renderHelpAnswers(); renderQuiz(); }
-function renderAdminIfVisible(){ if(document.getElementById('admin_area').style.display!=='none') renderAdminData(); }
-document.getElementById('openGames').addEventListener('click', ()=>{ document.querySelector('#games').scrollIntoView({behavior:'smooth'}); });
-document.addEventListener('DOMContentLoaded', function(){ renderAllPublic(); });
-
-/* expose if needed */
-window.lmc={get:lget,set:lset,audit:auditLog,renderAdmin:renderAdminData};
-</script><!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Les Mecs Chills — Hub Officiel (admin pwd hard-coded)</title>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<style>
-:root{--bg:#071126;--card:#0f1620;--muted:#9fb0c8;--accent1:#8e61ff;--accent2:#4fb3ff;--accent3:#43b581;--danger:#ff6b6b;--text:#eaf2ff;--glass:rgba(255,255,255,0.03);--radius:12px;--maxw:1150px}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(120deg,#071126,#08121a);color:var(--text);padding-top:72px;-webkit-font-smoothing:antialiased}
-.nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(6,8,12,0.75);backdrop-filter:blur(6px);z-index:1000}
-.brand{display:flex;gap:12px;align-items:center}
-.badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#071126;font-weight:800}
-.menu{display:flex;gap:8px;align-items:center}
-.menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-.menu a:hover{color:#fff;background:rgba(255,255,255,0.03)}
-.container{max-width:var(--maxw);margin:22px auto;padding:0 18px}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:18px}
-.hero{display:flex;gap:18px;align-items:center}
-.lead{color:var(--muted);margin:8px 0 12px}
-.actions{display:flex;gap:8px}
-.btn{padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#071126}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
-.btn.small{padding:6px 10px;border-radius:8px;font-size:0.9rem}
-.small{font-size:13px}
-.muted{color:var(--muted)}
-input,select,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px;outline:none;width:100%;box-sizing:border-box}
-textarea{resize:vertical}
-.form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.form-col{display:flex;flex-direction:column;gap:8px}
-.subcard{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-.game-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:12px}
-.list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-.item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-.footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-.admin-grid{display:grid;grid-template-columns:1fr 340px;gap:12px}
-.panel{background:#071324;padding:12px;border-radius:10px}
-.table{width:100%;border-collapse:collapse}
-.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;font-size:13px}
-.controls{display:flex;gap:8px;flex-wrap:wrap}
-.export-btn{background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#071126;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
-@media(max-width:900px){.hero{flex-direction:column}.menu{display:none}.form-row{flex-direction:column}.admin-grid{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-<header class="nav" role="banner">
-  <div class="brand">
-    <div class="badge" aria-hidden="true">LMC</div>
-    <div><div style="font-weight:800">Les Mecs Chills</div><div class="small muted">Serveur Discord • Hub Communautaire</div></div>
-  </div>
-  <nav class="menu" role="navigation" aria-label="Main menu">
-    <a href="#accueil">Accueil</a><a href="#about">À propos</a><a href="#roles">Rôles</a><a href="#games">Jeux</a><a href="#contact">Suggestions</a><a href="#recruitment">Recrutement</a><a href="#help">Aide</a><a href="#adminPanel">Admin</a>
-  </nav>
-</header>
-
-<main class="container" role="main">
-  <!-- GAMES -->
-  <section id="games" class="card">
-    <h2>Jeux & Quiz</h2>
-
-    <!-- Score permanent -->
-    <div class="subcard" id="scoreboard">
-      <h3>🎯 Ton Score Global</h3>
-      <p id="playerScore" class="small muted">Chargement...</p>
-      <button id="resetScore" class="btn small ghost">Réinitialiser mes points</button>
-    </div>
-
-    <div class="game-card" id="guess_card">
-      <h3>Devine le nombre (1-50)</h3>
-      <div class="form-row">
-        <input id="guess_pseudo" type="text" placeholder="Ton pseudo">
-        <input id="guess_val" type="number" min="1" max="50" placeholder="Nombre">
-        <button id="guess_play" class="btn small">Jouer</button>
-      </div>
-      <div id="guess_feedback" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-    <div class="game-card" id="rps_card">
-      <h3>Pierre / Feuille / Ciseaux</h3>
-      <div class="form-row">
-        <input id="rps_pseudo" type="text" placeholder="Ton pseudo">
-        <button data-rps="rock" class="btn small rps">Pierre</button>
-        <button data-rps="paper" class="btn small rps">Feuille</button>
-        <button data-rps="scissors" class="btn small rps">Ciseaux</button>
-      </div>
-      <div id="rps_feedback" class="small muted" style="margin-top:8px"></div>
-    </div>
-
-  </section>
-</main>
-
-<script>
-// === Système de points permanent ===
-let totalPoints = parseInt(localStorage.getItem("lmc_points") || "0");
-const scoreDisplay = document.getElementById("playerScore");
-const resetBtn = document.getElementById("resetScore");
-
-function updateScoreDisplay() {
-  scoreDisplay.textContent = `Tu as ${totalPoints} point${totalPoints !== 1 ? "s" : ""} 🔥`;
-}
-function addPoints(amount) {
-  totalPoints += amount;
-  localStorage.setItem("lmc_points", totalPoints);
-  updateScoreDisplay();
-}
-resetBtn.addEventListener("click", () => {
-  if (confirm("Voulez-vous vraiment remettre ton score à zéro ?")) {
-    totalPoints = 0;
-    localStorage.setItem("lmc_points", 0);
-    updateScoreDisplay();
-  }
-});
-updateScoreDisplay();
-
-// === Jeu Devine le Nombre ===
-const randomNumber = Math.floor(Math.random() * 50) + 1;
-document.getElementById("guess_play").addEventListener("click", () => {
-  const val = parseInt(document.getElementById("guess_val").value);
-  const feedback = document.getElementById("guess_feedback");
-  if (!val || val < 1 || val > 50) {
-    feedback.textContent = "Entre un nombre entre 1 et 50 😅";
-    return;
-  }
-  if (val === randomNumber) {
-    feedback.textContent = "🎉 Bravo, c'était le bon nombre ! (+5 pts)";
-    addPoints(5);
-  } else if (val < randomNumber) {
-    feedback.textContent = "Trop petit !";
-  } else {
-    feedback.textContent = "Trop grand !";
-  }
-});
-
-// === Jeu Pierre Feuille Ciseaux ===
-document.querySelectorAll(".rps").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const choices = ["rock", "paper", "scissors"];
-    const userChoice = btn.dataset.rps;
-    const botChoice = choices[Math.floor(Math.random() * 3)];
-    const feedback = document.getElementById("rps_feedback");
-    if (userChoice === botChoice) {
-      feedback.textContent = `Égalité ! (bot: ${botChoice})`;
-    } else if (
-      (userChoice === "rock" && botChoice === "scissors") ||
-      (userChoice === "paper" && botChoice === "rock") ||
-      (userChoice === "scissors" && botChoice === "paper")
-    ) {
-      feedback.textContent = `🎯 Gagné ! (bot: ${botChoice}) +3 pts`;
-      addPoints(3);
-    } else {
-      feedback.textContent = `Perdu 😢 (bot: ${botChoice})`;
-    }
-  });
-});
-</script>
-<script>
-// === Système secret Ctrl + A ===
-
-// Empêche le Ctrl+A normal
-document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey && e.key.toLowerCase() === "a") {
-    e.preventDefault();
-    ouvrirPopupAdmin();
-  }
-});
-
-function ouvrirPopupAdmin() {
-  // Si popup déjà ouverte, on la ferme d'abord
-  if (document.getElementById("secretPopup")) return;
-
-  const overlay = document.createElement("div");
-  overlay.id = "secretPopup";
-  overlay.style.position = "fixed";
-  overlay.style.top = "0";
-  overlay.style.left = "0";
-  overlay.style.width = "100vw";
-  overlay.style.height = "100vh";
-  overlay.style.background = "rgba(0,0,0,0.8)";
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.zIndex = "99999";
-
-  const popup = document.createElement("div");
-  popup.style.background = "#0f1620";
-  popup.style.padding = "20px";
-  popup.style.borderRadius = "12px";
-  popup.style.boxShadow = "0 0 25px rgba(0,0,0,0.6)";
-  popup.style.textAlign = "center";
-  popup.style.width = "300px";
-  popup.innerHTML = `
-    <h3 style="margin-bottom:10px;color:#8e61ff;">Accès secret 🔒</h3>
-    <input type="password" id="secretCode" placeholder="Code secret" style="padding:8px;width:90%;border-radius:8px;border:none;background:#1c2431;color:white;">
-    <button id="checkCode" style="margin-top:10px;padding:8px 14px;border:none;border-radius:8px;background:linear-gradient(90deg,#4fb3ff,#8e61ff);color:#071126;font-weight:bold;cursor:pointer;">Entrer</button>
-    <div id="msgSecret" style="color:#9fb0c8;margin-top:10px;font-size:13px;"></div>
-  `;
-  overlay.appendChild(popup);
-  document.body.appendChild(overlay);
-
-  document.getElementById("checkCode").addEventListener("click", () => {
-    const code = document.getElementById("secretCode").value.trim();
-    const msg = document.getElementById("msgSecret");
-    if (code === "56710") {
-      msg.style.color = "#43b581";
-      msg.textContent = "Code correct ! ✅";
-      setTimeout(() => ouvrirPanelPoints(popup), 600);
-    } else {
-      msg.style.color = "#ff6b6b";
-      msg.textContent = "Code incorrect ❌";
-    }
-  });
-
-  // Fermer avec clic extérieur
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) overlay.remove();
-  });
-}
-
-function ouvrirPanelPoints(container) {
-  container.innerHTML = `
-    <h3 style="margin-bottom:10px;color:#8e61ff;">Gestion des points</h3>
-    <input type="text" id="pseudoPoint" placeholder="Pseudo" style="padding:8px;width:90%;border-radius:8px;border:none;background:#1c2431;color:white;"><br>
-    <input type="number" id="nombrePoints" placeholder="Nombre de points" style="margin-top:8px;padding:8px;width:90%;border-radius:8px;border:none;background:#1c2431;color:white;"><br>
-    <button id="ajouterPts" style="margin-top:10px;padding:8px 14px;border:none;border-radius:8px;background:linear-gradient(90deg,#43b581,#4fb3ff);color:#071126;font-weight:bold;cursor:pointer;">+ Ajouter</button>
-    <button id="retirerPts" style="margin-top:8px;padding:8px 14px;border:none;border-radius:8px;background:linear-gradient(90deg,#ff6b6b,#8e61ff);color:#071126;font-weight:bold;cursor:pointer;">– Retirer</button>
-    <div id="msgPoints" style="color:#9fb0c8;margin-top:10px;font-size:13px;"></div>
-  `;
-
-  const msg = container.querySelector("#msgPoints");
-
-  const updatePoints = (isAdd) => {
-    const pseudo = document.getElementById("pseudoPoint").value.trim();
-    const nb = parseInt(document.getElementById("nombrePoints").value);
-    if (!pseudo || isNaN(nb)) {
-      msg.textContent = "Remplis bien les champs 😅";
-      msg.style.color = "#ff6b6b";
-      return;
-    }
-
-    const key = `points_${pseudo}`;
-    let current = parseInt(localStorage.getItem(key)) || 0;
-    current = isAdd ? current + nb : current - nb;
-    localStorage.setItem(key, current);
-
-    msg.textContent = `${pseudo} a maintenant ${current} points 🎯`;
-    msg.style.color = "#43b581";
-  };
-
-  container.querySelector("#ajouterPts").addEventListener("click", () => updatePoints(true));
-  container.querySelector("#retirerPts").addEventListener("click", () => updatePoints(false));
-}
-</script>
-<script>
-// === Système de points et classement ===
-
-// Chargement des données
-let totalPoints = parseInt(localStorage.getItem("lmc_points") || "0");
-let pointsJoueurs = JSON.parse(localStorage.getItem("pointsJoueurs")) || {};
-
-// Met à jour ton affichage perso
-function updateScoreDisplay() {
-  const scoreDisplay = document.getElementById("playerScore");
-  if (scoreDisplay) scoreDisplay.textContent = `Tu as ${totalPoints} point${totalPoints !== 1 ? "s" : ""} 🔥`;
-}
-
-// Ajoute des points au joueur et l’enregistre
-function addPoints(amount, pseudo = "") {
-  totalPoints += amount;
-  localStorage.setItem("lmc_points", totalPoints);
-
-  if (pseudo.trim() !== "") {
-    if (!pointsJoueurs[pseudo]) pointsJoueurs[pseudo] = 0;
-    pointsJoueurs[pseudo] += amount;
-    localStorage.setItem("pointsJoueurs", JSON.stringify(pointsJoueurs));
-  }
-
-  updateScoreDisplay();
-  updateClassement();
-}
-
-// === CLASSEMENT ===
-function updateClassement() {
-  const classementDiv = document.getElementById("classement");
-  if (!classementDiv) return;
-
-  const classement = Object.entries(pointsJoueurs).sort((a, b) => b[1] - a[1]);
-  if (classement.length === 0) {
-    classementDiv.innerHTML = "<p style='color:#ccc;'>Aucun joueur enregistré 😅</p>";
-    return;
-  }
-
-  let html = "<h2 style='color:#FFD700;'>🏆 Classement général</h2><ol style='list-style:none;padding:0;'>";
-  classement.forEach(([pseudo, points], i) => {
-    html += `<li style="margin:4px 0;">${i + 1}. <strong>${pseudo}</strong> — ${points} pts</li>`;
-  });
-  html += "</ol>";
-
-  classementDiv.innerHTML = html;
-}
-
-// === Crée automatiquement la section classement ===
-window.addEventListener("DOMContentLoaded", () => {
-  const classementDiv = document.createElement("div");
-  classementDiv.id = "classement";
-  classementDiv.style.marginTop = "40px";
-  classementDiv.style.padding = "10px";
-  classementDiv.style.color = "white";
-  classementDiv.style.fontFamily = "Poppins";
-  classementDiv.style.textAlign = "center";
-  classementDiv.style.background = "rgba(0,0,0,0.3)";
-  classementDiv.style.borderRadius = "12px";
-  classementDiv.style.width = "80%";
-  classementDiv.style.margin = "40px auto";
-
-  document.body.appendChild(classementDiv);
-  updateClassement();
-});
-
-// === Intégration avec tes jeux ===
-
-// Jeu "Devine le nombre"
-const randomNumber = Math.floor(Math.random() * 50) + 1;
-const guessPlayBtn = document.getElementById("guess_play");
-if (guessPlayBtn) {
-  guessPlayBtn.addEventListener("click", () => {
-    const val = parseInt(document.getElementById("guess_val").value);
-    const pseudo = document.getElementById("guess_pseudo").value.trim();
-    const feedback = document.getElementById("guess_feedback");
-
-    if (!val || val < 1 || val > 50) {
-      feedback.textContent = "Entre un nombre entre 1 et 50 😅";
-      return;
-    }
-    if (!pseudo) {
-      feedback.textContent = "Entre ton pseudo avant de jouer 😅";
-      return;
-    }
-
-    if (val === randomNumber) {
-      feedback.textContent = "🎉 Bravo, c'était le bon nombre ! (+5 pts)";
-      addPoints(5, pseudo);
-    } else if (val < randomNumber) {
-      feedback.textContent = "Trop petit !";
-    } else {
-      feedback.textContent = "Trop grand !";
-    }
-  });
-}
-
-// Jeu Pierre Feuille Ciseaux
-document.querySelectorAll(".rps").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const pseudo = document.getElementById("rps_pseudo").value.trim();
-    const feedback = document.getElementById("rps_feedback");
-    if (!pseudo) {
-      feedback.textContent = "Entre ton pseudo avant de jouer 😅";
-      return;
-    }
-
-    const choices = ["rock", "paper", "scissors"];
-    const userChoice = btn.dataset.rps;
-    const botChoice = choices[Math.floor(Math.random() * 3)];
-
-    if (userChoice === botChoice) {
-      feedback.textContent = `Égalité ! (bot: ${botChoice})`;
-    } else if (
-      (userChoice === "rock" && botChoice === "scissors") ||
-      (userChoice === "paper" && botChoice === "rock") ||
-      (userChoice === "scissors" && botChoice === "paper")
-    ) {
-      feedback.textContent = `🎯 Gagné ! (bot: ${botChoice}) +3 pts`;
-      addPoints(3, pseudo);
-    } else {
-      feedback.textContent = `Perdu 😢 (bot: ${botChoice})`;
-    }
-  });
-});
-
-// === Bouton reset ===
-const resetBtn = document.getElementById("resetScore");
-if (resetBtn) {
-  resetBtn.addEventListener("click", () => {
-    if (confirm("Voulez-vous vraiment remettre ton score à zéro ?")) {
-      totalPoints = 0;
-      localStorage.setItem("lmc_points", 0);
-      updateScoreDisplay();
-    }
-  });
-}
-
-// === Initialisation ===
-updateScoreDisplay();
-updateClassement();
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
