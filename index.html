@@ -1,1169 +1,511 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Mecs Chills - Communauté & Jeux</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Manoir de l'Énigme Hantée - Halloween</title>
+    <!-- Chargement de Tailwind CSS pour un style moderne et sombre -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Configuration de Tailwind pour un thème Halloween */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'halloween-orange': '#ff6600',
+                        'midnight-black': '#0a0a0a',
+                        'blood-red': '#cc0000',
+                        'swamp-green': '#008000',
+                        'bone-white': '#fefefe',
+                        'rust-brown': '#7c4c00',
+                    },
+                    fontFamily: {
+                        display: ['Creepster', 'cursive'], /* Police effrayante pour les titres */
+                        sans: ['Inter', 'sans-serif'], /* Police lisible pour le corps du texte */
+                    },
+                    boxShadow: {
+                        'spooky-glow': '0 0 15px rgba(255, 102, 0, 0.7), 0 0 10px rgba(204, 0, 0, 0.5)',
+                        'inner-horror': 'inset 0 0 10px rgba(0, 0, 0, 0.9)',
+                    }
+                }
+            }
+        }
 
-    :root {
-      --bg: #0a0e27;
-      --card: #1a1f3a;
-      --accent: #4f46e5;
-      --accent-hover: #6366f1;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --success: #10b981;
-      --danger: #ef4444;
-      --warning: #f59e0b;
-      --border: rgba(255,255,255,0.1);
-      --maxw: 1200px;
-    }
+        /* Styles personnalisés pour l'ambiance sombre et rouillée */
+        body {
+            background-color: #1a1a1a;
+            color: #fefefe;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+        /* Style pour l'écran principal du manoir */
+        #game-container {
+            min-height: calc(100vh - 80px); /* Ajustement pour la barre de titre */
+        }
 
-    .container {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+        /* Style des boutons de jeu */
+        .game-button {
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff6600;
+        }
+        .game-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff6600;
+            background-color: #7c4c00; /* Rust Brown */
+        }
 
-    /* Header */
-    header {
-      background: rgba(26, 31, 58, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        /* Style des titres effrayants */
+        .spooky-title {
+            font-family: 'Creepster', cursive;
+            color: #ff6600;
+            text-shadow: 2px 2px 5px #cc0000, 0 0 10px #ff6600;
+        }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 100px 0;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    }
-
-    .hero h1 {
-      font-size: 56px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: var(--muted);
-      margin-bottom: 40px;
-    }
-
-    /* Section */
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 50px;
-      text-align: center;
-    }
-
-    /* Cards */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 30px;
-      border: 1px solid var(--border);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(79, 70, 229, 0.3);
-    }
-
-    .card h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: var(--accent);
-    }
-
-    /* Game Cards */
-    .game-card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 30px;
-      border: 1px solid var(--border);
-      margin-bottom: 25px;
-    }
-
-    .game-card h3 {
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    /* Inputs */
-    input, textarea, select {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      font-size: 15px;
-      margin-bottom: 15px;
-      transition: border-color 0.3s;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    /* Buttons */
-    .btn {
-      padding: 12px 28px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(79, 70, 229, 0.4);
-    }
-
-    .btn.small {
-      padding: 8px 16px;
-      font-size: 14px;
-    }
-
-    .btn.ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-    }
-
-    .btn.ghost:hover {
-      background: rgba(255,255,255,0.05);
-    }
-
-    .btn.success {
-      background: var(--success);
-    }
-
-    .btn.danger {
-      background: var(--danger);
-    }
-
-    /* Leaderboard */
-    .leaderboard-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 8px;
-      margin-bottom: 10px;
-      transition: background 0.3s;
-    }
-
-    .leaderboard-item:hover {
-      background: rgba(255,255,255,0.06);
-    }
-
-    .leaderboard-rank {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--accent);
-      min-width: 40px;
-    }
-
-    .leaderboard-info {
-      flex: 1;
-      margin-left: 15px;
-    }
-
-    .leaderboard-pseudo {
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .leaderboard-points {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Messages */
-    .message {
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin: 15px 0;
-      font-size: 14px;
-    }
-
-    .message.success {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--success);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .message.error {
-      background: rgba(239, 68, 68, 0.1);
-      color: var(--danger);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    /* Admin Panel */
-    .admin-panel {
-      display: none;
-      background: var(--card);
-      border-radius: 16px;
-      padding: 30px;
-      border: 1px solid var(--border);
-      margin-top: 30px;
-    }
-
-    .admin-section {
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .admin-section:last-child {
-      border-bottom: none;
-    }
-
-    .admin-item {
-      background: rgba(255,255,255,0.03);
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    /* Secret Overlay */
-    #secretOverlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(5px);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .secret-modal {
-      background: var(--card);
-      padding: 40px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 600px;
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-
-    .small {
-      font-size: 14px;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .section-title {
-        font-size: 32px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .header-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.6s ease-out;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+        /* Animation pour l'icône de musique */
+        .spin {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
+<body class="selection:bg-halloween-orange selection:text-midnight-black">
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">🎮 Les Mecs Chills</div>
-        <nav>
-          <ul>
-            <li><a onclick="scrollToSection('home')">Accueil</a></li>
-            <li><a onclick="scrollToSection('games')">Jeux</a></li>
-            <li><a onclick="scrollToSection('leaderboard')">Classement</a></li>
-            <li><a onclick="scrollToSection('recruitment')">Recrutement</a></li>
-            <li><a onclick="scrollToSection('contact')">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+    <!-- Élément Audio pour la musique (Ajouter l'URL source ici) -->
+    <audio id="background-music" loop>
+        <!-- REMPLACER CETTE SOURCE par une URL de musique d'ambiance d'Halloween libre de droits -->
+        <!-- Par exemple: <source src="chemin/vers/votre/musique.mp3" type="audio/mp3"> -->
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>Bienvenue chez Les Mecs Chills</h1>
-      <p>Rejoins notre communauté, joue, progresse et deviens une légende ! 🚀</p>
-      <button class="btn" onclick="scrollToSection('games')">Découvrir les jeux</button>
-    </div>
-  </section>
-
-  <!-- Games Section -->
-  <section id="games">
-    <div class="container">
-      <h2 class="section-title">🎮 Mini-Jeux</h2>
-      
-      <!-- Guess Game -->
-      <div class="game-card fade-in">
-        <h3>🎯 Devine le Nombre</h3>
-        <p class="muted">Devine un nombre entre 1 et 50 et gagne 5 points !</p>
-        <input id="guess_pseudo" placeholder="Ton pseudo" type="text">
-        <input id="guess_number" type="number" placeholder="Entre un nombre (1-50)" min="1" max="50">
-        <button class="btn" onclick="playGuessGame()">Jouer</button>
-        <div id="guess_result"></div>
-      </div>
-
-      <!-- Rock Paper Scissors -->
-      <div class="game-card fade-in">
-        <h3>✊ Pierre Feuille Ciseaux</h3>
-        <p class="muted">Affronte le bot et gagne 3 points !</p>
-        <input id="rps_pseudo" placeholder="Ton pseudo" type="text">
-        <div style="display: flex; gap: 10px; margin: 20px 0;">
-          <button class="btn" onclick="playRPS('pierre')">✊ Pierre</button>
-          <button class="btn" onclick="playRPS('feuille')">✋ Feuille</button>
-          <button class="btn" onclick="playRPS('ciseaux')">✌️ Ciseaux</button>
-        </div>
-        <div id="rps_result"></div>
-      </div>
-
-      <!-- Dice Game -->
-      <div class="game-card fade-in">
-        <h3>🎲 Lancer de Dés</h3>
-        <p class="muted">Lance les dés ! Si tu fais 6+6, tu gagnes 10 points !</p>
-        <input id="dice_pseudo" placeholder="Ton pseudo" type="text">
-        <button class="btn" onclick="playDice()">Lancer les dés</button>
-        <div id="dice_result"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Leaderboard Section -->
-  <section id="leaderboard">
-    <div class="container">
-      <h2 class="section-title">🏆 Classement Global</h2>
-      <div class="game-card">
-        <div id="leaderboard_content">
-          <p class="muted">Chargement du classement...</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recruitment Section -->
-  <section id="recruitment">
-    <div class="container">
-      <h2 class="section-title">📋 Recrutement</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Rejoins l'équipe !</h3>
-          <p class="muted">Postule pour devenir membre officiel des Mecs Chills</p>
-          <input id="recruit_pseudo" placeholder="Ton pseudo Discord">
-          <input id="recruit_age" type="number" placeholder="Ton âge">
-          <textarea id="recruit_experience" placeholder="Ton expérience en modération/animation" rows="3"></textarea>
-          <input id="recruit_hours" type="number" placeholder="Heures de disponibilité par semaine">
-          <textarea id="recruit_motivation" placeholder="Pourquoi veux-tu nous rejoindre ?" rows="4"></textarea>
-          <button class="btn success" onclick="submitApplication()">Envoyer ma candidature</button>
-          <div id="recruit_message"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">💬 Contact</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Nous contacter</h3>
-          <input id="contact_name" placeholder="Ton nom">
-          <input id="contact_email" placeholder="Ton email">
-          <textarea id="contact_message" placeholder="Ton message" rows="4"></textarea>
-          <button class="btn" onclick="submitContact()">Envoyer</button>
-          <div id="contact_result"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Admin Panel -->
-  <section id="admin_area" class="admin-panel">
-    <div class="container">
-      <h2 class="section-title">🔐 Panneau Admin</h2>
-      
-      <!-- Admin Login -->
-      <div id="admin_login" class="admin-section">
-        <h3>Connexion Admin</h3>
-        <input id="admin_password" type="password" placeholder="Mot de passe admin">
-        <button class="btn" onclick="adminLogin()">Se connecter</button>
-        <div id="admin_login_msg"></div>
-      </div>
-
-      <!-- Admin Controls -->
-      <div id="admin_controls" style="display: none;">
-        
-        <!-- Points Management -->
-        <div class="admin-section">
-          <h3>Gestion des Points</h3>
-          <input id="points_pseudo" placeholder="Pseudo exact (ex: ChillUser#1234)">
-          <input id="points_amount" type="number" placeholder="Nombre de points">
-          <div style="display: flex; gap: 10px; margin-top: 10px;">
-            <button class="btn small success" onclick="adminAddPoints()">Ajouter</button>
-            <button class="btn small danger" onclick="adminRemovePoints()">Retirer</button>
-          </div>
-          <div id="points_msg" class="muted small"></div>
-        </div>
-
-        <!-- Applications -->
-        <div class="admin-section">
-          <h3>Candidatures reçues</h3>
-          <div id="admin_applications"></div>
-        </div>
-
-        <!-- Contacts -->
-        <div class="admin-section">
-          <h3>Messages de contact</h3>
-          <div id="admin_contacts"></div>
-        </div>
-
-        <!-- Export/Import -->
-        <div class="admin-section">
-          <h3>Sauvegarde</h3>
-          <button class="btn small" onclick="exportData()">Exporter toutes les données</button>
-          <button class="btn small ghost" onclick="clearAllData()">Réinitialiser tout</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Secret Overlay (Ctrl+A) -->
-  <div id="secretOverlay">
-    <div class="secret-modal">
-      <h2>🔐 Accès Créateur</h2>
-      <p class="muted">Entrez le code secret pour accéder au panneau créateur</p>
-      <input id="secretCodeInput" type="password" placeholder="Code secret">
-      <div style="display: flex; gap: 10px; margin-top: 15px;">
-        <button class="btn" onclick="validateSecretCode()">Valider</button>
-        <button class="btn ghost" onclick="closeSecretOverlay()">Annuler</button>
-      </div>
-      
-      <!-- Secret Controls -->
-      <div id="secretControls" style="display: none; margin-top: 30px;">
-        <h3>Contrôles Créateur</h3>
-        
-        <!-- Quick Points -->
-        <div style="margin: 20px 0;">
-          <h4>Gestion rapide des points</h4>
-          <input id="secret_pseudo" placeholder="Pseudo exact">
-          <input id="secret_amount" type="number" placeholder="Montant">
-          <div style="display: flex; gap: 10px; margin-top: 10px;">
-            <button class="btn small success" onclick="secretAddPoints()">+ Ajouter</button>
-            <button class="btn small danger" onclick="secretRemovePoints()">- Retirer</button>
-          </div>
-          <div id="secret_msg" class="muted small"></div>
-        </div>
-
-        <!-- Python Terminal -->
-        <div style="margin: 20px 0;">
-          <h4>🐍 Terminal Python</h4>
-          <textarea id="python_code" placeholder="Entrez du code Python ici..." rows="5"></textarea>
-          <button class="btn small" onclick="runPythonCode()">Exécuter</button>
-          <div id="python_output" style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; white-space: pre-wrap;"></div>
-        </div>
-
-        <!-- Music Control -->
-        <div style="margin: 20px 0;">
-          <h4>🎵 Musique</h4>
-          <button class="btn small" onclick="playMusic()">▶️ Lecture</button>
-          <button class="btn small ghost" onclick="stopMusic()">⏸ Pause</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
-  <script>
-    // ===== HELPERS =====
-    function lget(k, def) {
-      try {
-        const r = localStorage.getItem(k);
-        return r ? JSON.parse(r) : def;
-      } catch(e) {
-        console.error('lget error:', e);
-        return def;
-      }
-    }
-
-    function lset(k, v) {
-      try {
-        localStorage.setItem(k, JSON.stringify(v));
-        return true;
-      } catch(e) {
-        console.error('lset error:', e);
-        return false;
-      }
-    }
-
-    function now() {
-      return new Date().toISOString().replace('T', ' ').slice(0, 16);
-    }
-
-    function esc(s) {
-      if (s == null) return '';
-      return String(s).replace(/[&<>"']/g, ch => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[ch]));
-    }
-
-    function auditLog(type, message) {
-      const logs = lget('lmc_audit', []);
-      logs.unshift({ time: new Date().toISOString(), type, message });
-      lset('lmc_audit', logs.slice(0, 500));
-    }
-
-    // ===== POINTS SYSTEM =====
-    function getPointsMap() {
-      return lget('lmc_points', {});
-    }
-
-    function setPointsMap(m) {
-      lset('lmc_points', m);
-    }
-
-    function addPointsToPseudo(pseudo, amount) {
-      if (!pseudo) return false;
-      const map = getPointsMap();
-      const cur = parseInt(map[pseudo] || 0, 10) || 0;
-      map[pseudo] = cur + Number(amount);
-      setPointsMap(map);
-      auditLog('points', `+${amount} to ${pseudo}`);
-      return true;
-    }
-
-    function removePointsFromPseudo(pseudo, amount) {
-      if (!pseudo) return false;
-      const map = getPointsMap();
-      const cur = parseInt(map[pseudo] || 0, 10) || 0;
-      map[pseudo] = Math.max(0, cur - Number(amount));
-      setPointsMap(map);
-      auditLog('points', `-${amount} from ${pseudo}`);
-      return true;
-    }
-
-    function getPointsForPseudo(pseudo) {
-      const map = getPointsMap();
-      return parseInt(map[pseudo] || 0, 10) || 0;
-    }
-
-    function getLeaderboard(limit = 100) {
-      const map = getPointsMap();
-      return Object.keys(map)
-        .map(p => ({ pseudo: p, points: map[p] }))
-        .sort((a, b) => b.points - a.points)
-        .slice(0, limit);
-    }
-
-    // ===== RENDER LEADERBOARD =====
-    function renderLeaderboard() {
-      const el = document.getElementById('leaderboard_content');
-      if (!el) return;
-      
-      const list = getLeaderboard(100);
-      if (list.length === 0) {
-        el.innerHTML = '<p class="muted">Aucun score enregistré pour le moment. Sois le premier à jouer !</p>';
-        return;
-      }
-
-      let html = '';
-      list.forEach((r, i) => {
-        html += `
-          <div class="leaderboard-item">
-            <div class="leaderboard-rank">#${i + 1}</div>
-            <div class="leaderboard-info">
-              <div class="leaderboard-pseudo">${esc(r.pseudo)}</div>
-              <div class="leaderboard-points">${r.points} points</div>
-            </div>
-          </div>
-        `;
-      });
-      el.innerHTML = html;
-    }
-
-    // ===== GAMES =====
-    function playGuessGame() {
-      const pseudo = document.getElementById('guess_pseudo').value.trim();
-      const guess = parseInt(document.getElementById('guess_number').value);
-      const result = document.getElementById('guess_result');
-
-      if (!pseudo) {
-        result.innerHTML = '<div class="message error">Entre ton pseudo !</div>';
-        return;
-      }
-
-      if (isNaN(guess) || guess < 1 || guess > 50) {
-        result.innerHTML = '<div class="message error">Entre un nombre entre 1 et 50 !</div>';
-        return;
-      }
-
-      const target = Math.floor(Math.random() * 50) + 1;
-      
-      if (guess === target) {
-        addPointsToPseudo(pseudo, 5);
-        result.innerHTML = `<div class="message success">🎉 Bravo ${esc(pseudo)} ! Le nombre était ${target}. Tu gagnes 5 points !</div>`;
-        renderLeaderboard();
-      } else {
-        result.innerHTML = `<div class="message error">Raté ! Le nombre était ${target}. ${guess < target ? 'C\'était plus !' : 'C\'était moins !'}</div>`;
-      }
-    }
-
-    function playRPS(choice) {
-      const pseudo = document.getElementById('rps_pseudo').value.trim();
-      const result = document.getElementById('rps_result');
-
-      if (!pseudo) {
-        result.innerHTML = '<div class="message error">Entre ton pseudo !</div>';
-        return;
-      }
-
-      const choices = ['pierre', 'feuille', 'ciseaux'];
-      const botChoice = choices[Math.floor(Math.random() * 3)];
-      
-      const icons = { pierre: '✊', feuille: '✋', ciseaux: '✌️' };
-      
-      if (choice === botChoice) {
-        result.innerHTML = `<div class="message">Égalité ! Vous avez tous les deux choisi ${icons[choice]} ${choice}</div>`;
-      } else if (
-        (choice === 'pierre' && botChoice === 'ciseaux') ||
-        (choice === 'feuille' && botChoice === 'pierre') ||
-        (choice === 'ciseaux' && botChoice === 'feuille')
-      ) {
-        addPointsToPseudo(pseudo, 3);
-        result.innerHTML = `<div class="message success">🎉 Victoire ! Tu as choisi ${icons[choice]} ${choice}, le bot a choisi ${icons[botChoice]} ${botChoice}. +3 points !</div>`;
-        renderLeaderboard();
-      } else {
-        result.innerHTML = `<div class="message error">Défaite ! Tu as choisi ${icons[choice]} ${choice}, le bot a choisi ${icons[botChoice]} ${botChoice}.</div>`;
-      }
-    }
-
-    function playDice() {
-      const pseudo = document.getElementById('dice_pseudo').value.trim();
-      const result = document.getElementById('dice_result');
-
-      if (!pseudo) {
-        result.innerHTML = '<div class="message error">Entre ton pseudo !</div>';
-        return;
-      }
-
-      const dice1 = Math.floor(Math.random() * 6) + 1;
-      const dice2 = Math.floor(Math.random() * 6) + 1;
-      const total = dice1 + dice2;
-
-      if (dice1 === 6 && dice2 === 6) {
-        addPointsToPseudo(pseudo, 10);
-        result.innerHTML = `<div class="message success">🎲🎲 JACKPOT ! Tu as fait ${dice1} + ${dice2} = ${total} ! +10 points !</div>`;
-        renderLeaderboard();
-      } else if (total >= 10) {
-        addPointsToPseudo(pseudo, 3);
-        result.innerHTML = `<div class="message success">🎲 Super ! Tu as fait ${dice1} + ${dice2} = ${total}. +3 points !</div>`;
-        renderLeaderboard();
-      } else {
-        result.innerHTML = `<div class="message">🎲 Tu as fait ${dice1} + ${dice2} = ${total}. Retente ta chance !</div>`;
-      }
-    }
-
-    // ===== RECRUITMENT =====
-    function submitApplication() {
-      const pseudo = document.getElementById('recruit_pseudo').value.trim();
-      const age = document.getElementById('recruit_age').value.trim();
-      const experience = document.getElementById('recruit_experience').value.trim();
-      const hours = document.getElementById('recruit_hours').value.trim();
-      const motivation = document.getElementById('recruit_motivation').value.trim();
-      const msg = document.getElementById('recruit_message');
-
-      if (!pseudo || !age || !experience || !hours || !motivation) {
-        msg.innerHTML = '<div class="message error">Remplis tous les champs !</div>';
-        return;
-      }
-
-      const apps = lget('lmc_applications', []);
-      apps.unshift({
-        id: Date.now().toString(36),
-        pseudo,
-        age: Number(age),
-        experience,
-        hours: Number(hours),
-        motivation,
-        date: now()
-      });
-      lset('lmc_applications', apps);
-      auditLog('application', `New application: ${pseudo}`);
-
-      msg.innerHTML = '<div class="message success">✅ Candidature envoyée avec succès ! Nous reviendrons vers toi bientôt.</div>';
-      
-      // Clear form
-      document.getElementById('recruit_pseudo').value = '';
-      document.getElementById('recruit_age').value = '';
-      document.getElementById('recruit_experience').value = '';
-      document.getElementById('recruit_hours').value = '';
-      document.getElementById('recruit_motivation').value = '';
-      
-      renderAdminData();
-    }
-
-    // ===== CONTACT =====
-    function submitContact() {
-      const name = document.getElementById('contact_name').value.trim();
-      const email = document.getElementById('contact_email').value.trim();
-      const message = document.getElementById('contact_message').value.trim();
-      const result = document.getElementById('contact_result');
-
-      if (!name || !email || !message) {
-        result.innerHTML = '<div class="message error">Remplis tous les champs !</div>';
-        return;
-      }
-
-      const contacts = lget('lmc_contacts', []);
-      contacts.unshift({
-        name,
-        email,
-        msg: message,
-        date: now()
-      });
-      lset('lmc_contacts', contacts);
-      auditLog('contact', `New contact: ${name}`);
-
-      result.innerHTML = '<div class="message success">✅ Message envoyé ! Nous te répondrons bientôt.</div>';
-      
-      document.getElementById('contact_name').value = '';
-      document.getElementById('contact_email').value = '';
-      document.getElementById('contact_message').value = '';
-      
-      renderAdminData();
-    }
-
-    // ===== ADMIN PANEL =====
-    function adminLogin() {
-      const password = document.getElementById('admin_password').value;
-      const msg = document.getElementById('admin_login_msg');
-
-      if (password === '89mLh21') {
-        document.getElementById('admin_controls').style.display = 'block';
-        document.getElementById('admin_login').style.display = 'none';
-        msg.innerHTML = '<div class="message success">✅ Connecté en tant qu\'admin</div>';
-        renderAdminData();
-      } else {
-        msg.innerHTML = '<div class="message error">❌ Mot de passe incorrect</div>';
-      }
-    }
-
-    function adminAddPoints() {
-      const pseudo = document.getElementById('points_pseudo').value.trim();
-      const amount = Number(document.getElementById('points_amount').value) || 0;
-      const msg = document.getElementById('points_msg');
-
-      if (!pseudo || !amount) {
-        msg.textContent = 'Pseudo + montant requis';
-        return;
-      }
-
-      addPointsToPseudo(pseudo, amount);
-      msg.textContent = `✅ +${amount} points ajoutés à ${pseudo}`;
-      renderLeaderboard();
-    }
-
-    function adminRemovePoints() {
-      const pseudo = document.getElementById('points_pseudo').value.trim();
-      const amount = Number(document.getElementById('points_amount').value) || 0;
-      const msg = document.getElementById('points_msg');
-
-      if (!pseudo || !amount) {
-        msg.textContent = 'Pseudo + montant requis';
-        return;
-      }
-
-      removePointsFromPseudo(pseudo, amount);
-      msg.textContent = `✅ ${amount} points retirés à ${pseudo}`;
-      renderLeaderboard();
-    }
-
-    function renderAdminData() {
-      // Applications
-      const appsEl = document.getElementById('admin_applications');
-      if (appsEl) {
-        const apps = lget('lmc_applications', []);
-        if (apps.length === 0) {
-          appsEl.innerHTML = '<p class="muted">Aucune candidature pour le moment</p>';
-        } else {
-          let html = '';
-          apps.forEach(app => {
-            html += `
-              <div class="admin-item">
-                <strong>${esc(app.pseudo)}</strong> - ${app.age} ans
-                <div class="small muted">Postulé le ${app.date}</div>
-                <div style="margin-top: 10px;">
-                  <strong>Expérience:</strong> ${esc(app.experience)}<br>
-                  <strong>Disponibilité:</strong> ${app.hours}h/semaine<br>
-                  <strong>Motivation:</strong> ${esc(app.motivation)}
+    <!-- En-tête du Manoir -->
+    <header class="bg-midnight-black border-b border-rust-brown/50 shadow-spooky-glow p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="spooky-title text-4xl lg:text-5xl">
+                Le Manoir de l'Énigme
+            </h1>
+            <div class="flex items-center space-x-4">
+                <!-- Bouton de Musique -->
+                <button id="music-toggle" onclick="toggleMusic()" class="text-bone-white bg-rust-brown/70 p-2 rounded-full hover:bg-rust-brown transition duration-200" title="Activer/Désactiver la Musique">
+                    <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>
+                </button>
+                <!-- Affichage du Score -->
+                <div id="score-display" class="text-xl font-bold text-swamp-green bg-rust-brown/50 px-4 py-1 rounded-full border border-halloween-orange/50 shadow-inner-horror">
+                    Score : 0
                 </div>
-                <button class="btn small danger" style="margin-top: 10px;" onclick="deleteApplication('${app.id}')">🗑 Supprimer</button>
-              </div>
-            `;
-          });
-          appsEl.innerHTML = html;
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteneur Principal du Jeu -->
+    <main id="game-container" class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center">
+        <!-- Le contenu dynamique sera injecté ici -->
+    </main>
+
+    <!-- Modale de Message (pour remplacer alert()) -->
+    <div id="message-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center">
+        <div class="bg-rust-brown border-4 border-blood-red p-8 rounded-xl shadow-spooky-glow max-w-sm w-full text-center">
+            <h3 id="modal-title" class="spooky-title text-3xl mb-4 text-halloween-orange">Message</h3>
+            <p id="modal-message" class="text-bone-white mb-6 text-lg"></p>
+            <button onclick="hideModal()" class="game-button bg-blood-red hover:bg-blood-red/80 text-bone-white font-bold py-2 px-4 rounded-lg">
+                Fermer
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Initialisation de l'état du jeu
+        let gameState = {
+            currentScreen: 'home',
+            score: 0,
+            hasKey: false,
+            quizAnswered: false,
+            riddleSolved: false,
+            codeEntered: false,
+            userName: 'Voyageur Mystère',
+        };
+
+        // --- Fonctions Audio ---
+        const music = document.getElementById('background-music');
+        const musicIcon = document.getElementById('music-icon');
+
+        function toggleMusic() {
+            if (music.paused) {
+                // Tente de jouer. Peut échouer si le navigateur bloque l'autoplay sans interaction.
+                music.play().catch(error => {
+                    console.error("Erreur de lecture audio :", error);
+                    showModal("Musique", "Le navigateur pourrait avoir bloqué la lecture automatique. Cliquez à nouveau ou interagissez avec la page.");
+                });
+                musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2 spin"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
+            } else {
+                music.pause();
+                musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>';
+            }
         }
-      }
 
-      // Contacts
-      const contactsEl = document.getElementById('admin_contacts');
-      if (contactsEl) {
-        const contacts = lget('lmc_contacts', []);
-        if (contacts.length === 0) {
-          contactsEl.innerHTML = '<p class="muted">Aucun message de contact</p>';
-        } else {
-          let html = '';
-          contacts.forEach((contact, idx) => {
-            html += `
-              <div class="admin-item">
-                <strong>${esc(contact.name)}</strong> - ${esc(contact.email)}
-                <div class="small muted">${contact.date}</div>
-                <div style="margin-top: 10px;">${esc(contact.msg)}</div>
-                <button class="btn small danger" style="margin-top: 10px;" onclick="deleteContact(${idx})">🗑 Supprimer</button>
-              </div>
-            `;
-          });
-          contactsEl.innerHTML = html;
+        // --- Configuration des jeux et énigmes ---
+        const SCREENS = {
+            home: {
+                title: "Bienvenue dans le Manoir Hanté",
+                content: `
+                    <p class="text-lg mb-6 text-center">
+                        La légende raconte que ce manoir n'ouvre ses portes qu'à ceux qui ont le courage de résoudre ses énigmes. Pour vous échapper avant le lever du jour, vous devez obtenir la Clé du Salut.
+                    </p>
+                    <p class="text-lg mb-8 text-center spooky-title text-2xl">
+                        Êtes-vous prêt à commencer votre aventure ?
+                    </p>
+                `,
+                actions: [
+                    { text: "Entrer dans l'Antichambre", next: 'antichamber' }
+                ]
+            },
+            antichamber: {
+                title: "L'Antichambre Poussiéreuse (Pièce 1)",
+                content: `
+                    <p class="text-lg mb-4">
+                        Une faible lueur d'une bougie vacillante éclaire cette pièce. Il y a **trois** portes.
+                        La porte au nord mène à un **BUREAU** où une histoire semble s'être arrêtée brusquement.
+                        La porte à l'est semble bloquée par une force invisible.
+                        La porte à l'ouest mène à une **CUISINE** avec une odeur de soufre et de sucreries.
+                    </p>
+                    <div class="mt-4 p-3 bg-midnight-black/70 border border-blood-red rounded-lg text-center font-bold text-lg">
+                        NOTE: C'est la **première pièce** de votre exploration. Le chiffre **1** est un indice !
+                    </div>
+                `,
+                actions: [
+                    { text: "Aller au BUREAU (Quiz)", next: 'quiz' },
+                    { text: "Aller à la CUISINE (Énigme)", next: 'riddle' },
+                    { text: "Porte Est (Verrouillée)", next: 'vault' }
+                ]
+            },
+            quiz: {
+                title: "Le Bureau du Savoir Maudit (Indice 1)",
+                content: `
+                    <p class="text-xl mb-6 spooky-title text-halloween-orange">
+                        Un vieux livre s'ouvre de lui-même. Répondez correctement à la question pour trouver le premier chiffre.
+                    </p>
+                    <p class="text-lg mb-4 font-bold text-center">
+                        Question : Combien y a-t-il de jours entre le 24 octobre et le 31 octobre (inclus) ?
+                    </p>
+                    <div id="quiz-options" class="flex flex-col space-y-4">
+                        <button onclick="checkQuiz('wrong')" class="quiz-button game-button">Cinq (5)</button>
+                        <button onclick="checkQuiz('correct')" class="quiz-button game-button">Huit (8)</button>
+                        <button onclick="checkQuiz('wrong')" class="quiz-button game-button">Sept (7)</button>
+                    </div>
+                `,
+                actions: [
+                    { text: "Retour à l'Antichambre", next: 'antichamber' }
+                ]
+            },
+            riddle: {
+                title: "La Cuisine des Maléfices (Indice 2)",
+                content: `
+                    <p class="text-xl mb-6 spooky-title text-halloween-orange">
+                        Un chaudron bouillonne tout seul. Une note rouillée y est attachée (Énigme facile !) :
+                    </p>
+                    <div class="bg-midnight-black p-4 rounded-lg border border-swamp-green mb-6 text-center text-lg italic">
+                        "J'ai une tête mais pas de corps, j'ai une bouche mais jamais je ne parle. On me sculpte pour la nuit d'Halloween. Qui suis-je ?"
+                    </div>
+                    <input type="text" id="riddle-input" placeholder="Votre réponse ici (un mot simple)..." class="w-full p-3 rounded-lg bg-gray-800 text-bone-white placeholder-gray-500 mb-4 focus:outline-none focus:ring-2 focus:ring-halloween-orange">
+                    <button onclick="checkRiddle()" id="riddle-button" class="game-button bg-swamp-green hover:bg-swamp-green/80 text-bone-white font-bold py-3 px-6 rounded-lg mb-6 w-full">
+                        Soumettre la Réponse
+                    </button>
+                `,
+                actions: [
+                    { text: "Retour à l'Antichambre", next: 'antichamber' }
+                ]
+            },
+            vault: {
+                title: "La Porte Scellée",
+                content: `
+                    <p class="text-lg mb-6">
+                        La Porte Est est recouverte de symboles étranges. Vous trouvez une console numérique pour entrer un code à trois chiffres.
+                        Le code est la combinaison des indices : **Indice 1 (Bureau) + Indice 2 (Cuisine) + Indice 3 (Antichambre).**
+                    </p>
+                    <div id="vault-status" class="text-center text-xl mb-4 font-bold"></div>
+                    <input type="number" id="code-input" placeholder="Entrez le code à 3 chiffres" maxlength="3" class="w-full p-3 rounded-lg bg-gray-800 text-bone-white placeholder-gray-500 mb-4 text-center text-2xl focus:outline-none focus:ring-2 focus:ring-halloween-orange">
+                    <button onclick="checkVaultCode()" id="code-button" class="game-button bg-blood-red hover:bg-blood-red/80 text-bone-white font-bold py-3 px-6 rounded-lg w-full">
+                        Activer le Sceau
+                    </button>
+                `,
+                actions: [
+                    { text: "Retour à l'Antichambre", next: 'antichamber' }
+                ]
+            },
+            escape: {
+                title: "LA CLÉ DU SALUT !",
+                content: `
+                    <p class="text-3xl mb-8 text-center text-swamp-green spooky-title">
+                        Félicitations, ${gameState.userName} !
+                    </p>
+                    <p class="text-xl mb-6 text-center">
+                        La porte s'est ouverte et la Clé du Salut brille devant vous. Vous vous échappez du Manoir de l'Énigme avec un score final de **${gameState.score}** !
+                    </p>
+                    <img src="https://placehold.co/400x200/ff6600/0a0a0a?text=CL%C9+GAGN%C9E" alt="Clé dorée d'évasion" class="mx-auto my-6 rounded-lg shadow-spooky-glow">
+
+                    <!-- Nouveau message pour le concours -->
+                    <div class="mt-8 p-4 border-2 border-halloween-orange rounded-lg bg-midnight-black/70">
+                        <h3 class="spooky-title text-2xl text-center mb-3">Concours de l'Énigme Hantée</h3>
+                        <p class="text-lg text-center font-bold text-bone-white">
+                            **Votre Score : ${gameState.score}**
+                        </p>
+                        <p class="text-center mt-2">
+                            Envoyez votre score dans le **Salon Site Halloween** pour obtenir votre classement ! Un nouveau site/énigme sera disponible tous les 5 jours avant le 31 octobre, avec un grand final pour Halloween ! Bonne chance !
+                        </p>
+                    </div>
+                `,
+                actions: [
+                    { text: "Recommencer l'Aventure", next: 'reset' }
+                ]
+            }
+        };
+
+        // --- Fonctions Utilitaires ---
+
+        function showModal(title, message) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            document.getElementById('message-modal').classList.remove('hidden');
         }
-      }
-    }
 
-    function deleteApplication(id) {
-      const apps = lget('lmc_applications', []);
-      const filtered = apps.filter(app => app.id !== id);
-      lset('lmc_applications', filtered);
-      renderAdminData();
-    }
-
-    function deleteContact(idx) {
-      const contacts = lget('lmc_contacts', []);
-      contacts.splice(idx, 1);
-      lset('lmc_contacts', contacts);
-      renderAdminData();
-    }
-
-    function exportData() {
-      const data = {
-        points: lget('lmc_points', {}),
-        applications: lget('lmc_applications', []),
-        contacts: lget('lmc_contacts', []),
-        audit: lget('lmc_audit', [])
-      };
-      
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `lmc_backup_${Date.now()}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function clearAllData() {
-      if (confirm('⚠️ ATTENTION ! Cela va supprimer TOUTES les données. Es-tu sûr ?')) {
-        localStorage.clear();
-        alert('✅ Toutes les données ont été supprimées');
-        location.reload();
-      }
-    }
-
-    // ===== SECRET OVERLAY (Ctrl+A) =====
-    document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
-        e.preventDefault();
-        const overlay = document.getElementById('secretOverlay');
-        if (overlay) overlay.style.display = 'flex';
-        document.getElementById('secretCodeInput').value = '';
-        document.getElementById('secretControls').style.display = 'none';
-      }
-    });
-
-    function closeSecretOverlay() {
-      document.getElementById('secretOverlay').style.display = 'none';
-    }
-
-    function validateSecretCode() {
-      const code = document.getElementById('secretCodeInput').value.trim();
-      if (code === '56710') {
-        document.getElementById('secretControls').style.display = 'block';
-        document.getElementById('secret_msg').textContent = '✅ Accès validé - Bienvenue créateur';
-      } else {
-        document.getElementById('secret_msg').textContent = '❌ Code incorrect';
-      }
-    }
-
-    function secretAddPoints() {
-      const pseudo = document.getElementById('secret_pseudo').value.trim();
-      const amount = Number(document.getElementById('secret_amount').value) || 0;
-      const msg = document.getElementById('secret_msg');
-
-      if (!pseudo || !amount) {
-        msg.textContent = '❌ Pseudo + montant requis';
-        return;
-      }
-
-      addPointsToPseudo(pseudo, amount);
-      msg.textContent = `✅ +${amount} points ajoutés à ${pseudo}`;
-      renderLeaderboard();
-    }
-
-    function secretRemovePoints() {
-      const pseudo = document.getElementById('secret_pseudo').value.trim();
-      const amount = Number(document.getElementById('secret_amount').value) || 0;
-      const msg = document.getElementById('secret_msg');
-
-      if (!pseudo || !amount) {
-        msg.textContent = '❌ Pseudo + montant requis';
-        return;
-      }
-
-      removePointsFromPseudo(pseudo, amount);
-      msg.textContent = `✅ ${amount} points retirés à ${pseudo}`;
-      renderLeaderboard();
-    }
-
-    // ===== PYTHON INTEGRATION =====
-    let pyodide = null;
-
-    async function initPyodide() {
-      if (pyodide) return pyodide;
-      
-      const output = document.getElementById('python_output');
-      if (output) output.textContent = '⏳ Chargement de Python...';
-      
-      try {
-        pyodide = await loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
-        });
-        
-        if (output) output.textContent = '✅ Python prêt ! Vous pouvez maintenant exécuter du code.';
-        return pyodide;
-      } catch (e) {
-        if (output) output.textContent = '❌ Erreur lors du chargement de Python: ' + e.message;
-        return null;
-      }
-    }
-
-    async function runPythonCode() {
-      const code = document.getElementById('python_code').value;
-      const output = document.getElementById('python_output');
-      
-      if (!code.trim()) {
-        output.textContent = '❌ Entre du code Python à exécuter';
-        return;
-      }
-
-      try {
-        if (!pyodide) {
-          await initPyodide();
+        function hideModal() {
+            document.getElementById('message-modal').classList.add('hidden');
         }
-        
-        output.textContent = '⏳ Exécution...';
-        
-        // Redirect stdout
-        pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-        `);
-        
-        const result = pyodide.runPython(code);
-        const stdout = pyodide.runPython('sys.stdout.getvalue()');
-        
-        let displayResult = '';
-        if (stdout) displayResult += stdout;
-        if (result !== undefined && result !== null) {
-          displayResult += (displayResult ? '\n' : '') + '>>> ' + result;
+
+        function updateScore(amount) {
+            gameState.score += amount;
+            // Si l'utilisateur est sur l'écran final, le contenu doit être mis à jour après la résolution du code
+            if (gameState.currentScreen === 'escape') {
+                renderScreen('escape'); // Re-rend l'écran d'évasion pour mettre à jour le score dans le message du concours
+            }
+            document.getElementById('score-display').textContent = `Score : ${gameState.score}`;
+            if (amount > 0) {
+                // Montre la modale uniquement pour les gains positifs hors de l'écran d'évasion
+                if (gameState.currentScreen !== 'escape') {
+                    showModal("Succès ! (+${amount})", "Vous avez trouvé une pièce d'or !");
+                }
+            }
         }
-        
-        output.textContent = displayResult || '✅ Code exécuté (aucune sortie)';
-      } catch (e) {
-        output.textContent = '❌ Erreur Python:\n' + e.message;
-      }
-    }
 
-    // ===== MUSIC CONTROL =====
-    let secretAudio = null;
+        function resetGame() {
+            gameState = {
+                currentScreen: 'home',
+                score: 0,
+                hasKey: false,
+                quizAnswered: false,
+                riddleSolved: false,
+                codeEntered: false,
+                userName: gameState.userName, // Garde le nom de l'utilisateur
+            };
+            music.pause();
+            music.currentTime = 0;
+            musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>';
+            renderScreen(gameState.currentScreen);
+            updateScore(0); // Met à jour l'affichage du score à 0
+        }
 
-    function ensureSecretAudio() {
-      if (!secretAudio) {
-        // Note: You'll need to provide your own music file
-        secretAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjGJ0O+7bSYEH3DH8+CXRQsQWKvi7rFgGgc2kNXuxXElBSp+zPHaizsIFWS46+OZTgwLTKXh8bllHAU2jdXvxG8oBS1/yvDajjsIE2G26+GgUhQLSaDe8bVjHQU5kdPuxXImBSl4yO/ckDwJElqy5O2qXBkHNIvU7sNyJQUpeMrw3ZI+CRJYr+Xur1sZBzaP1O7FcSUFKnjK8N2SOwoSWK/l7q9bGQc2j9TuxXElBSp4yvDdkjsKEliv5e6vWxkHNo/U7sVxJQUqeMrw3ZI7ChJYr+Xur1sZBzaP1O7FcSUFKnjK8N2SOwoSWK/l7q9bGQc2j9TuxXElBSp4yvDdkjsKEliv5e6vWxkHNo/U7sVxJQUqeMrw3ZI7ChJYr+Xur1sZBzaP1O7FcSUFKnjK8N2SOwoSWK/l7q9bGQc2j9TuxXElBSp4yvDdkjsKEliv5e6vWxkHNo/U7sVxJQUqeMrw3ZI7ChJYr+Xur1sZBzaP1O7FcSUFKnjK8N2SOwoSWK/l7q9bGQc2j9TuxXElBSp4yvDdkjsK');
-        secretAudio.loop = true;
-      }
-    }
+        // --- Logique du Jeu (Les Énigmes) ---
 
-    function playMusic() {
-      ensureSecretAudio();
-      secretAudio.play().catch(() => {
-        document.getElementById('secret_msg').textContent = '❌ Le navigateur bloque la lecture automatique. Clique à nouveau.';
-      });
-    }
+        function checkQuiz(result) {
+            if (gameState.quizAnswered) {
+                showModal("Déjà Fait", "Vous avez déjà répondu à cette question et obtenu votre récompense.");
+                return;
+            }
 
-    function stopMusic() {
-      if (secretAudio) {
-        secretAudio.pause();
-        secretAudio.currentTime = 0;
-      }
-    }
+            // Réponse correcte au quiz: 8 jours. Indice: 8.
+            if (result === 'correct') {
+                updateScore(50);
+                gameState.quizAnswered = true;
+                // Indice 1: 8
+                showModal("Réponse Correcte !", "Indice 1 trouvé: Le chiffre '8'.");
+                document.getElementById('quiz-options').innerHTML = '<p class="text-lg text-swamp-green font-bold">Quiz Résolu ! Indice 1: **8**</p>';
+            } else {
+                updateScore(-5);
+                showModal("Mauvaise Réponse", "Une petite douleur vous traverse l'esprit. Réessayez.");
+            }
+            // Désactive les boutons après la première tentative pour le quiz
+            document.querySelectorAll('.quiz-button').forEach(btn => btn.onclick = () => showModal("Attention", "Le livre ne vous laissera pas tricher."));
+        }
 
-    // ===== SCROLL TO SECTION =====
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
+        function checkRiddle() {
+            if (gameState.riddleSolved) {
+                showModal("Déjà Fait", "L'énigme a déjà été résolue.");
+                return;
+            }
 
-    // ===== SHOW ADMIN PANEL =====
-    function showAdminPanel() {
-      document.getElementById('admin_area').style.display = 'block';
-      scrollToSection('admin_area');
-    }
+            const answer = document.getElementById('riddle-input').value.trim().toLowerCase();
+            // Liste d'acceptation de réponses faciles pour citrouille
+            const correctAnswers = ['citrouille', 'la citrouille', 'pumpkin', 'jack-o-lantern', 'lanterne'];
 
-    // ===== INITIALIZATION =====
-    document.addEventListener('DOMContentLoaded', function() {
-      // Render leaderboard on load
-      renderLeaderboard();
-      
-      // Show admin panel (always visible)
-      showAdminPanel();
-      
-      // Add smooth scroll behavior
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
+            if (correctAnswers.some(correct => answer.includes(correct))) {
+                updateScore(75);
+                gameState.riddleSolved = true;
+                // Indice 2: 3 (un chiffre simple pour suivre le 8)
+                showModal("Énigme Résolue !", "Indice 2 trouvé: Le chiffre '3'.");
+                document.getElementById('riddle-button').disabled = true;
+                document.getElementById('riddle-button').textContent = 'Résolu !';
+                document.getElementById('riddle-input').disabled = true;
+                // Ajoute l'indice au contenu
+                document.querySelector('.bg-midnight-black.p-4').insertAdjacentHTML('afterend', '<p class="text-lg text-swamp-green font-bold text-center mt-4">Énigme Résolue ! Indice 2: **3**</p>');
+            } else {
+                updateScore(-10);
+                showModal("Incorrect", "Le chaudron bouillonne avec rage. Réfléchissez mieux.");
+            }
+        }
 
-      console.log('🎮 Les Mecs Chills - Site chargé avec succès !');
-      console.log('💡 Appuie sur Ctrl+A pour accéder au panneau créateur');
-    });
-  </script>
+        function checkVaultCode() {
+            const vaultStatus = document.getElementById('vault-status');
+            const codeInput = document.getElementById('code-input');
+            const codeButton = document.getElementById('code-button');
 
+            if (!gameState.quizAnswered || !gameState.riddleSolved) {
+                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-blood-red';
+                vaultStatus.textContent = "VERROUILLÉ : Manque d'indices (Bureau et Cuisine non résolus).";
+                return;
+            }
+
+            if (gameState.codeEntered) {
+                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-swamp-green';
+                vaultStatus.textContent = "OUVERT : La Clé est à vous !";
+                renderScreen('escape');
+                return;
+            }
+
+            const enteredCode = codeInput.value.trim();
+            // Code final: Indice 1 (8) + Indice 2 (3) + Indice 3 (1, pour la Première Pièce)
+            const CORRECT_CODE = '831';
+
+            if (enteredCode === CORRECT_CODE) {
+                updateScore(150);
+                gameState.codeEntered = true;
+                gameState.hasKey = true;
+                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-swamp-green';
+                vaultStatus.textContent = "OUVERT ! La Clé du Salut est apparue !";
+                codeInput.disabled = true;
+                codeButton.textContent = 'Prendre la Clé et S\'Échapper';
+                codeButton.onclick = () => renderScreen('escape');
+            } else {
+                updateScore(-20);
+                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-blood-red';
+                vaultStatus.textContent = "CODE INCORRECT. Le sceau gronde et vous pénalise. (Avez-vous bien combiné l'indice 8, l'indice 3, et l'indice de l'Antichambre 1 ?)";
+            }
+        }
+
+        // --- Moteur de Rendu ---
+
+        function renderScreen(screenKey) {
+            // Logique de réinitialisation si l'utilisateur choisit de recommencer
+            if (screenKey === 'reset') {
+                resetGame();
+                return;
+            }
+
+            const screen = SCREENS[screenKey];
+            const container = document.getElementById('game-container');
+            container.innerHTML = ''; // Nettoyer le contenu précédent
+
+            // 1. Mise à jour de l'état
+            gameState.currentScreen = screenKey;
+
+            // 2. Créer la structure de la pièce
+            const roomDiv = document.createElement('div');
+            roomDiv.className = 'w-full bg-rust-brown/50 border-4 border-rust-brown rounded-2xl p-8 shadow-spooky-glow animate-fadeIn';
+            roomDiv.style.animation = 'fadeIn 1s ease-out';
+
+            // 3. Ajouter le titre de la pièce
+            roomDiv.innerHTML += `<h2 class="spooky-title text-4xl mb-6 text-center">${screen.title}</h2>`;
+
+            // 4. Ajouter le contenu de la pièce
+            roomDiv.innerHTML += `<div class="content-area mb-8">${screen.content}</div>`;
+
+            // 5. Ajouter les boutons d'action/navigation
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'flex flex-col md:flex-row justify-center gap-4';
+
+            screen.actions.forEach(action => {
+                const button = document.createElement('button');
+                button.className = 'game-button bg-halloween-orange text-bone-white font-bold py-3 px-6 rounded-lg shadow-md';
+                button.textContent = action.text;
+
+                // Logique pour gérer les portes verrouillées
+                if (action.next === 'vault') {
+                    if (gameState.hasKey) {
+                        button.textContent = "Porte Est (Déverrouillée - Évasion!)";
+                        button.onclick = () => renderScreen('escape');
+                    } else {
+                         // On gère la logique de la Porte Est dans checkVaultCode()
+                         button.onclick = () => renderScreen(action.next);
+                    }
+                } else if (action.next === 'quiz') {
+                    button.onclick = () => renderScreen(action.next);
+                    if (gameState.quizAnswered) {
+                        button.classList.add('opacity-50', 'cursor-not-allowed', 'bg-swamp-green/50');
+                        button.textContent = "Aller au BUREAU (Résolu)";
+                    }
+                } else if (action.next === 'riddle') {
+                    button.onclick = () => renderScreen(action.next);
+                    if (gameState.riddleSolved) {
+                        button.classList.add('opacity-50', 'cursor-not-allowed', 'bg-swamp-green/50');
+                        button.textContent = "Aller à la CUISINE (Résolu)";
+                    }
+                } else {
+                    button.onclick = () => renderScreen(action.next);
+                }
+
+                actionsDiv.appendChild(button);
+            });
+
+            roomDiv.appendChild(actionsDiv);
+            container.appendChild(roomDiv);
+
+            // 6. Logique post-rendu pour certains écrans
+            if (screenKey === 'quiz' && gameState.quizAnswered) {
+                // Mettre à jour l'affichage après un rafraîchissement
+                document.getElementById('quiz-options').innerHTML = '<p class="text-lg text-swamp-green font-bold">Quiz Résolu ! Indice 1: **8**</p>';
+            }
+
+            if (screenKey === 'riddle' && gameState.riddleSolved) {
+                document.getElementById('riddle-button').disabled = true;
+                document.getElementById('riddle-button').textContent = 'Résolu !';
+                document.getElementById('riddle-input').disabled = true;
+                document.querySelector('.bg-midnight-black.p-4').insertAdjacentHTML('afterend', '<p class="text-lg text-swamp-green font-bold text-center mt-4">Énigme Résolue ! Indice 2: **3**</p>');
+            }
+
+            if (screenKey === 'vault' && gameState.codeEntered) {
+                document.getElementById('vault-status').className = 'text-center text-xl mb-4 font-bold text-swamp-green';
+                document.getElementById('vault-status').textContent = "OUVERT : La Clé est à vous !";
+                document.getElementById('code-input').disabled = true;
+                document.getElementById('code-button').textContent = 'Prendre la Clé et S\'Échapper';
+                document.getElementById('code-button').onclick = () => renderScreen('escape');
+            }
+        }
+
+        // --- Démarrage de l'Application ---
+        window.onload = () => {
+            // Demander un nom pour personnaliser la fin
+            const name = prompt("Entrez votre nom pour marquer votre passage dans ce manoir :");
+            if (name && name.trim().length > 0) {
+                gameState.userName = name.trim();
+            }
+
+            renderScreen('home');
+        };
+
+        // Ajout d'une animation simple de fondu en entrée
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
 </body>
 </html>
