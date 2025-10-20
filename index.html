@@ -3,120 +3,1141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Imprévue - Retour Prochainement</title>
-    <!-- Chargement de Tailwind CSS pour un style rapide et responsive -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Utilisation de la police Inter -->
+    <title>La Mini Communauté - Plateforme Autonome</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        :root {
+            --bg: #040c18;
+            --card: #071324;
+            --primary: #4f46e5;
+            --primary-hover: #6366f1;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --maxw: 1150px;
+        }
+        * { box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f9fb;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        .icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            margin-right: 8px;
-            flex-shrink: 0;
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { color: var(--primary-hover); }
+
+        /* General Layout */
+        header { background: var(--card); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+        nav { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1rem; }
+        .logo { font-size: 1.5rem; font-weight: 800; }
+        main { max-width: var(--maxw); margin: 2rem auto; padding: 0 1rem; }
+        section { margin-bottom: 3rem; padding: 1.5rem 0; border-top: 1px solid var(--border); }
+        section:first-of-type { border-top: none; }
+
+        /* Typography */
+        h1, h2, h3 { font-weight: 800; line-height: 1.2; margin-top: 0; }
+        h2 { font-size: 2rem; border-left: 4px solid var(--primary); padding-left: 12px; margin-bottom: 1.5rem; }
+        .small { font-size: 0.85rem; }
+        .muted { color: var(--muted); }
+
+        /* Components */
+        .nav-links a { margin-left: 1rem; color: var(--text); padding: 0.5rem 0; display: inline-block; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .card, .panel, .game-card {
+            background-color: var(--card);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
         }
-        .maintenance-card {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px -5px rgba(0, 0, 0, 0.04);
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+
+        /* Form Elements */
+        input:not([type="checkbox"]), textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 12px;
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            transition: border-color 0.2s;
         }
+        input:focus, textarea:focus { border-color: var(--primary); outline: none; }
+
+        /* Buttons */
+        .btn {
+            background-color: var(--primary);
+            color: var(--text);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, opacity 0.2s;
+            font-weight: 600;
+            min-height: 40px; /* Mobile touch target */
+        }
+        .btn:hover { background-color: var(--primary-hover); }
+        .btn.ghost { background-color: transparent; border: 1px solid var(--border); color: var(--muted); }
+        .btn.ghost:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--text); }
+        .btn.small { padding: 6px 12px; min-height: 32px; font-size: 0.85rem;}
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Lists/Data Display */
+        .list .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.1s;
+        }
+        .list .item:last-child { border-bottom: none; }
+        .list.small .item { padding: 6px 0; }
+        .list .item:hover { background-color: rgba(255, 255, 255, 0.03); padding-left: 8px; margin-left: -8px; border-radius: 4px; }
+        .list .item button { margin-left: 8px; }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .nav-links { display: none; } /* Simplified nav on small screens */
+            .grid-3 { grid-template-columns: 1fr; }
+            h2 { font-size: 1.5rem; }
+        }
+        /* Specific Styles */
+        #secretOverlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center; }
+        #admin_area_content { transition: opacity 0.3s; }
+        .admin-section { padding: 12px; border: 1px dashed var(--border); border-radius: 8px; margin-top: 15px; }
+        .admin-section h4 { margin-top: 0; font-weight: 600; color: var(--primary); }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body>
 
-    <div class="maintenance-card max-w-4xl w-full bg-white p-6 md:p-10 rounded-xl border-t-8 border-red-600">
+    <header>
+        <nav>
+            <div class="logo">LMC</div>
+            <div class="nav-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#roles">Rôles</a>
+                <a href="#games">Jeux & Classement</a>
+                <a href="#recruitment">Recrutement</a>
+                <a href="#help">Aide</a>
+                <a href="#admin_area">Admin Panel</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <!-- Menu mobile toggle would go here -->
+        </nav>
+    </header>
 
-        <!-- En-tête de la Maintenance -->
-        <div class="text-center mb-8">
-            <svg class="w-16 h-16 text-red-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Zm-1-5H13V7H11ZM12 17.5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 12 17.5Z"/>
-            </svg>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">
-                Maintenance Imprévue Majeure
-            </h1>
-            <p class="text-lg text-red-600 font-semibold">
-                Nous serons de retour en ligne dès que possible.
-            </p>
-        </div>
+    <main>
+        <section id="accueil">
+            <h2>Bienvenue sur La Mini Communauté</h2>
+            <div class="card">
+                <p>Ceci est la plateforme interactive et autonome de LMC. Explorez nos jeux, postulez pour un rôle, et consultez les dernières annonces de la communauté.</p>
+                <div id="announcements_list" class="list">
+                    <div class="small muted">Chargement des annonces...</div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Corps du Message -->
-        <div class="text-gray-700 space-y-6">
-            <p class="text-xl font-medium leading-relaxed">
-                Bonjour à tous,
-            </p>
-            <p>
-                Je vous écris ce message pour vous informer d’un problème technique majeur actuellement en cours sur notre site web. Depuis quelque temps, nous rencontrons un bug critique lié au système de candidatures, plus précisément à la gestion des adresses IP.
-            </p>
+        <section id="roles">
+            <h2>Nos Rôles Disponibles</h2>
+            <div class="grid-3" id="roles_container">
+                <div class="card">
+                    <h3>Chargement...</h3>
+                    <p class="small muted">Veuillez patienter.</p>
+                </div>
+            </div>
+        </section>
 
-            <p>
-                Concrètement, cela signifie que certaines candidatures ne sont pas correctement enregistrées ou traitées, voire même bloquées par erreur à cause d’une anomalie au niveau du serveur. Ce dysfonctionnement empêche le bon fonctionnement de plusieurs outils internes, et pourrait créer des erreurs dans la base de données si nous laissions le site actif dans cet état. <span class="text-xl">⚠️</span>
-            </p>
+        <section id="games">
+            <h2>Jeux & Système de Points</h2>
 
-            <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
-                <p class="font-bold text-red-800 mb-2">
-                    🚫 Décision d'urgence :
-                </p>
-                <p>
-                    Pour éviter tout risque de perte de données ou de mauvais traitement des candidatures, j’ai pris la décision de placer le site en <span class="font-bold">maintenance complète pendant quelques jours</span>.
-                </p>
+            <div class="grid-3">
+                
+                <!-- A - Leaderboard (Required UI Block) -->
+                <div class="game-card" id="leaderboard_card">
+                    <h3>Classement Global</h3>
+                    <div id="leaderboard" class="list small muted">Chargement du classement...</div>
+                </div>
+                <!-- End A -->
+
+                <div class="game-card">
+                    <h3>Devine le Nombre (5 pts)</h3>
+                    <input id="guess_pseudo" placeholder="Pseudo (ex: ChillUser#1234)" value="">
+                    <input id="guess_input" type="number" min="1" max="50" placeholder="Votre tentative (1-50)">
+                    <button class="btn small" id="guess_submit">Deviner</button>
+                    <div id="guess_msg" class="small muted" style="margin-top:8px">Jeu prêt !</div>
+                </div>
+                
+                <div class="game-card">
+                    <h3>Pierre-Feuille-Ciseaux (3 pts)</h3>
+                    <input id="rps_pseudo" placeholder="Pseudo" value="">
+                    <div style="display:flex; gap:8px; margin-top:8px">
+                        <button class="btn small" data-choice="pierre">✊ Pierre</button>
+                        <button class="btn small" data-choice="feuille">✋ Feuille</button>
+                        <button class="btn small" data-choice="ciseaux">✂️ Ciseaux</button>
+                    </div>
+                    <div id="rps_msg" class="small muted" style="margin-top:8px">Choisissez votre coup.</div>
+                </div>
+                
+                <div class="game-card">
+                    <h3>Lancer de Dés (1 pt si 6)</h3>
+                    <input id="dice_pseudo" placeholder="Pseudo" value="">
+                    <button class="btn small" id="dice_roll">Lancer le Dé 🎲</button>
+                    <div id="dice_msg" class="small muted" style="margin-top:8px"></div>
+                </div>
+
+                <div class="game-card">
+                    <h3>Quiz Rapide (5 pts)</h3>
+                    <input id="quiz_pseudo" placeholder="Pseudo" value="">
+                    <p class="small">Quelle est la capitale du Canada ?</p>
+                    <input id="quiz_answer" placeholder="Votre réponse">
+                    <button class="btn small" id="quiz_submit">Valider</button>
+                    <div id="quiz_msg" class="small muted" style="margin-top:8px"></div>
+                </div>
+
+            </div>
+            
+            <div class="card" style="margin-top:20px;">
+                <h3>Vos Points Personnels</h3>
+                <input id="user_pseudo_input" placeholder="Entrez votre Pseudo (pour voir vos points)" value="">
+                <button class="btn small" id="show_my_points">Afficher mes points</button>
+                <button class="btn small ghost" id="reset_my_points">Réinitialiser mes points</button>
+                <div id="my_points_display" class="small" style="margin-top:8px; font-size:1.1rem; font-weight:600;"></div>
+            </div>
+        </section>
+
+        <section id="recruitment">
+            <h2>Recrutement - Postuler</h2>
+            <div class="card">
+                <form id="advancedApply">
+                    <label>Pseudo Exact</label><input id="app_pseudo" required placeholder="ChillUser#1234">
+                    <label>Âge</label><input id="app_age" type="number" required placeholder="18">
+                    <label>Expérience (brief)</label><textarea id="app_experience" required placeholder="Décrivez votre expérience en quelques lignes."></textarea>
+                    <label>Heures par semaine estimées</label><input id="app_hours" type="number" required placeholder="5">
+                    <label>Motivation</label><textarea id="app_motivation" required placeholder="Pourquoi souhaitez-vous nous rejoindre ?"></textarea>
+                    <button type="submit" class="btn">Envoyer ma candidature complète</button>
+                    <div id="app_msg" class="small muted" style="margin-top:8px"></div>
+                </form>
+            </div>
+        </section>
+
+        <section id="help">
+            <h2>Espace d'Aide / Q&A</h2>
+            <div class="card">
+                <h3>Poser une question aux administrateurs</h3>
+                <form id="helpRequestForm">
+                    <label>Pseudo</label><input id="help_pseudo" required placeholder="Votre pseudo">
+                    <label>Votre question</label><textarea id="help_question" required placeholder="Décrivez votre problème ou question."></textarea>
+                    <button type="submit" class="btn">Envoyer ma demande d'aide</button>
+                    <div id="help_msg" class="small muted" style="margin-top:8px"></div>
+                </form>
+            </div>
+            <h3 style="margin-top: 2rem;">Réponses Publiques</h3>
+            <div class="card">
+                <div id="help_answers_list" class="list">
+                    <div class="small muted">Aucune réponse pour l'instant.</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="admin_area">
+            <h2>Panneau d'Administration LMC</h2>
+            
+            <div class="card" id="admin_login_card">
+                <h3>Accès Administrateur</h3>
+                <p class="small muted">Entrez le mot de passe admin.</p>
+                <input id="admin_password" type="password" placeholder="Mot de passe">
+                <button class="btn small" id="admin_login">Connexion</button>
             </div>
 
+            <div id="admin_area_content" style="display:none;">
+                
+                <div class="grid-3">
+                    <div class="panel">
+                        <h3>Bloc-note Créateur</h3>
+                        <textarea id="admin_note_pad" rows="8" placeholder="Vos notes ici. Sauvegarde automatique."></textarea>
+                        <div class="small muted">Sauvegardé : <span id="note_last_saved"></span></div>
+                    </div>
+                    <div class="panel">
+                        <h3>Terminal Python (Pyodide)</h3>
+                        <p class="small muted">Exécutez du code Python localement pour des tests ou calculs.</p>
+                        <textarea id="py_input" rows="5" placeholder="print('Hello World')"></textarea>
+                        <button class="btn small" id="runPythonBtn">▶️ Exécuter Python</button>
+                        <pre id="py_output" style="background:#000; padding:8px; border-radius:4px; margin-top:8px; font-size:0.8rem; overflow-x: auto;">Résultat...</pre>
+                    </div>
+                    <!-- B - Admin Points Panel (Required UI Block) -->
+                    <div class="panel" id="adminPointsPanel">
+                        <h3>Gestion des points</h3>
+                        <input id="points_pseudo" placeholder="Pseudo exact (ex: ChillUser#1234)">
+                        <input id="points_amount" type="number" placeholder="Nombre de points">
+                        <div style="margin-top:8px">
+                            <button id="points_add" class="btn small">Ajouter</button>
+                            <button id="points_remove" class="btn small ghost">Retirer</button>
+                        </div>
+                        <div id="points_msg" class="small muted" style="margin-top:8px"></div>
+                    </div>
+                    <!-- End B -->
+                </div>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">
-                Objectifs de cette Maintenance
-            </h2>
+                <div class="admin-section">
+                    <h4>Candidatures Reçues</h4>
+                    <div id="adminApplications" class="list">Aucune candidature reçue.</div>
+                </div>
 
-            <!-- Liste des objectifs avec icônes -->
-            <ul class="space-y-3 pl-0">
-                <li class="flex items-start">
-                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12A10 10 0 0 1 2 12A10 10 0 0 1 22 12Z M12 4a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8Z M12 6a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6Z M12 8a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4Z"/></svg>
-                    <span class="flex-1">Identifier l’origine exacte du problème au niveau du système d’adresse IP <span class="font-semibold text-gray-900">🧩</span></span>
-                </li>
-                <li class="flex items-start">
-                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm-1 14l-4-4l1.41-1.41L11 13.17l4.59-4.58L17 10L11 16Z"/></svg>
-                    <span class="flex-1">Corriger le code responsable de cette erreur <span class="font-semibold text-gray-900">💻</span></span>
-                </li>
-                <li class="flex items-start">
-                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M18 8H20V19H4V8H6V6A6 6 0 0 1 12 0A6 6 0 0 1 18 6Z M12 2A4 4 0 0 0 8 6V8H16V6A4 4 0 0 0 12 2Z M2 20V22H22V20Z"/></svg>
-                    <span class="flex-1">Tester en profondeur chaque partie du site pour m’assurer qu’il soit entièrement stable et sécurisé <span class="font-semibold text-gray-900">🔒</span></span>
-                </li>
-                <li class="flex items-start">
-                    <svg class="icon text-blue-500 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20a8 8 0 0 0 8-8H4a8 8 0 0 0 8 8Z M12 4a8 8 0 0 1 8 8h-4a4 4 0 0 0-4-4V4Z"/></svg>
-                    <span class="flex-1">Mettre en place une optimisation globale afin d’éviter que ce type d’incident ne se reproduise à l’avenir <span class="font-semibold text-gray-900">🚀</span></span>
-                </li>
-            </ul>
+                <div class="admin-section">
+                    <h4>Demandes d'Aide à Répondre</h4>
+                    <div id="adminHelpRequests" class="list">Aucune demande en attente.</div>
+                </div>
 
-            <!-- Mise à jour et Projet Halloween -->
-            <p>
-                Pour le moment, je ne peux pas donner de date précise de fin de maintenance, car tout dépendra du temps nécessaire pour analyser et corriger le bug. Cependant, je m’engage à vous tenir informés de chaque avancée importante, afin que vous sachiez exactement où en est le processus.
-            </p>
+                <div class="admin-section">
+                    <h4>Journal d'Audit</h4>
+                    <div id="adminAuditLog" class="list small">Journal vide.</div>
+                </div>
 
-            <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
-                <p class="font-bold text-yellow-800 mb-2">
-                    <span class="text-xl">🎃</span> Info Projet Halloween :
-                </p>
-                <p>
-                    Concernant le projet Halloween, <span class="font-semibold">ne vous inquiétez pas</span> : il reste en cours ! Le développement continue comme prévu, et vous aurez tout le temps nécessaire pour le finaliser avant la date prévue. Le site étant momentanément indisponible, cela ne remet absolument pas en cause l’avancement du projet ni vos participations.
-                </p>
             </div>
+        </section>
 
-            <p>
-                Je sais que cette situation peut être frustrante, surtout pour ceux qui avaient des actions prévues sur le site ces prochains jours, mais cette décision est essentielle pour la sécurité et la stabilité du projet. Je préfère prendre le temps de faire les choses proprement, plutôt que de risquer d’aggraver le problème en laissant le site accessible avec des erreurs non corrigées.
-            </p>
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+                <form id="contactForm">
+                    <label>Votre Nom</label><input id="contact_name" required placeholder="John Doe">
+                    <label>Votre Email</label><input id="contact_email" type="email" required placeholder="john@example.com">
+                    <label>Votre Message</label><textarea id="contact_msg_text" required rows="5" placeholder="Votre message..."></textarea>
+                    <button type="submit" class="btn">Envoyer le message</button>
+                    <div id="contact_msg" class="small muted" style="margin-top:8px"></div>
+                </form>
+            </div>
+        </section>
+    </main>
 
-            <!-- Conclusion -->
-            <p class="text-center pt-4 text-xl font-semibold text-gray-800">
-                Merci à tous pour votre patience, votre compréhension et votre soutien <span class="text-2xl">🙏</span>
-            </p>
-            <p class="text-center text-sm text-gray-500">
-                Je fais tout mon possible pour que le site revienne plus performant et plus sûr que jamais.
-            </p>
+    <!-- C - Secret Admin Overlay (Required UI Block) -->
+    <!-- secret admin overlay (hidden) -->
+    <div id="secretOverlay">
+      <div style="background:#071324;padding:18px;border-radius:12px;width:90%;max-width:520px;color:var(--text)" role="dialog" aria-modal="true" aria-labelledby="secretAccessTitle">
+        <h3 id="secretAccessTitle">Accès Créateur</h3>
+        <p class="small muted">Entrez le code secret pour ouvrir le panneau créateur.</p>
+        <input id="secretCodeInput" placeholder="Code secret" type="password" style="width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)" aria-label="Code secret">
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button id="secretCodeSubmit" class="btn small">Valider</button>
+          <button id="secretCodeCancel" class="btn small ghost">Annuler</button>
         </div>
 
+        <div id="secretControls" style="display:none;margin-top:12px">
+          <div id="secret_msg" class="small muted" style="margin-top:8px; margin-bottom: 12px;"></div>
+          <!-- UI de gestion rapide des points -->
+          <h4>Gestion rapide des points</h4>
+          <input id="secret_pseudo" placeholder="Pseudo exact" aria-label="Pseudo pour points rapides">
+          <input id="secret_amount" type="number" placeholder="Montant" aria-label="Montant de points rapides">
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="secret_add" class="btn small">+ Ajouter</button>
+            <button id="secret_remove" class="btn small ghost">- Retirer</button>
+          </div>
+          
+          <!-- Python Quick Test -->
+          <h4 style="margin-top: 14px;">Test Python Rapide (Ajouter 100 points à 'TestUser')</h4>
+          <button id="secret_run_py_test" class="btn small">🐍 Run Python Test</button>
+          
+          <!-- Musique & notes -->
+          <div style="margin-top:14px">
+            <button id="secret_play_music" class="btn small">▶️ Musique</button>
+            <button id="secret_stop_music" class="btn small ghost">⏸ Stop</button>
+            <audio id="secret_audio" src="https://cdn.jsdelivr.net/gh/Tonejs/Tone.js/examples/audio/samba.mp3" loop></audio>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- End C -->
 
+<script>
+    // ====================================================================
+    // PARTIE 1 : Helpers & Gestion du LocalStorage (Stockage permanent)
+    // ====================================================================
+
+    // Les clefs utilisées dans localStorage respectent la convention 'lmc_*'
+    // Les structures de données sont exactement celles demandées.
+
+    function lget(k, def) {
+        try {
+            const r = localStorage.getItem(k);
+            return r ? JSON.parse(r) : def;
+        } catch (e) {
+            console.error('lget error for key ' + k, e);
+            return def;
+        }
+    }
+
+    function lset(k, v) {
+        try {
+            localStorage.setItem(k, JSON.stringify(v));
+            return true;
+        } catch (e) {
+            console.error('lset error for key ' + k, e);
+            return false;
+        }
+    }
+
+    function now() {
+        return (new Date()).toISOString().replace('T', ' ').slice(0, 16);
+    }
+
+    function esc(s) {
+        if (s == null) return '';
+        return String(s).replace(/[&<>"']/g, ch => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[ch]));
+    }
+
+    function auditLog(type, message) {
+        const logs = lget('lmc_audit', []);
+        logs.unshift({
+            time: now(),
+            type,
+            message
+        });
+        lset('lmc_audit', logs.slice(0, 500));
+        renderAuditLog(); // Mettre à jour l'affichage
+    }
+
+    // ====================================================================
+    // PARTIE 2 : Logique du Système de Points (lmc_points)
+    // ====================================================================
+
+    function getPointsMap() {
+        return lget('lmc_points', {});
+    }
+
+    function setPointsMap(m) {
+        lset('lmc_points', m);
+    }
+
+    function addPointsToPseudo(pseudo, amount) {
+        const p = esc(pseudo);
+        if (!p || !amount) return false;
+        const map = getPointsMap();
+        const cur = parseInt(map[p] || 0, 10) || 0;
+        map[p] = cur + Number(amount);
+        setPointsMap(map);
+        auditLog('points', `+${amount} pts à ${p}`);
+        return true;
+    }
+
+    function removePointsFromPseudo(pseudo, amount) {
+        const p = esc(pseudo);
+        if (!p || !amount) return false;
+        const map = getPointsMap();
+        const cur = parseInt(map[p] || 0, 10) || 0;
+        map[p] = Math.max(0, cur - Number(amount));
+        setPointsMap(map);
+        auditLog('points', `-${amount} pts de ${p}`);
+        return true;
+    }
+
+    function getPointsForPseudo(pseudo) {
+        const map = getPointsMap();
+        return parseInt(map[esc(pseudo)] || 0, 10) || 0;
+    }
+
+    function getLeaderboard(limit = 50) {
+        const map = getPointsMap();
+        return Object.keys(map)
+            .map(p => ({
+                pseudo: p,
+                points: map[p]
+            }))
+            .filter(r => r.points > 0) // N'afficher que ceux avec des points
+            .sort((a, b) => b.points - a.points)
+            .slice(0, limit);
+    }
+
+    function renderLeaderboard() {
+        const el = document.getElementById('leaderboard');
+        if (!el) return;
+        const list = getLeaderboard(100);
+        if (list.length === 0) {
+            el.innerHTML = '<div class="small muted">Aucun score</div>';
+            return;
+        }
+        el.innerHTML = list.map((r, i) => `
+            <div class="item">
+                <div>
+                    <strong>${i + 1}. ${esc(r.pseudo)}</strong> 
+                    <div class="small muted">${r.points} pts</div>
+                </div>
+            </div>
+        `).join('');
+
+        // Update personal points if pseudo is set
+        const pseudoInput = document.getElementById('user_pseudo_input');
+        if (pseudoInput.value) {
+            document.getElementById('my_points_display').textContent = 
+                `Total : ${getPointsForPseudo(pseudoInput.value.trim())} points.`;
+        }
+    }
+
+    // ====================================================================
+    // PARTIE 3 : Logique Pyodide
+    // ====================================================================
+
+    let pyodideInstance = null;
+    let pyodideReady = false;
+
+    async function initPyodide() {
+        if (pyodideReady) return pyodideInstance;
+        
+        const outputEl = document.getElementById('py_output');
+        if (outputEl) outputEl.textContent = 'Chargement Python (Pyodide)...';
+        
+        try {
+            pyodideInstance = await loadPyodide({
+                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
+            });
+            pyodideReady = true;
+            if (outputEl) outputEl.textContent = 'Python prêt. Exécutez votre code.';
+        } catch (e) {
+            if (outputEl) outputEl.textContent = 'Erreur de chargement Pyodide : ' + e.message;
+            console.error('Pyodide failed to load:', e);
+        }
+        return pyodideInstance;
+    }
+
+    async function runPython(code) {
+        const outputEl = document.getElementById('py_output');
+        if (outputEl) outputEl.textContent = 'Exécution en cours...';
+        
+        const py = await initPyodide();
+        if (!py) return;
+
+        try {
+            // Mettre à disposition les fonctions JS pour l'audit et les points
+            py.globals.set('js_addPointsToPseudo', addPointsToPseudo);
+            py.globals.set('js_auditLog', auditLog);
+            
+            // Si vous voulez appeler des fonctions JS depuis Python, vous devez le faire ici
+            const wrappedCode = `
+import json
+import js
+# Exemple d'appel de fonction JS depuis Python
+# js.js_addPointsToPseudo('PythonUser', 10)
+# js.js_auditLog('python_run', 'Code executed')
+try:
+    exec(${JSON.stringify(code)})
+except Exception as e:
+    print(f"Erreur d'exécution: {e}")
+`;
+
+            const res = py.runPython(wrappedCode);
+
+            // Capture le flux de sortie
+            let stdout = py.runPython("import sys, io; sys.stdout = io.StringIO(); print(f'Résultat Python: {repr(res)}') if res is not None else ' '; sys.stdout.getvalue()");
+            
+            if (outputEl) outputEl.textContent = stdout || "Exécution terminée (pas de sortie).";
+
+            // Après exécution, on met à jour le classement au cas où les points ont été modifiés via Python
+            renderLeaderboard();
+            return res;
+
+        } catch (e) {
+            const errorMsg = `Erreur Python : ${e.message || e}`;
+            if (outputEl) outputEl.textContent = errorMsg;
+            console.error('Python error:', e);
+            return null;
+        }
+    }
+
+
+    // ====================================================================
+    // PARTIE 4 : Logique d'Affichage Admin (Candidatures, Aide, Audit)
+    // ====================================================================
+
+    function getAdminData(key) {
+        return lget(key, []);
+    }
+
+    function renderAuditLog() {
+        const logs = getAdminData('lmc_audit');
+        const el = document.getElementById('adminAuditLog');
+        if (!el) return;
+        el.innerHTML = logs.map(log => `
+            <div class="item">
+                <div class="small">
+                    [${esc(log.time)}] 
+                    <strong>${esc(log.type)}</strong>: 
+                    ${esc(log.message)}
+                </div>
+            </div>
+        `).join('') || '<div class="small muted">Journal vide.</div>';
+    }
+
+    function renderAdminApplications() {
+        const apps = getAdminData('lmc_applications');
+        const el = document.getElementById('adminApplications');
+        if (!el) return;
+
+        if (apps.length === 0) {
+            el.innerHTML = '<div class="small muted">Aucune candidature reçue.</div>';
+            return;
+        }
+
+        el.innerHTML = apps.map(app => `
+            <div class="item" data-id="${esc(app.id)}">
+                <div>
+                    <strong>${esc(app.pseudo)}</strong> 
+                    <div class="small muted">${esc(app.date)} - ${esc(app.age)} ans</div>
+                </div>
+                <div>
+                    <button class="btn small ghost view-app" data-id="${esc(app.id)}">Voir</button>
+                    <button class="btn small ghost delete-app" data-id="${esc(app.id)}">🗑</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Simplistic rendering for help requests (Admin view)
+    function renderAdminHelpRequests() {
+        const requests = getAdminData('lmc_helpRequests');
+        const el = document.getElementById('adminHelpRequests');
+        if (!el) return;
+
+        if (requests.length === 0) {
+            el.innerHTML = '<div class="small muted">Aucune demande en attente.</div>';
+            return;
+        }
+        
+        el.innerHTML = requests.map(req => `
+            <div class="item">
+                <div>
+                    <strong>${esc(req.pseudo)}</strong> - ${esc(req.question.substring(0, 40))}...
+                    <div class="small muted">${req.answer ? '✅ Répondu' : '🟡 En attente'}</div>
+                </div>
+                <button class="btn small ${req.answer ? 'ghost' : ''} answer-help" data-id="${esc(req.id)}">${req.answer ? 'Modifier' : 'Répondre'}</button>
+            </div>
+        `).join('');
+
+        // Attach event listeners for answering
+        document.querySelectorAll('.answer-help').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                const req = requests.find(r => r.id === id);
+                if (!req) return;
+
+                // Simple prompt simulation (use a custom modal in a real app)
+                const newAnswer = prompt(`Répondre à la question de ${req.pseudo} (${req.question}):`, req.answer || '');
+                if (newAnswer !== null) {
+                    const updatedRequests = requests.map(r => 
+                        r.id === id ? { ...r, answer: newAnswer, answerDate: now() } : r
+                    );
+                    lset('lmc_helpRequests', updatedRequests);
+                    auditLog('help_answer', `Réponse envoyée pour ${req.pseudo}`);
+                    renderAdminData();
+                    renderHelpAnswers(); // Public update
+                }
+            });
+        });
+    }
+
+    function renderHelpAnswers() {
+        const requests = getAdminData('lmc_helpRequests').filter(req => req.answer);
+        const el = document.getElementById('help_answers_list');
+        if (!el) return;
+
+        if (requests.length === 0) {
+            el.innerHTML = '<div class="small muted">Aucune réponse publique pour l\'instant.</div>';
+            return;
+        }
+
+        el.innerHTML = requests.map(req => `
+            <div class="item" style="display:block; padding-left: 0; margin-left: 0;">
+                <p style="margin:0; font-weight:600;">Question de ${esc(req.pseudo)} (${esc(req.date)}) :</p>
+                <p class="small muted" style="margin:4px 0;">"${esc(req.question)}"</p>
+                <p style="margin:8px 0 0 0; border-left: 3px solid var(--primary); padding-left: 8px;">
+                    <strong style="color:var(--text);">Réponse Admin :</strong> ${esc(req.answer)}
+                </p>
+            </div>
+        `).join('');
+    }
+
+    function renderRoles() {
+        // Initialiser avec des rôles mockés si vide
+        const initialRoles = [{
+            id: 'dev',
+            name: 'Développeur Junior',
+            desc: 'Aide au développement des mini-jeux et des outils internes.'
+        }, {
+            id: 'modo',
+            name: 'Modérateur',
+            desc: 'Assure la bonne ambiance et la modération du chat.'
+        }, {
+            id: 'event',
+            name: 'Organisateur d\'Événements',
+            desc: 'Propose et gère des activités pour la communauté.'
+        }];
+        const roles = lget('lmc_roles', initialRoles);
+        lset('lmc_roles', roles); // S'assurer que la structure est persistante
+
+        const el = document.getElementById('roles_container');
+        if (!el) return;
+
+        el.innerHTML = roles.map(role => `
+            <div class="card">
+                <h3>${esc(role.name)}</h3>
+                <p class="small muted">${esc(role.desc)}</p>
+                <a href="#recruitment" class="small" style="font-weight:600;">Postuler ici »</a>
+            </div>
+        `).join('');
+    }
+    
+    function renderAnnouncements() {
+        const announcements = lget('lmc_announcements', [{
+            title: "Lancement de la Plateforme!",
+            text: "Bienvenue sur notre nouvelle plateforme interactive. Testez le système de points !",
+            date: now()
+        }]);
+        const el = document.getElementById('announcements_list');
+        if (!el) return;
+
+        el.innerHTML = announcements.map(ann => `
+            <div class="item" style="display:block;">
+                <strong>${esc(ann.title)}</strong> 
+                <p class="small muted" style="margin:4px 0 0 0;">${esc(ann.text)}</p>
+                <div class="small" style="text-align:right;">${esc(ann.date)}</div>
+            </div>
+        `).join('');
+    }
+
+
+    function renderAdminData() {
+        const isAdminLoggedIn = document.getElementById('admin_area_content').style.display !== 'none';
+        if (!isAdminLoggedIn) return;
+        
+        renderAuditLog();
+        renderAdminApplications();
+        renderAdminHelpRequests();
+        // Le reste des fonctions d'affichage admin peut être appelé ici
+    }
+
+    // ====================================================================
+    // PARTIE 5 : Gestion des Formulaires et des Jeux
+    // ====================================================================
+
+    // --- GAMES ---
+
+    // Game 1: Guess the Number
+    let secretNumber = Math.floor(Math.random() * 50) + 1;
+    document.getElementById('guess_submit').addEventListener('click', () => {
+        const pseudo = document.getElementById('guess_pseudo').value.trim();
+        const guess = parseInt(document.getElementById('guess_input').value);
+        const msgEl = document.getElementById('guess_msg');
+        
+        if (!pseudo || !guess) { msgEl.textContent = "Pseudo et tentative requis."; return; }
+
+        if (guess === secretNumber) {
+            addPointsToPseudo(pseudo, 5);
+            msgEl.textContent = `🎉 Bravo ${esc(pseudo)}! Le nombre était bien ${secretNumber}. +5 points ajoutés !`;
+            secretNumber = Math.floor(Math.random() * 50) + 1; // Reset game
+        } else if (guess < secretNumber) {
+            msgEl.textContent = `Trop bas. Essayez encore !`;
+        } else {
+            msgEl.textContent = `Trop haut. Essayez encore !`;
+        }
+        renderLeaderboard();
+    });
+
+    // Game 2: RPS
+    document.querySelectorAll('[data-choice]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const pseudo = document.getElementById('rps_pseudo').value.trim();
+            const playerChoice = e.target.getAttribute('data-choice');
+            const choices = ['pierre', 'feuille', 'ciseaux'];
+            const botChoice = choices[Math.floor(Math.random() * 3)];
+            const msgEl = document.getElementById('rps_msg');
+
+            if (!pseudo) { msgEl.textContent = "Pseudo requis."; return; }
+            
+            let result;
+            if (playerChoice === botChoice) {
+                result = "Égalité !";
+            } else if (
+                (playerChoice === 'pierre' && botChoice === 'ciseaux') ||
+                (playerChoice === 'feuille' && botChoice === 'pierre') ||
+                (playerChoice === 'ciseaux' && botChoice === 'feuille')
+            ) {
+                addPointsToPseudo(pseudo, 3);
+                result = `Victoire ! (+3 pts). Vous: ${playerChoice}, Bot: ${botChoice}.`;
+                renderLeaderboard();
+            } else {
+                result = `Défaite. Vous: ${playerChoice}, Bot: ${botChoice}.`;
+            }
+
+            msgEl.textContent = result;
+        });
+    });
+    
+    // Game 3: Dice
+    document.getElementById('dice_roll').addEventListener('click', () => {
+        const pseudo = document.getElementById('dice_pseudo').value.trim();
+        const msgEl = document.getElementById('dice_msg');
+        
+        if (!pseudo) { msgEl.textContent = "Pseudo requis."; return; }
+
+        const roll = Math.floor(Math.random() * 6) + 1;
+        
+        if (roll === 6) {
+            addPointsToPseudo(pseudo, 1);
+            msgEl.textContent = `🎲 Vous avez obtenu un 6 ! (+1 point).`;
+            renderLeaderboard();
+        } else {
+            msgEl.textContent = `🎲 Vous avez obtenu un ${roll}. Pas de point cette fois.`;
+        }
+    });
+
+    // Game 4: Quiz
+    document.getElementById('quiz_submit').addEventListener('click', () => {
+        const pseudo = document.getElementById('quiz_pseudo').value.trim();
+        const answer = document.getElementById('quiz_answer').value.trim().toLowerCase();
+        const msgEl = document.getElementById('quiz_msg');
+
+        if (!pseudo) { msgEl.textContent = "Pseudo requis."; return; }
+
+        // Réponse correcte
+        if (answer === 'ottawa') {
+            addPointsToPseudo(pseudo, 5);
+            msgEl.textContent = `✅ Correct ! Ottawa est la capitale du Canada. +5 points !`;
+            renderLeaderboard();
+        } else {
+            msgEl.textContent = `❌ Incorrect. La réponse était Ottawa.`;
+        }
+    });
+
+    // Personal Points Display/Reset
+    document.getElementById('show_my_points').addEventListener('click', () => {
+        const pseudo = document.getElementById('user_pseudo_input').value.trim();
+        const displayEl = document.getElementById('my_points_display');
+        if (!pseudo) { displayEl.textContent = "Veuillez entrer un pseudo."; return; }
+        displayEl.textContent = `Total : ${getPointsForPseudo(pseudo)} points.`;
+    });
+
+    document.getElementById('reset_my_points').addEventListener('click', () => {
+        const pseudo = document.getElementById('user_pseudo_input').value.trim();
+        const displayEl = document.getElementById('my_points_display');
+        if (!pseudo) { displayEl.textContent = "Veuillez entrer un pseudo."; return; }
+        
+        if (confirm(`Êtes-vous sûr de vouloir réinitialiser les points de ${pseudo} ?`)) {
+             const map = getPointsMap();
+             delete map[esc(pseudo)];
+             setPointsMap(map);
+             displayEl.textContent = `Points de ${pseudo} réinitialisés.`;
+             auditLog('points_reset', `Points de ${pseudo} réinitialisés par l'utilisateur.`);
+             renderLeaderboard();
+        }
+    });
+
+    // --- FORMS ---
+
+    // Form: Advanced Application
+    document.getElementById('advancedApply').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pseudo = document.getElementById('app_pseudo').value.trim();
+        const age = parseInt(document.getElementById('app_age').value);
+        const experience = document.getElementById('app_experience').value.trim();
+        const hours = parseInt(document.getElementById('app_hours').value);
+        const motivation = document.getElementById('app_motivation').value.trim();
+        const msgEl = document.getElementById('app_msg');
+
+        if (!pseudo || !age || !experience || !hours || !motivation) {
+            msgEl.textContent = 'Tous les champs sont requis.';
+            return;
+        }
+
+        const arr = getAdminData('lmc_applications');
+        arr.unshift({
+            id: Date.now().toString(36),
+            pseudo: esc(pseudo),
+            age,
+            experience: esc(experience),
+            hours,
+            motivation: esc(motivation),
+            date: now()
+        });
+        lset('lmc_applications', arr);
+        auditLog('application', `Nouvelle candidature de ${pseudo}`);
+        msgEl.textContent = 'Candidature envoyée avec succès ! Un administrateur va l\'examiner.';
+        e.target.reset(); // Clear form
+        renderAdminData();
+    });
+
+    // Form: Help Request
+    document.getElementById('helpRequestForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pseudo = document.getElementById('help_pseudo').value.trim();
+        const question = document.getElementById('help_question').value.trim();
+        const msgEl = document.getElementById('help_msg');
+
+        if (!pseudo || !question) {
+            msgEl.textContent = 'Pseudo et question requis.';
+            return;
+        }
+
+        const arr = getAdminData('lmc_helpRequests');
+        arr.unshift({
+            id: Date.now().toString(36),
+            pseudo: esc(pseudo),
+            question: esc(question),
+            date: now(),
+            answer: null
+        });
+        lset('lmc_helpRequests', arr);
+        auditLog('help_request', `Demande d'aide de ${pseudo}`);
+        msgEl.textContent = 'Votre demande d\'aide a été enregistrée. Une réponse sera bientôt publiée.';
+        e.target.reset(); // Clear form
+        renderAdminData();
+    });
+    
+    // Form: Contact
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contact_name').value.trim();
+        const email = document.getElementById('contact_email').value.trim();
+        const msg = document.getElementById('contact_msg_text').value.trim();
+        const msgEl = document.getElementById('contact_msg');
+        
+        if (!name || !email || !msg) {
+            msgEl.textContent = 'Tous les champs sont requis.';
+            return;
+        }
+
+        const arr = getAdminData('lmc_contacts');
+        arr.unshift({
+            name: esc(name),
+            email: esc(email),
+            msg: esc(msg),
+            date: now()
+        });
+        lset('lmc_contacts', arr);
+        auditLog('contact', `Message de contact de ${name}`);
+        msgEl.textContent = 'Merci. Votre message a été envoyé avec succès.';
+        e.target.reset();
+        renderAdminData();
+    });
+
+
+    // ====================================================================
+    // PARTIE 6 : Logique d'Administration (l'admin doit être visible)
+    // ====================================================================
+
+    let isAdmin = false;
+    const ADMIN_PASSWORD = '89mLh21'; // Mot de passe admin
+
+    function setAdminAreaVisibility(loggedIn) {
+        const loginCard = document.getElementById('admin_login_card');
+        const content = document.getElementById('admin_area_content');
+        isAdmin = loggedIn;
+        if (loggedIn) {
+            loginCard.style.display = 'none';
+            content.style.display = 'block';
+            auditLog('admin_login', 'Connexion réussie au Panneau Admin.');
+            renderAdminData();
+        } else {
+            loginCard.style.display = 'block';
+            content.style.display = 'none';
+        }
+    }
+    
+    // Admin Login Listener
+    document.getElementById('admin_login').addEventListener('click', () => {
+        const password = document.getElementById('admin_password').value;
+        if (password === ADMIN_PASSWORD) {
+            setAdminAreaVisibility(true);
+        } else {
+            document.getElementById('admin_password').value = '';
+            alert('Mot de passe incorrect.');
+        }
+    });
+
+    // Admin Note Pad (Auto-save)
+    const notePad = document.getElementById('admin_note_pad');
+    if (notePad) {
+        // Load note on init
+        notePad.value = lget('lmc_ai_saved', [{text: "Notes par défaut.", date: now()}])[0].text;
+        document.getElementById('note_last_saved').textContent = lget('lmc_ai_saved', [{text: "Notes par défaut.", date: now()}])[0].date;
+
+        // Save note on change
+        notePad.addEventListener('input', () => {
+            clearTimeout(notePad.timer);
+            notePad.timer = setTimeout(() => {
+                const note = notePad.value;
+                const noteData = [{ text: esc(note), date: now() }];
+                lset('lmc_ai_saved', noteData); // lmc_ai_saved stores notes admin { text:string, date:string }
+                document.getElementById('note_last_saved').textContent = noteData[0].date;
+                auditLog('notepad', 'Note admin sauvegardée.');
+            }, 1000); // 1 second debounce
+        });
+    }
+    
+    // Admin Run Python Button
+    document.getElementById('runPythonBtn').addEventListener('click', async () => {
+        const code = document.getElementById('py_input').value;
+        await runPython(code);
+    });
+
+    // Admin Points Listeners (Required UI Block B)
+    document.getElementById('points_add').addEventListener('click', () => {
+        const pseudo = document.getElementById('points_pseudo').value.trim();
+        const amt = Number(document.getElementById('points_amount').value) || 0;
+        const msgEl = document.getElementById('points_msg');
+
+        if (!pseudo || !amt) {
+            msgEl.textContent = 'Pseudo + montant requis';
+            return;
+        }
+        addPointsToPseudo(pseudo, amt);
+        msgEl.textContent = `+${amt} pts à ${pseudo}`;
+        renderLeaderboard();
+    });
+
+    document.getElementById('points_remove').addEventListener('click', () => {
+        const pseudo = document.getElementById('points_pseudo').value.trim();
+        const amt = Number(document.getElementById('points_amount').value) || 0;
+        const msgEl = document.getElementById('points_msg');
+
+        if (!pseudo || !amt) {
+            msgEl.textContent = 'Pseudo + montant requis';
+            return;
+        }
+        removePointsFromPseudo(pseudo, amt);
+        msgEl.textContent = `${amt} pts retirés à ${pseudo}`;
+        renderLeaderboard();
+    });
+
+
+    // ====================================================================
+    // PARTIE 7 : Logique Panneau Secret (Ctrl+A & Code 56710)
+    // ====================================================================
+
+    // Ctrl+A secret overlay (Required UI Block C)
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
+            e.preventDefault();
+            const overlay = document.getElementById('secretOverlay');
+            if (overlay) overlay.style.display = 'flex';
+            
+            // Focus and reset input
+            const input = document.getElementById('secretCodeInput');
+            input.value = '';
+            input.focus();
+            
+            document.getElementById('secretControls').style.display = 'none';
+            document.getElementById('secret_msg').textContent = 'Entrez le code.';
+            
+            auditLog('access_attempt', 'Tentative d\'ouverture du panneau secret (Ctrl+A).');
+        }
+    });
+
+    document.getElementById('secretCodeCancel').addEventListener('click', () => {
+        document.getElementById('secretOverlay').style.display = 'none';
+    });
+
+    document.getElementById('secretCodeSubmit').addEventListener('click', () => {
+        const code = document.getElementById('secretCodeInput').value.trim();
+        const msgEl = document.getElementById('secret_msg');
+
+        if (code === '56710') { // code secret
+            document.getElementById('secretControls').style.display = 'block';
+            msgEl.textContent = 'Accès validé au panneau créateur !';
+            auditLog('secret_access', 'Accès Créateur validé.');
+        } else {
+            msgEl.textContent = 'Code incorrect';
+        }
+    });
+
+    // secret add/remove points (same logic)
+    document.getElementById('secret_add').addEventListener('click', () => {
+        const p = document.getElementById('secret_pseudo').value.trim();
+        const amt = Number(document.getElementById('secret_amount').value) || 0;
+        const msgEl = document.getElementById('secret_msg');
+
+        if (!p || !amt) {
+            msgEl.textContent = 'Pseudo + montant requis';
+            return;
+        }
+        addPointsToPseudo(p, amt);
+        msgEl.textContent = `+${amt} pts à ${p} (via secret)`;
+        renderLeaderboard();
+    });
+
+    document.getElementById('secret_remove').addEventListener('click', () => {
+        const p = document.getElementById('secret_pseudo').value.trim();
+        const amt = Number(document.getElementById('secret_amount').value) || 0;
+        const msgEl = document.getElementById('secret_msg');
+
+        if (!p || !amt) {
+            msgEl.textContent = 'Pseudo + montant requis';
+            return;
+        }
+        removePointsFromPseudo(p, amt);
+        msgEl.textContent = `-${amt} pts à ${p} (via secret)`;
+        renderLeaderboard();
+    });
+    
+    // Secret Python Test (Adds 100 points via Python)
+    document.getElementById('secret_run_py_test').addEventListener('click', async () => {
+        const msgEl = document.getElementById('secret_msg');
+        msgEl.textContent = '🐍 Exécution Python en cours...';
+        
+        // Code Python pour appeler la fonction JS d'ajout de points
+        const pythonCode = `
+js.js_addPointsToPseudo('TestUser#Py', 100)
+js.js_auditLog('python_secret', '100 points added to TestUser#Py')
+print('Ajout de 100 points à TestUser#Py via Python')
+`;
+        await runPython(pythonCode);
+        msgEl.textContent = `Test Python exécuté. Vérifiez le classement pour 'TestUser#Py'.`;
+    });
+
+    // musique quick control (Note: I'm using a placeholder asset path)
+    const secretAudio = document.getElementById('secret_audio');
+
+    document.getElementById('secret_play_music').addEventListener('click', () => {
+        secretAudio.play().catch(() => {
+            document.getElementById('secret_msg').textContent = 'Impossible de jouer la musique automatiquement (click requis par le navigateur)';
+        });
+    });
+
+    document.getElementById('secret_stop_music').addEventListener('click', () => {
+        secretAudio.pause();
+        secretAudio.currentTime = 0;
+    });
+
+
+    // ====================================================================
+    // PARTIE 8 : Initialisation
+    // ====================================================================
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Initialisation de l'affichage des données
+        renderRoles();
+        renderAnnouncements();
+        renderHelpAnswers(); // Affichage public des réponses
+
+        // Lancement du leaderboard et des points personnels
+        renderLeaderboard();
+        
+        // Initialisation de l'état de la zone admin (par défaut non connecté)
+        setAdminAreaVisibility(false);
+
+        // Initialisation de Pyodide en arrière-plan (si l'utilisateur est susceptible d'aller dans l'Admin Panel)
+        // Note: L'appel est fait ici pour précharger, sinon initPyodide() est appelé par runPython()
+        // initPyodide(); 
+    });
+</script>
 </body>
 </html>
