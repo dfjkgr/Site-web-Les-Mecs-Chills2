@@ -1,511 +1,1045 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Manoir de l'Énigme Hantée - Halloween</title>
-    <!-- Chargement de Tailwind CSS pour un style moderne et sombre -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Configuration de Tailwind pour un thème Halloween */
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'halloween-orange': '#ff6600',
-                        'midnight-black': '#0a0a0a',
-                        'blood-red': '#cc0000',
-                        'swamp-green': '#008000',
-                        'bone-white': '#fefefe',
-                        'rust-brown': '#7c4c00',
-                    },
-                    fontFamily: {
-                        display: ['Creepster', 'cursive'], /* Police effrayante pour les titres */
-                        sans: ['Inter', 'sans-serif'], /* Police lisible pour le corps du texte */
-                    },
-                    boxShadow: {
-                        'spooky-glow': '0 0 15px rgba(255, 102, 0, 0.7), 0 0 10px rgba(204, 0, 0, 0.5)',
-                        'inner-horror': 'inset 0 0 10px rgba(0, 0, 0, 0.9)',
-                    }
-                }
-            }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Mecs Chills - Discord Server</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Styles personnalisés pour l'ambiance sombre et rouillée */
-        body {
-            background-color: #1a1a1a;
-            color: #fefefe;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-        }
+    :root {
+      --bg: #0a0e27;
+      --bg-secondary: #1a1f3a;
+      --card: #151b2f;
+      --text: #e8eef5;
+      --muted: #8892a8;
+      --accent: #00d4ff;
+      --accent-secondary: #ff6b9d;
+      --success: #00d97e;
+      --danger: #ff4757;
+      --radius: 12px;
+    }
 
-        /* Style pour l'écran principal du manoir */
-        #game-container {
-            min-height: calc(100vh - 80px); /* Ajustement pour la barre de titre */
-        }
+    body {
+      background: linear-gradient(135deg, var(--bg) 0%, #0f1429 100%);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-        /* Style des boutons de jeu */
-        .game-button {
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            border: 2px solid #ff6600;
-        }
-        .game-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #ff6600;
-            background-color: #7c4c00; /* Rust Brown */
-        }
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        /* Style des titres effrayants */
-        .spooky-title {
-            font-family: 'Creepster', cursive;
-            color: #ff6600;
-            text-shadow: 2px 2px 5px #cc0000, 0 0 10px #ff6600;
-        }
+    /* Header */
+    header {
+      background: rgba(21, 27, 47, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
 
-        /* Animation pour l'icône de musique */
-        .spin {
-            animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 20px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #00b8d4);
+      color: #000;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 212, 255, 0.3);
+    }
+
+    .btn.secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--accent);
+    }
+
+    .btn.secondary:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn.small {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--muted);
+    }
+
+    .btn.ghost:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 20px;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.1);
+    }
+
+    .game-card {
+      background: var(--card);
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .game-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Forms */
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* List */
+    .list {
+      list-style: none;
+    }
+
+    .item {
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .small {
+      font-size: 0.9rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* Panel */
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel h3 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    /* Discord Promo */
+    .discord-promo {
+      background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .discord-promo h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .discord-promo p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .discord-promo .btn {
+      background: white;
+      color: #5865f2;
+      font-weight: 700;
+      padding: 1rem 2rem;
+    }
+
+    /* Leaderboard */
+    .leaderboard-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .leaderboard-rank {
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 40px;
+    }
+
+    .leaderboard-points {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    /* Message */
+    .message {
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin: 1rem 0;
+      font-weight: 500;
+    }
+
+    .message.success {
+      background: rgba(0, 217, 126, 0.1);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .message.error {
+      background: rgba(255, 71, 87, 0.1);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    /* Admin Area */
+    #admin_area {
+      display: none;
+      background: rgba(255, 71, 87, 0.05);
+    }
+
+    #admin_area.visible {
+      display: block;
+    }
+
+    /* Secret Overlay */
+    #secretOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #secretOverlay.visible {
+      display: flex;
+    }
+
+    #secretOverlay > div {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 520px;
+      color: var(--text);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    #secretOverlay h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    #secretControls {
+      display: none;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    #secretControls.visible {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-<body class="selection:bg-halloween-orange selection:text-midnight-black">
-
-    <!-- Élément Audio pour la musique (Ajouter l'URL source ici) -->
-    <audio id="background-music" loop>
-        <!-- REMPLACER CETTE SOURCE par une URL de musique d'ambiance d'Halloween libre de droits -->
-        <!-- Par exemple: <source src="chemin/vers/votre/musique.mp3" type="audio/mp3"> -->
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
-    <!-- En-tête du Manoir -->
-    <header class="bg-midnight-black border-b border-rust-brown/50 shadow-spooky-glow p-4">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="spooky-title text-4xl lg:text-5xl">
-                Le Manoir de l'Énigme
-            </h1>
-            <div class="flex items-center space-x-4">
-                <!-- Bouton de Musique -->
-                <button id="music-toggle" onclick="toggleMusic()" class="text-bone-white bg-rust-brown/70 p-2 rounded-full hover:bg-rust-brown transition duration-200" title="Activer/Désactiver la Musique">
-                    <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>
-                </button>
-                <!-- Affichage du Score -->
-                <div id="score-display" class="text-xl font-bold text-swamp-green bg-rust-brown/50 px-4 py-1 rounded-full border border-halloween-orange/50 shadow-inner-horror">
-                    Score : 0
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Conteneur Principal du Jeu -->
-    <main id="game-container" class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center">
-        <!-- Le contenu dynamique sera injecté ici -->
-    </main>
-
-    <!-- Modale de Message (pour remplacer alert()) -->
-    <div id="message-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center">
-        <div class="bg-rust-brown border-4 border-blood-red p-8 rounded-xl shadow-spooky-glow max-w-sm w-full text-center">
-            <h3 id="modal-title" class="spooky-title text-3xl mb-4 text-halloween-orange">Message</h3>
-            <p id="modal-message" class="text-bone-white mb-6 text-lg"></p>
-            <button onclick="hideModal()" class="game-button bg-blood-red hover:bg-blood-red/80 text-bone-white font-bold py-2 px-4 rounded-lg">
-                Fermer
-            </button>
-        </div>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">🎮 Les Mecs Chills</div>
+      <nav>
+        <a onclick="scrollToSection('home')">Accueil</a>
+        <a onclick="scrollToSection('games')">Jeux</a>
+        <a onclick="scrollToSection('contact')">Contact</a>
+        <a onclick="scrollToSection('recruitment')">Candidature</a>
+      </nav>
     </div>
+  </header>
 
-    <script>
-        // Initialisation de l'état du jeu
-        let gameState = {
-            currentScreen: 'home',
-            score: 0,
-            hasKey: false,
-            quizAnswered: false,
-            riddleSolved: false,
-            codeEntered: false,
-            userName: 'Voyageur Mystère',
-        };
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>🎉 Bienvenue sur Les Mecs Chills 🎉</h1>
+      <p>Juste des mecs chills, mais encore plus cool ! Rejoins notre communauté gaming et profite de jeux, de points et d'une ambiance au top.</p>
+      <div class="hero-buttons">
+        <a href="https://discord.gg/wUtq5ZA9Kt" class="btn primary" target="_blank">📱 Rejoindre Discord</a>
+        <a onclick="scrollToSection('games')" class="btn secondary">🎮 Jouer aux Jeux</a>
+      </div>
+    </div>
+  </section>
 
-        // --- Fonctions Audio ---
-        const music = document.getElementById('background-music');
-        const musicIcon = document.getElementById('music-icon');
+  <!-- Discord Promo -->
+  <section class="container" style="padding: 2rem 0;">
+    <div class="discord-promo">
+      <h3>🎉 JUSTE DES MECS CHILLS, MAIS ENCORE PLUS COOL ! 🎉</h3>
+      <p>
+        Tu kiffes Brawl Stars ⭐ ? Alors tu vas adorer notre serveur !<br><br>
+        💥 Ce que tu y trouveras :<br>
+        • Une catégorie Brawl Stars rien que pour toi ⭐<br>
+        • Ainsi qu'une catégorie pour les autres jeux vidéos ! 🎮<br>
+        • Et aussi une catégorie Sport pour exprimer tes passions ! 🏆<br>
+        • Une ambiance au top, du respect et du fun garantit ✅<br>
+        • Des rôles exclusifs à débloquer chaque jour 🎁<br>
+        • Et surtout… les copains et copines prêts à tout déchirer avec toi ! ❤️‍🔥<br><br>
+        🔥 Notre serveur est super développé et prêt à t'accueillir comme il se doit !
+      </p>
+      <a href="https://discord.gg/wUtq5ZA9Kt" class="btn" target="_blank">🔗 Rejoins-nous maintenant et deviens plus chill que jamais !</a>
+    </div>
+  </section>
 
-        function toggleMusic() {
-            if (music.paused) {
-                // Tente de jouer. Peut échouer si le navigateur bloque l'autoplay sans interaction.
-                music.play().catch(error => {
-                    console.error("Erreur de lecture audio :", error);
-                    showModal("Musique", "Le navigateur pourrait avoir bloqué la lecture automatique. Cliquez à nouveau ou interagissez avec la page.");
-                });
-                musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2 spin"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
-            } else {
-                music.pause();
-                musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>';
-            }
-        }
+  <!-- Games Section -->
+  <section id="games">
+    <div class="container">
+      <h2>🎮 Jeux & Points</h2>
 
-        // --- Configuration des jeux et énigmes ---
-        const SCREENS = {
-            home: {
-                title: "Bienvenue dans le Manoir Hanté",
-                content: `
-                    <p class="text-lg mb-6 text-center">
-                        La légende raconte que ce manoir n'ouvre ses portes qu'à ceux qui ont le courage de résoudre ses énigmes. Pour vous échapper avant le lever du jour, vous devez obtenir la Clé du Salut.
-                    </p>
-                    <p class="text-lg mb-8 text-center spooky-title text-2xl">
-                        Êtes-vous prêt à commencer votre aventure ?
-                    </p>
-                `,
-                actions: [
-                    { text: "Entrer dans l'Antichambre", next: 'antichamber' }
-                ]
-            },
-            antichamber: {
-                title: "L'Antichambre Poussiéreuse (Pièce 1)",
-                content: `
-                    <p class="text-lg mb-4">
-                        Une faible lueur d'une bougie vacillante éclaire cette pièce. Il y a **trois** portes.
-                        La porte au nord mène à un **BUREAU** où une histoire semble s'être arrêtée brusquement.
-                        La porte à l'est semble bloquée par une force invisible.
-                        La porte à l'ouest mène à une **CUISINE** avec une odeur de soufre et de sucreries.
-                    </p>
-                    <div class="mt-4 p-3 bg-midnight-black/70 border border-blood-red rounded-lg text-center font-bold text-lg">
-                        NOTE: C'est la **première pièce** de votre exploration. Le chiffre **1** est un indice !
-                    </div>
-                `,
-                actions: [
-                    { text: "Aller au BUREAU (Quiz)", next: 'quiz' },
-                    { text: "Aller à la CUISINE (Énigme)", next: 'riddle' },
-                    { text: "Porte Est (Verrouillée)", next: 'vault' }
-                ]
-            },
-            quiz: {
-                title: "Le Bureau du Savoir Maudit (Indice 1)",
-                content: `
-                    <p class="text-xl mb-6 spooky-title text-halloween-orange">
-                        Un vieux livre s'ouvre de lui-même. Répondez correctement à la question pour trouver le premier chiffre.
-                    </p>
-                    <p class="text-lg mb-4 font-bold text-center">
-                        Question : Combien y a-t-il de jours entre le 24 octobre et le 31 octobre (inclus) ?
-                    </p>
-                    <div id="quiz-options" class="flex flex-col space-y-4">
-                        <button onclick="checkQuiz('wrong')" class="quiz-button game-button">Cinq (5)</button>
-                        <button onclick="checkQuiz('correct')" class="quiz-button game-button">Huit (8)</button>
-                        <button onclick="checkQuiz('wrong')" class="quiz-button game-button">Sept (7)</button>
-                    </div>
-                `,
-                actions: [
-                    { text: "Retour à l'Antichambre", next: 'antichamber' }
-                ]
-            },
-            riddle: {
-                title: "La Cuisine des Maléfices (Indice 2)",
-                content: `
-                    <p class="text-xl mb-6 spooky-title text-halloween-orange">
-                        Un chaudron bouillonne tout seul. Une note rouillée y est attachée (Énigme facile !) :
-                    </p>
-                    <div class="bg-midnight-black p-4 rounded-lg border border-swamp-green mb-6 text-center text-lg italic">
-                        "J'ai une tête mais pas de corps, j'ai une bouche mais jamais je ne parle. On me sculpte pour la nuit d'Halloween. Qui suis-je ?"
-                    </div>
-                    <input type="text" id="riddle-input" placeholder="Votre réponse ici (un mot simple)..." class="w-full p-3 rounded-lg bg-gray-800 text-bone-white placeholder-gray-500 mb-4 focus:outline-none focus:ring-2 focus:ring-halloween-orange">
-                    <button onclick="checkRiddle()" id="riddle-button" class="game-button bg-swamp-green hover:bg-swamp-green/80 text-bone-white font-bold py-3 px-6 rounded-lg mb-6 w-full">
-                        Soumettre la Réponse
-                    </button>
-                `,
-                actions: [
-                    { text: "Retour à l'Antichambre", next: 'antichamber' }
-                ]
-            },
-            vault: {
-                title: "La Porte Scellée",
-                content: `
-                    <p class="text-lg mb-6">
-                        La Porte Est est recouverte de symboles étranges. Vous trouvez une console numérique pour entrer un code à trois chiffres.
-                        Le code est la combinaison des indices : **Indice 1 (Bureau) + Indice 2 (Cuisine) + Indice 3 (Antichambre).**
-                    </p>
-                    <div id="vault-status" class="text-center text-xl mb-4 font-bold"></div>
-                    <input type="number" id="code-input" placeholder="Entrez le code à 3 chiffres" maxlength="3" class="w-full p-3 rounded-lg bg-gray-800 text-bone-white placeholder-gray-500 mb-4 text-center text-2xl focus:outline-none focus:ring-2 focus:ring-halloween-orange">
-                    <button onclick="checkVaultCode()" id="code-button" class="game-button bg-blood-red hover:bg-blood-red/80 text-bone-white font-bold py-3 px-6 rounded-lg w-full">
-                        Activer le Sceau
-                    </button>
-                `,
-                actions: [
-                    { text: "Retour à l'Antichambre", next: 'antichamber' }
-                ]
-            },
-            escape: {
-                title: "LA CLÉ DU SALUT !",
-                content: `
-                    <p class="text-3xl mb-8 text-center text-swamp-green spooky-title">
-                        Félicitations, ${gameState.userName} !
-                    </p>
-                    <p class="text-xl mb-6 text-center">
-                        La porte s'est ouverte et la Clé du Salut brille devant vous. Vous vous échappez du Manoir de l'Énigme avec un score final de **${gameState.score}** !
-                    </p>
-                    <img src="https://placehold.co/400x200/ff6600/0a0a0a?text=CL%C9+GAGN%C9E" alt="Clé dorée d'évasion" class="mx-auto my-6 rounded-lg shadow-spooky-glow">
+      <!-- Leaderboard -->
+      <div class="game-card">
+        <h3>🏆 Classement Global</h3>
+        <div id="leaderboard" style="max-height: 400px; overflow-y: auto;">Chargement du classement...</div>
+      </div>
 
-                    <!-- Nouveau message pour le concours -->
-                    <div class="mt-8 p-4 border-2 border-halloween-orange rounded-lg bg-midnight-black/70">
-                        <h3 class="spooky-title text-2xl text-center mb-3">Concours de l'Énigme Hantée</h3>
-                        <p class="text-lg text-center font-bold text-bone-white">
-                            **Votre Score : ${gameState.score}**
-                        </p>
-                        <p class="text-center mt-2">
-                            Envoyez votre score dans le **Salon Site Halloween** pour obtenir votre classement ! Un nouveau site/énigme sera disponible tous les 5 jours avant le 31 octobre, avec un grand final pour Halloween ! Bonne chance !
-                        </p>
-                    </div>
-                `,
-                actions: [
-                    { text: "Recommencer l'Aventure", next: 'reset' }
-                ]
-            }
-        };
+      <!-- Games Grid -->
+      <div class="games-grid">
+        <!-- Guess Number -->
+        <div class="game-card">
+          <h3>🎯 Devine le Nombre</h3>
+          <p class="small muted">Trouve le nombre entre 1 et 50 pour gagner +5 points</p>
+          <input type="text" id="guess_pseudo" placeholder="Ton pseudo">
+          <input type="number" id="guess_number" placeholder="Nombre (1-50)" min="1" max="50">
+          <button class="btn primary" onclick="playGuessGame()" style="width: 100%;">Deviner</button>
+          <div id="guess_result" class="small muted" style="margin-top: 1rem;"></div>
+        </div>
 
-        // --- Fonctions Utilitaires ---
+        <!-- RPS -->
+        <div class="game-card">
+          <h3>✂️ Pierre / Feuille / Ciseaux</h3>
+          <p class="small muted">Bats le bot pour gagner +3 points</p>
+          <input type="text" id="rps_pseudo" placeholder="Ton pseudo">
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+            <button class="btn primary" onclick="playRPS('rock')" style="flex: 1;">🪨 Pierre</button>
+            <button class="btn primary" onclick="playRPS('paper')" style="flex: 1;">📄 Feuille</button>
+            <button class="btn primary" onclick="playRPS('scissors')" style="flex: 1;">✂️ Ciseaux</button>
+          </div>
+          <div id="rps_result" class="small muted"></div>
+        </div>
 
-        function showModal(title, message) {
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-message').textContent = message;
-            document.getElementById('message-modal').classList.remove('hidden');
-        }
+        <!-- Dice -->
+        <div class="game-card">
+          <h3>🎲 Lancer de Dés</h3>
+          <p class="small muted">Obtiens 6 pour gagner +2 points</p>
+          <input type="text" id="dice_pseudo" placeholder="Ton pseudo">
+          <button class="btn primary" onclick="playDice()" style="width: 100%; margin-bottom: 1rem;">Lancer</button>
+          <div id="dice_result" class="small muted"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function hideModal() {
-            document.getElementById('message-modal').classList.add('hidden');
-        }
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>📬 Nous Contacter</h2>
+      <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <form onsubmit="submitContact(event)">
+          <label>Nom</label>
+          <input type="text" id="contact_name" required>
+          <label>Email</label>
+          <input type="email" id="contact_email" required>
+          <label>Message</label>
+          <textarea id="contact_msg" required></textarea>
+          <button type="submit" class="btn primary" style="width: 100%;">Envoyer</button>
+          <div id="contact_msg_display" class="small muted" style="margin-top: 1rem;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        function updateScore(amount) {
-            gameState.score += amount;
-            // Si l'utilisateur est sur l'écran final, le contenu doit être mis à jour après la résolution du code
-            if (gameState.currentScreen === 'escape') {
-                renderScreen('escape'); // Re-rend l'écran d'évasion pour mettre à jour le score dans le message du concours
-            }
-            document.getElementById('score-display').textContent = `Score : ${gameState.score}`;
-            if (amount > 0) {
-                // Montre la modale uniquement pour les gains positifs hors de l'écran d'évasion
-                if (gameState.currentScreen !== 'escape') {
-                    showModal("Succès ! (+${amount})", "Vous avez trouvé une pièce d'or !");
-                }
-            }
-        }
+  <!-- Recruitment Section -->
+  <section id="recruitment">
+    <div class="container">
+      <h2>🎯 Candidature</h2>
+      <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <form onsubmit="submitApplication(event)">
+          <label>Pseudo Discord</label>
+          <input type="text" id="app_pseudo" required>
+          <label>Âge</label>
+          <input type="number" id="app_age" min="1">
+          <label>Expérience Gaming</label>
+          <input type="text" id="app_experience" placeholder="Ex: 5 ans de gaming">
+          <label>Heures par semaine</label>
+          <input type="number" id="app_hours" min="0" placeholder="Heures de jeu par semaine">
+          <label>Motivation</label>
+          <textarea id="app_motivation" required></textarea>
+          <button type="submit" class="btn primary" style="width: 100%;">Envoyer ma Candidature</button>
+          <div id="app_msg_display" class="small muted" style="margin-top: 1rem;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        function resetGame() {
-            gameState = {
-                currentScreen: 'home',
-                score: 0,
-                hasKey: false,
-                quizAnswered: false,
-                riddleSolved: false,
-                codeEntered: false,
-                userName: gameState.userName, // Garde le nom de l'utilisateur
-            };
-            music.pause();
-            music.currentTime = 0;
-            musicIcon.outerHTML = '<svg id="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>';
-            renderScreen(gameState.currentScreen);
-            updateScore(0); // Met à jour l'affichage du score à 0
-        }
+  <!-- Help Section -->
+  <section id="help">
+    <div class="container">
+      <h2>❓ Besoin d'Aide ?</h2>
+      <div class="card" style="max-width: 600px; margin: 0 auto; margin-bottom: 2rem;">
+        <form onsubmit="submitHelpRequest(event)">
+          <label>Pseudo</label>
+          <input type="text" id="help_pseudo" required>
+          <label>Ta Question</label>
+          <textarea id="help_question" required></textarea>
+          <button type="submit" class="btn primary" style="width: 100%;">Envoyer</button>
+          <div id="help_msg_display" class="small muted" style="margin-top: 1rem;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        // --- Logique du Jeu (Les Énigmes) ---
+  <!-- Admin Panel -->
+  <section id="admin_area">
+    <div class="container">
+      <h2>🔐 Panneau Administrateur</h2>
 
-        function checkQuiz(result) {
-            if (gameState.quizAnswered) {
-                showModal("Déjà Fait", "Vous avez déjà répondu à cette question et obtenu votre récompense.");
-                return;
-            }
+      <!-- Admin Points -->
+      <div class="panel">
+        <h3>💎 Gestion des Points</h3>
+        <input id="points_pseudo" placeholder="Pseudo exact (ex: ChillUser#1234)">
+        <input id="points_amount" type="number" placeholder="Nombre de points">
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+          <button id="points_add" class="btn primary" style="flex: 1;">Ajouter</button>
+          <button id="points_remove" class="btn ghost" style="flex: 1;">Retirer</button>
+        </div>
+        <div id="points_msg" class="small muted"></div>
+      </div>
 
-            // Réponse correcte au quiz: 8 jours. Indice: 8.
-            if (result === 'correct') {
-                updateScore(50);
-                gameState.quizAnswered = true;
-                // Indice 1: 8
-                showModal("Réponse Correcte !", "Indice 1 trouvé: Le chiffre '8'.");
-                document.getElementById('quiz-options').innerHTML = '<p class="text-lg text-swamp-green font-bold">Quiz Résolu ! Indice 1: **8**</p>';
-            } else {
-                updateScore(-5);
-                showModal("Mauvaise Réponse", "Une petite douleur vous traverse l'esprit. Réessayez.");
-            }
-            // Désactive les boutons après la première tentative pour le quiz
-            document.querySelectorAll('.quiz-button').forEach(btn => btn.onclick = () => showModal("Attention", "Le livre ne vous laissera pas tricher."));
-        }
+      <!-- Admin Applications -->
+      <div class="panel">
+        <h3>📋 Candidatures Reçues</h3>
+        <div id="adminApplications" class="list small muted">Aucune candidature</div>
+      </div>
 
-        function checkRiddle() {
-            if (gameState.riddleSolved) {
-                showModal("Déjà Fait", "L'énigme a déjà été résolue.");
-                return;
-            }
+      <!-- Music Player -->
+      <div class="panel">
+        <h3>🎵 Lecteur Musique</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <button id="secret_play_music" class="btn primary" style="flex: 1;">▶️ Jouer</button>
+          <button id="secret_stop_music" class="btn ghost" style="flex: 1;">⏸ Arrêter</button>
+        </div>
+        <div id="music_msg" class="small muted" style="margin-top: 1rem;"></div>
+      </div>
+    </div>
+  </section>
 
-            const answer = document.getElementById('riddle-input').value.trim().toLowerCase();
-            // Liste d'acceptation de réponses faciles pour citrouille
-            const correctAnswers = ['citrouille', 'la citrouille', 'pumpkin', 'jack-o-lantern', 'lanterne'];
+  <!-- Secret Overlay -->
+  <div id="secretOverlay">
+    <div>
+      <h3>🔐 Accès Créateur</h3>
+      <p class="small muted">Entrez le code secret pour ouvrir le panneau créateur.</p>
+      <input id="secretCodeInput" placeholder="Code secret" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+        <button id="secretCodeSubmit" class="btn primary" style="flex: 1;">Valider</button>
+        <button id="secretCodeCancel" class="btn ghost" style="flex: 1;">Annuler</button>
+      </div>
 
-            if (correctAnswers.some(correct => answer.includes(correct))) {
-                updateScore(75);
-                gameState.riddleSolved = true;
-                // Indice 2: 3 (un chiffre simple pour suivre le 8)
-                showModal("Énigme Résolue !", "Indice 2 trouvé: Le chiffre '3'.");
-                document.getElementById('riddle-button').disabled = true;
-                document.getElementById('riddle-button').textContent = 'Résolu !';
-                document.getElementById('riddle-input').disabled = true;
-                // Ajoute l'indice au contenu
-                document.querySelector('.bg-midnight-black.p-4').insertAdjacentHTML('afterend', '<p class="text-lg text-swamp-green font-bold text-center mt-4">Énigme Résolue ! Indice 2: **3**</p>');
-            } else {
-                updateScore(-10);
-                showModal("Incorrect", "Le chaudron bouillonne avec rage. Réfléchissez mieux.");
-            }
-        }
+      <div id="secretControls">
+        <h4 style="color: var(--text); margin-top: 1.5rem; margin-bottom: 1rem;">Gestion rapide des points</h4>
+        <input id="secret_pseudo" placeholder="Pseudo exact">
+        <input id="secret_amount" type="number" placeholder="Montant">
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem; margin-bottom: 1rem;">
+          <button id="secret_add" class="btn primary" style="flex: 1;">+ Ajouter</button>
+          <button id="secret_remove" class="btn ghost" style="flex: 1;">- Retirer</button>
+        </div>
+        <div id="secret_msg" class="small muted"></div>
+      </div>
+    </div>
+  </div>
 
-        function checkVaultCode() {
-            const vaultStatus = document.getElementById('vault-status');
-            const codeInput = document.getElementById('code-input');
-            const codeButton = document.getElementById('code-button');
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Les Mecs Chills. Tous droits réservés. | <a href="https://discord.gg/wUtq5ZA9Kt" target="_blank">Rejoindre Discord</a></p>
+  </footer>
 
-            if (!gameState.quizAnswered || !gameState.riddleSolved) {
-                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-blood-red';
-                vaultStatus.textContent = "VERROUILLÉ : Manque d'indices (Bureau et Cuisine non résolus).";
-                return;
-            }
+  <script>
+    // ============================================
+    // HELPERS & STORAGE
+    // ============================================
+    function lget(k, def = null) {
+      try {
+        const r = localStorage.getItem(k);
+        return r ? JSON.parse(r) : def;
+      } catch (e) {
+        console.error('lget', e);
+        return def;
+      }
+    }
 
-            if (gameState.codeEntered) {
-                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-swamp-green';
-                vaultStatus.textContent = "OUVERT : La Clé est à vous !";
-                renderScreen('escape');
-                return;
-            }
+    function lset(k, v) {
+      try {
+        localStorage.setItem(k, JSON.stringify(v));
+        return true;
+      } catch (e) {
+        console.error('lset', e);
+        return false;
+      }
+    }
 
-            const enteredCode = codeInput.value.trim();
-            // Code final: Indice 1 (8) + Indice 2 (3) + Indice 3 (1, pour la Première Pièce)
-            const CORRECT_CODE = '831';
+    function now() {
+      return new Date().toISOString().replace('T', ' ').slice(0, 16);
+    }
 
-            if (enteredCode === CORRECT_CODE) {
-                updateScore(150);
-                gameState.codeEntered = true;
-                gameState.hasKey = true;
-                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-swamp-green';
-                vaultStatus.textContent = "OUVERT ! La Clé du Salut est apparue !";
-                codeInput.disabled = true;
-                codeButton.textContent = 'Prendre la Clé et S\'Échapper';
-                codeButton.onclick = () => renderScreen('escape');
-            } else {
-                updateScore(-20);
-                vaultStatus.className = 'text-center text-xl mb-4 font-bold text-blood-red';
-                vaultStatus.textContent = "CODE INCORRECT. Le sceau gronde et vous pénalise. (Avez-vous bien combiné l'indice 8, l'indice 3, et l'indice de l'Antichambre 1 ?)";
-            }
-        }
+    function esc(s) {
+      if (s == null) return '';
+      return String(s).replace(/[&<>"']/g, ch => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[ch]));
+    }
 
-        // --- Moteur de Rendu ---
+    function auditLog(type, message) {
+      const logs = lget('lmc_audit', []);
+      logs.unshift({ time: new Date().toISOString(), type, message });
+      lset('lmc_audit', logs.slice(0, 500));
+    }
 
-        function renderScreen(screenKey) {
-            // Logique de réinitialisation si l'utilisateur choisit de recommencer
-            if (screenKey === 'reset') {
-                resetGame();
-                return;
-            }
+    // ============================================
+    // POINTS SYSTEM
+    // ============================================
+    function getPointsMap() {
+      return lget('lmc_points', {});
+    }
 
-            const screen = SCREENS[screenKey];
-            const container = document.getElementById('game-container');
-            container.innerHTML = ''; // Nettoyer le contenu précédent
+    function setPointsMap(m) {
+      lset('lmc_points', m);
+    }
 
-            // 1. Mise à jour de l'état
-            gameState.currentScreen = screenKey;
+    function addPointsToPseudo(pseudo, amount) {
+      if (!pseudo) return false;
+      const map = getPointsMap();
+      const cur = parseInt(map[pseudo] || 0, 10) || 0;
+      map[pseudo] = cur + Number(amount);
+      setPointsMap(map);
+      auditLog('points', `+${amount} to ${pseudo}`);
+      return true;
+    }
 
-            // 2. Créer la structure de la pièce
-            const roomDiv = document.createElement('div');
-            roomDiv.className = 'w-full bg-rust-brown/50 border-4 border-rust-brown rounded-2xl p-8 shadow-spooky-glow animate-fadeIn';
-            roomDiv.style.animation = 'fadeIn 1s ease-out';
+    function removePointsFromPseudo(pseudo, amount) {
+      if (!pseudo) return false;
+      const map = getPointsMap();
+      const cur = parseInt(map[pseudo] || 0, 10) || 0;
+      map[pseudo] = Math.max(0, cur - Number(amount));
+      setPointsMap(map);
+      auditLog('points', `-${amount} from ${pseudo}`);
+      return true;
+    }
 
-            // 3. Ajouter le titre de la pièce
-            roomDiv.innerHTML += `<h2 class="spooky-title text-4xl mb-6 text-center">${screen.title}</h2>`;
+    function getLeaderboard(limit = 50) {
+      const map = getPointsMap();
+      return Object.keys(map)
+        .map(p => ({ pseudo: p, points: map[p] }))
+        .sort((a, b) => b.points - a.points)
+        .slice(0, limit);
+    }
 
-            // 4. Ajouter le contenu de la pièce
-            roomDiv.innerHTML += `<div class="content-area mb-8">${screen.content}</div>`;
+    function renderLeaderboard() {
+      const el = document.getElementById('leaderboard');
+      const list = getLeaderboard(100);
+      if (list.length === 0) {
+        el.innerHTML = '<div class="small muted">Aucun score pour le moment. Joue et gagne des points !</div>';
+        return;
+      }
+      el.innerHTML = list.map((r, i) => `
+        <div class="leaderboard-item">
+          <span class="leaderboard-rank">#${i + 1}</span>
+          <span><strong>${esc(r.pseudo)}</strong></span>
+          <span class="leaderboard-points">${r.points} pts</span>
+        </div>
+      `).join('');
+    }
 
-            // 5. Ajouter les boutons d'action/navigation
-            const actionsDiv = document.createElement('div');
-            actionsDiv.className = 'flex flex-col md:flex-row justify-center gap-4';
+    // ============================================
+    // GAMES
+    // ============================================
+    function playGuessGame() {
+      const pseudo = document.getElementById('guess_pseudo').value.trim() || 'Anon';
+      const number = parseInt(document.getElementById('guess_number').value);
+      const resultEl = document.getElementById('guess_result');
 
-            screen.actions.forEach(action => {
-                const button = document.createElement('button');
-                button.className = 'game-button bg-halloween-orange text-bone-white font-bold py-3 px-6 rounded-lg shadow-md';
-                button.textContent = action.text;
+      if (isNaN(number) || number < 1 || number > 50) {
+        resultEl.innerHTML = '<div class="message error">Veuillez entrer un nombre entre 1 et 50</div>';
+        return;
+      }
 
-                // Logique pour gérer les portes verrouillées
-                if (action.next === 'vault') {
-                    if (gameState.hasKey) {
-                        button.textContent = "Porte Est (Déverrouillée - Évasion!)";
-                        button.onclick = () => renderScreen('escape');
-                    } else {
-                         // On gère la logique de la Porte Est dans checkVaultCode()
-                         button.onclick = () => renderScreen(action.next);
-                    }
-                } else if (action.next === 'quiz') {
-                    button.onclick = () => renderScreen(action.next);
-                    if (gameState.quizAnswered) {
-                        button.classList.add('opacity-50', 'cursor-not-allowed', 'bg-swamp-green/50');
-                        button.textContent = "Aller au BUREAU (Résolu)";
-                    }
-                } else if (action.next === 'riddle') {
-                    button.onclick = () => renderScreen(action.next);
-                    if (gameState.riddleSolved) {
-                        button.classList.add('opacity-50', 'cursor-not-allowed', 'bg-swamp-green/50');
-                        button.textContent = "Aller à la CUISINE (Résolu)";
-                    }
-                } else {
-                    button.onclick = () => renderScreen(action.next);
-                }
+      const secretNumber = Math.floor(Math.random() * 50) + 1;
+      if (number === secretNumber) {
+        addPointsToPseudo(pseudo, 5);
+        renderLeaderboard();
+        resultEl.innerHTML = `<div class="message success">🎉 Bravo ${esc(pseudo)} ! Tu as trouvé ${secretNumber} ! +5 points</div>`;
+      } else {
+        resultEl.innerHTML = `<div class="message error">❌ Dommage ! Le nombre était ${secretNumber}. Réessaye !</div>`;
+      }
+      document.getElementById('guess_number').value = '';
+    }
 
-                actionsDiv.appendChild(button);
-            });
+    function playRPS(playerChoice) {
+      const pseudo = document.getElementById('rps_pseudo').value.trim() || 'Anon';
+      const resultEl = document.getElementById('rps_result');
+      const choices = ['rock', 'paper', 'scissors'];
+      const botChoice = choices[Math.floor(Math.random() * 3)];
+      const choiceNames = { rock: '🪨 Pierre', paper: '📄 Feuille', scissors: '✂️ Ciseaux' };
 
-            roomDiv.appendChild(actionsDiv);
-            container.appendChild(roomDiv);
+      let result = '';
+      let points = 0;
 
-            // 6. Logique post-rendu pour certains écrans
-            if (screenKey === 'quiz' && gameState.quizAnswered) {
-                // Mettre à jour l'affichage après un rafraîchissement
-                document.getElementById('quiz-options').innerHTML = '<p class="text-lg text-swamp-green font-bold">Quiz Résolu ! Indice 1: **8**</p>';
-            }
+      if (playerChoice === botChoice) {
+        result = `Égalité ! ${choiceNames[playerChoice]} vs ${choiceNames[botChoice]}`;
+      } else if (
+        (playerChoice === 'rock' && botChoice === 'scissors') ||
+        (playerChoice === 'paper' && botChoice === 'rock') ||
+        (playerChoice === 'scissors' && botChoice === 'paper')
+      ) {
+        result = `🎉 Tu as gagné ! ${choiceNames[playerChoice]} vs ${choiceNames[botChoice]} ! +3 points`;
+        points = 3;
+        addPointsToPseudo(pseudo, points);
+        renderLeaderboard();
+      } else {
+        result = `❌ Tu as perdu ! ${choiceNames[playerChoice]} vs ${choiceNames[botChoice]}`;
+      }
 
-            if (screenKey === 'riddle' && gameState.riddleSolved) {
-                document.getElementById('riddle-button').disabled = true;
-                document.getElementById('riddle-button').textContent = 'Résolu !';
-                document.getElementById('riddle-input').disabled = true;
-                document.querySelector('.bg-midnight-black.p-4').insertAdjacentHTML('afterend', '<p class="text-lg text-swamp-green font-bold text-center mt-4">Énigme Résolue ! Indice 2: **3**</p>');
-            }
+      resultEl.innerHTML = `<div class="message ${points > 0 ? 'success' : 'error'}">${result}</div>`;
+    }
 
-            if (screenKey === 'vault' && gameState.codeEntered) {
-                document.getElementById('vault-status').className = 'text-center text-xl mb-4 font-bold text-swamp-green';
-                document.getElementById('vault-status').textContent = "OUVERT : La Clé est à vous !";
-                document.getElementById('code-input').disabled = true;
-                document.getElementById('code-button').textContent = 'Prendre la Clé et S\'Échapper';
-                document.getElementById('code-button').onclick = () => renderScreen('escape');
-            }
-        }
+    function playDice() {
+      const pseudo = document.getElementById('dice_pseudo').value.trim() || 'Anon';
+      const resultEl = document.getElementById('dice_result');
+      const roll = Math.floor(Math.random() * 6) + 1;
 
-        // --- Démarrage de l'Application ---
-        window.onload = () => {
-            // Demander un nom pour personnaliser la fin
-            const name = prompt("Entrez votre nom pour marquer votre passage dans ce manoir :");
-            if (name && name.trim().length > 0) {
-                gameState.userName = name.trim();
-            }
+      if (roll === 6) {
+        addPointsToPseudo(pseudo, 2);
+        renderLeaderboard();
+        resultEl.innerHTML = `<div class="message success">🎲 Tu as obtenu un 6 ! +2 points</div>`;
+      } else {
+        resultEl.innerHTML = `<div class="message error">🎲 Tu as obtenu un ${roll}. Réessaye !</div>`;
+      }
+    }
 
-            renderScreen('home');
-        };
+    // ============================================
+    // FORMS
+    // ============================================
+    function submitContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact_name').value.trim();
+      const email = document.getElementById('contact_email').value.trim();
+      const msg = document.getElementById('contact_msg').value.trim();
 
-        // Ajout d'une animation simple de fondu en entrée
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
+      const contacts = lget('lmc_contacts', []);
+      contacts.unshift({ name, email, msg, date: now() });
+      lset('lmc_contacts', contacts);
+      auditLog('contact', `Contact from ${name}`);
 
-    </script>
+      document.getElementById('contact_msg_display').innerHTML = '<div class="message success">✅ Message envoyé ! Merci de nous avoir contactés.</div>';
+      document.getElementById('contact_name').value = '';
+      document.getElementById('contact_email').value = '';
+      document.getElementById('contact_msg').value = '';
+    }
+
+    function submitApplication(e) {
+      e.preventDefault();
+      const pseudo = document.getElementById('app_pseudo').value.trim();
+      const age = parseInt(document.getElementById('app_age').value) || 0;
+      const experience = document.getElementById('app_experience').value.trim();
+      const hours = parseInt(document.getElementById('app_hours').value) || 0;
+      const motivation = document.getElementById('app_motivation').value.trim();
+
+      const apps = lget('lmc_applications', []);
+      const id = Date.now().toString(36);
+      apps.unshift({ id, pseudo, age, experience, hours, motivation, date: now() });
+      lset('lmc_applications', apps);
+      auditLog('application', `Application: ${pseudo}`);
+      renderAdminData();
+
+      document.getElementById('app_msg_display').innerHTML = '<div class="message success">✅ Candidature envoyée ! Merci de ton intérêt.</div>';
+      document.getElementById('app_pseudo').value = '';
+      document.getElementById('app_age').value = '';
+      document.getElementById('app_experience').value = '';
+      document.getElementById('app_hours').value = '';
+      document.getElementById('app_motivation').value = '';
+    }
+
+    function submitHelpRequest(e) {
+      e.preventDefault();
+      const pseudo = document.getElementById('help_pseudo').value.trim();
+      const question = document.getElementById('help_question').value.trim();
+
+      const helps = lget('lmc_helpRequests', []);
+      const id = Date.now().toString(36);
+      helps.unshift({ id, pseudo, question, date: now(), answer: null });
+      lset('lmc_helpRequests', helps);
+      auditLog('help', `Help request from ${pseudo}`);
+
+      document.getElementById('help_msg_display').innerHTML = '<div class="message success">✅ Question envoyée ! Nous te répondrons bientôt.</div>';
+      document.getElementById('help_pseudo').value = '';
+      document.getElementById('help_question').value = '';
+    }
+
+    // ============================================
+    // ADMIN
+    // ============================================
+    function renderAdminData() {
+      const adminArea = document.getElementById('admin_area');
+      if (!adminArea.classList.contains('visible')) return;
+
+      const apps = lget('lmc_applications', []);
+      const appsHtml = apps.length === 0
+        ? '<div class="small muted">Aucune candidature</div>'
+        : apps.map(app => `
+          <div class="item">
+            <div>
+              <strong>${esc(app.pseudo)}</strong>
+              <div class="small muted">Âge: ${app.age || 'N/A'} | ${esc(app.experience)} | ${app.hours}h/semaine | ${app.date}</div>
+              <div class="small" style="margin-top: 0.5rem;">${esc(app.motivation)}</div>
+            </div>
+            <button class="btn ghost small" onclick="deleteApplication('${app.id}')" style="margin-left: 1rem;">🗑</button>
+          </div>
+        `).join('');
+      document.getElementById('adminApplications').innerHTML = appsHtml;
+    }
+
+    function deleteApplication(id) {
+      const apps = lget('lmc_applications', []);
+      const filtered = apps.filter(app => app.id !== id);
+      lset('lmc_applications', filtered);
+      auditLog('application', `Deleted application ${id}`);
+      renderAdminData();
+    }
+
+    // ============================================
+    // MUSIC
+    // ============================================
+    let secretAudio = null;
+
+    function ensureSecretAudio() {
+      if (!secretAudio) {
+        secretAudio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        secretAudio.loop = true;
+      }
+    }
+
+    document.getElementById('secret_play_music').addEventListener('click', () => {
+      ensureSecretAudio();
+      secretAudio.play().catch(() => {
+        document.getElementById('music_msg').innerHTML = '<div class="message error">Impossible de jouer la musique (click requis par le navigateur)</div>';
+      });
+      document.getElementById('music_msg').innerHTML = '<div class="message success">🎵 Musique en cours de lecture</div>';
+    });
+
+    document.getElementById('secret_stop_music').addEventListener('click', () => {
+      if (secretAudio) {
+        secretAudio.pause();
+        secretAudio.currentTime = 0;
+      }
+      document.getElementById('music_msg').innerHTML = '<div class="message error">⏸ Musique arrêtée</div>';
+    });
+
+    // ============================================
+    // SECRET OVERLAY (Ctrl+A)
+    // ============================================
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        document.getElementById('secretOverlay').classList.add('visible');
+        document.getElementById('secretCodeInput').value = '';
+        document.getElementById('secretControls').classList.remove('visible');
+      }
+    });
+
+    document.getElementById('secretCodeCancel').addEventListener('click', () => {
+      document.getElementById('secretOverlay').classList.remove('visible');
+    });
+
+    document.getElementById('secretCodeSubmit').addEventListener('click', () => {
+      const code = document.getElementById('secretCodeInput').value.trim();
+      if (code === '56710') {
+        document.getElementById('secretControls').classList.add('visible');
+        document.getElementById('admin_area').classList.add('visible');
+        renderAdminData();
+      } else {
+        alert('❌ Code incorrect');
+      }
+    });
+
+    document.getElementById('points_add').addEventListener('click', () => {
+      const pseudo = document.getElementById('points_pseudo').value.trim();
+      const amt = Number(document.getElementById('points_amount').value) || 0;
+      if (!pseudo || !amt) {
+        document.getElementById('points_msg').innerHTML = '<div class="message error">Pseudo + montant requis</div>';
+        return;
+      }
+      addPointsToPseudo(pseudo, amt);
+      document.getElementById('points_msg').innerHTML = `<div class="message success">✅ +${amt} pts à ${esc(pseudo)}</div>`;
+      renderLeaderboard();
+      document.getElementById('points_pseudo').value = '';
+      document.getElementById('points_amount').value = '';
+    });
+
+    document.getElementById('points_remove').addEventListener('click', () => {
+      const pseudo = document.getElementById('points_pseudo').value.trim();
+      const amt = Number(document.getElementById('points_amount').value) || 0;
+      if (!pseudo || !amt) {
+        document.getElementById('points_msg').innerHTML = '<div class="message error">Pseudo + montant requis</div>';
+        return;
+      }
+      removePointsFromPseudo(pseudo, amt);
+      document.getElementById('points_msg').innerHTML = `<div class="message success">✅ ${amt} pts retirés à ${esc(pseudo)}</div>`;
+      renderLeaderboard();
+      document.getElementById('points_pseudo').value = '';
+      document.getElementById('points_amount').value = '';
+    });
+
+    document.getElementById('secret_add').addEventListener('click', () => {
+      const p = document.getElementById('secret_pseudo').value.trim();
+      const amt = Number(document.getElementById('secret_amount').value) || 0;
+      if (!p || !amt) {
+        document.getElementById('secret_msg').innerHTML = '<div class="message error">Pseudo + montant requis</div>';
+        return;
+      }
+      addPointsToPseudo(p, amt);
+      document.getElementById('secret_msg').innerHTML = `<div class="message success">✅ +${amt} pts à ${esc(p)}</div>`;
+      renderLeaderboard();
+      document.getElementById('secret_pseudo').value = '';
+      document.getElementById('secret_amount').value = '';
+    });
+
+    document.getElementById('secret_remove').addEventListener('click', () => {
+      const p = document.getElementById('secret_pseudo').value.trim();
+      const amt = Number(document.getElementById('secret_amount').value) || 0;
+      if (!p || !amt) {
+        document.getElementById('secret_msg').innerHTML = '<div class="message error">Pseudo + montant requis</div>';
+        return;
+      }
+      removePointsFromPseudo(p, amt);
+      document.getElementById('secret_msg').innerHTML = `<div class="message success">✅ ${amt} pts retirés à ${esc(p)}</div>`;
+      renderLeaderboard();
+      document.getElementById('secret_pseudo').value = '';
+      document.getElementById('secret_amount').value = '';
+    });
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLeaderboard();
+    });
+  </script>
 </body>
 </html>
